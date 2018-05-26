@@ -1,8 +1,9 @@
 #include <stdint.h>
 #include <string.h>
 #include <lib.h>
-#include <moduleLoader.h>
-#include <naiveConsole.h>
+#include "moduleLoader.h"
+#include "naiveConsole.h"
+#include "videoDriver.h"
 
 extern uint8_t text;
 extern uint8_t rodata;
@@ -35,7 +36,7 @@ void * getStackBase()
 
 void * initializeKernelBinary()
 {
-	char buffer[10];
+	unsigned char buffer[256];
 
 	ncPrint("[x64BareBones]");
 	ncNewline();
@@ -81,23 +82,27 @@ void * initializeKernelBinary()
 }
 
 int main()
-{	
+{
 	ncPrint("[Kernel Main]");
 	ncNewline();
-	ncPrint("  Sample code module at 0x");
-	ncPrintHex((uint64_t)sampleCodeModuleAddress);
-	ncNewline();
-	ncPrint("  Calling the sample code module returned: ");
-	ncPrintHex(((EntryPoint)sampleCodeModuleAddress)());
-	ncNewline();
-	ncNewline();
-
-	ncPrint("  Sample data module at 0x");
-	ncPrintHex((uint64_t)sampleDataModuleAddress);
-	ncNewline();
-	ncPrint("  Sample data module contents: ");
-	ncPrint((char*)sampleDataModuleAddress);
-	ncNewline();
+	colour verde = {23, 96, 22};
+	paintWindow(verde);
+	colour negro = {0, 0, 0};
+	drawChar('X', negro);
+	// ncPrint("  Sample code module at 0x");
+	// ncPrintHex((uint64_t)sampleCodeModuleAddress);
+	// ncNewline();
+	// ncPrint("  Calling the sample code module returned: ");
+	// ncPrintHex(((EntryPoint)sampleCodeModuleAddress)());
+	// ncNewline();
+	// ncNewline();
+	//
+	// ncPrint("  Sample data module at 0x");
+	// ncPrintHex((uint64_t)sampleDataModuleAddress);
+	// ncNewline();
+	// ncPrint("  Sample data module contents: ");
+	// ncPrint((char*)sampleDataModuleAddress);
+	// ncNewline();
 
 	ncPrint("[Finished]");
 	return 0;

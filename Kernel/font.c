@@ -1,7 +1,7 @@
 // Created from bdf2c Version 3, (c) 2009, 2010 by Lutz Sammer
 //	License AGPLv3: GNU Affero General Public License version 3
 
-#include "font.h"
+#include <font.h>
 
 unsigned char __font_bitmap__[] = {
 //   0 $00 'char0'
@@ -3480,7 +3480,8 @@ unsigned char __font_bitmap__[] = {
 	________,
 };
 
-unsigned char * pixel_map(int c) {
+// retorna la primera posicion de un char dentro de la tabla de pixeles
+char * charMap(int c) {
 	// 31 es el numero (segun codigo ascii) a partir del cual están las letras
 	// en el arreglo __font_bitmap__
 	return __font_bitmap__ + CHAR_HEIGHT * (c-31);
