@@ -51,14 +51,23 @@ struct modeInfoBlock
 modeInfoVBE vbe = (modeInfoVBE)0x5C00;
 unsigned int currentX = 0;
 unsigned int currentY = 0;
-colour toDelete = {0, 0, 0};									// color NEGRO --> lo usamos para borrar
+colour background = {0, 0, 0};									// color NEGRO --> lo usamos para borrar caracteres
+colour font = {255, 255, 255};                  // color BLANCO
 
 void drawAPixelWithColour(unsigned int x, unsigned int y, colour col)
 {
-    char * video = (char *) (uint64_t)(vbe->physBasePtr + vbe->pitch * currentY + currentX * (int)(vbe->bitsPerPixel/8));
+    uint8_t * video = (uint8_t*) (vbe->physBasePtr + vbe->pitch * currentY + vbe->bitsPerPixel/8 * currentX);
     video[0] = col.blue;				// un pixel ocupa 3 bytes, en cada uno le asignamos un color primario para pintarlo
     video[1] = col.green;
     video[2] = col.red;
+}
+
+void drawAPixel(unsigned int x, unsigned int y)
+{
+    char * video = (char *) (uint64_t)(vbe->physBasePtr + vbe->pitch * currentY + currentX * (int)(vbe->bitsPerPixel/8));
+    video[0] = font.blue;				// un pixel ocupa 3 bytes, en cada uno le asignamos un color primario para pintarlo
+    video[1] = font.green;
+    video[2] = font.red;
 }
 
 int coordanteOutOfBounds(unsigned int x, unsigned int y)
@@ -66,7 +75,7 @@ int coordanteOutOfBounds(unsigned int x, unsigned int y)
 		return x>=0 && x<=vbe->xResolution && y>=0 && y<=vbe->yResolution;
 }
 
-void drawChar (const char c, colour col)
+void drawChar (const char c)
 {
 		refreshCoordenates();
 		if (c < 31)						// entonces no es un caracter del font.c
@@ -82,34 +91,40 @@ void drawChar (const char c, colour col)
 		}
 		else							// tengo un caracter del font.c
 		{
-				char * pixelMap = charMap((int)c);
-				char pixel;
+				char * character = charMap((int)c);
 				for (int j=0; j<charHeight; j++)			// primero itero en j por como esta hecho el font
 				{
-					pixel = pixelMap[j];
 					for (int i=0; i<charWidth; i++)
 					{
-						pixel >>= 8-i;								// itero por los caracteres
-						if (pixel % 2 == 0)							// pixel = '_' --> no tengo que pintar
-						{
-							drawAPixelWithColour(currentX + i, currentY + j, toDelete);
-						}
-						else													// pixel = 'X'
-						{
-							drawAPixelWithColour(currentX + i, currentY + j, col);
-						}
+            if (1<<i & character[j])         // character[j] = 'X'
+            {
+              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, font);
+            }
+            else
+            {
+              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, background);
+            }
+						// pixel >>= 8-i;								// itero por los caracteres
+						// if (pixel % 2 == 0)							// pixel = '_' --> no tengo que pintar
+						// {
+						// 	drawAPixelWithColour(currentX + i, currentY + j, background);
+						// }
+						// else													// pixel = 'X'
+						// {
+						// 	drawAPixelWithColour(currentX + i, currentY + j, font);
+						// }
 					}
 				}
 				currentX += charWidth;
 		}
 }
 
-void drawString(char * string, colour c)
+void drawString(char * string)
 {
 	int n = length(string);
 	for (int i=0; i<n; i++)
 	{
-		drawChar(string[i], c);
+		drawChar(string[i]);
 	}
 }
 
@@ -175,7 +190,7 @@ void clearCoordenate(unsigned int x, unsigned int y)
 	{
 		for (int j = 0; j < charHeight; j++)
 		{
-			drawAPixelWithColour(x+i, y+j, toDelete);			// no puedo usar drawChar porque esta seteado para que dibuje a partir de x e y --> pinto píxeles
+			drawAPixelWithColour(x+i, y+j, background);			// no puedo usar drawChar porque esta seteado para que dibuje a partir de x e y --> pinto píxeles
 		}
 	}
 }
@@ -208,16 +223,16 @@ void newWindow ()
 	{
 		for (int j=0; j<vbe->yResolution; j++)
 		{
-			drawAPixelWithColour(i, j, toDelete);
+			drawAPixelWithColour(i, j, background);
 		}
 	}
 }
 
 void paintWindow(colour col)
 {
-	for (int i=0; i<vbe->xResolution; i++)
+	for (int j=0; j<vbe->yResolution; j++)
 	{
-		for (int j=0; j<vbe->yResolution; j++)
+		for (int i=0; i<vbe->xResolution; i++)
 		{
 			drawAPixelWithColour(i, j, col);
 		}
@@ -297,210 +312,4 @@ void paintWindow(colour col)
 // 		for (int i = 0; i < vbe->bpp/8; i++) {
 // 			*(pixel_address+i) = color+i;
 // 		}
-// }
-
-// ----------------- VERSION TPE VIEJO -------------------------
-
-//
-//
-// unsigned char * getVideoPix(){
-// 	return *video_start;
-// }
-//
-// void printString( const char* string, int B, int G, int R){
-// 	int len = strleng(string);
-// 	int i;
-// 	for(i=0;i<len;i++){
-// 		writeChar(string[i],B,G,R);
-// 	}
-// }
-// void printReg(char* s){
-// 	printString(s,0,155,255);
-// }
-//
-// int boundedPixel(int x, int y) {
-// 	return (x >= 0) && (x <= SCREEN_WIDTH) && (y >= 0) && (y <= SCREEN_HEIGHT);
-// }
-//
-// void paintBackGround(){
-// 	for(int i=0; i<SCREEN_WIDTH; i+=8){
-// 		for(int j=0; j<SCREEN_HEIGHT; j+=16){
-// 			paintCharSpace(i,j,BG_B,BG_G,BG_R);
-// 		}
-// 	}
-// }
-//
-// void paintCharSpace(int current_x, int current_y, char B, char G, char R){
-// 	for(int i=0; i<8; i++){
-// 		for(int j=0; j<16; j++){
-// 			paintPixel(current_x+i, current_y+j, B, G, R);
-// 		}
-// 	}
-// }
-//
-// void paintPixel(int x, int y, char B, char G, char R) {
-// 	if (!boundedPixel(x, y))
-// 		return;
-//
-// 	unsigned char * pixel_address;
-// 	pixel_address = getVideoPix() + 3*(x + y*SCREEN_WIDTH);
-// 	*pixel_address = B;
-// 	*(pixel_address+1) = G;
-// 	*(pixel_address+2) = R;
-// }
-//
-// void writeChar(char c, int B, int G, int R){
-// 	checkLine();
-// 	if (c < 31){
-// 		if (c =='\n'){
-// 			newLine();
-// 			return;
-// 		}
-// 		if (c== 8){	//BACKSPACE
-// 			backSpace();
-// 			return;
-// 		}
-// 	}
-// 	else{
-// 		unsigned char * bitmap = pixel_map(c);
-// 		unsigned char bitmap_aux;
-// 		int x_counter;
-// 		int y_counter;
-//
-// 		for(y_counter = 0;y_counter<16;y_counter++){
-// 			for(x_counter = 0;x_counter<8;x_counter++){
-//
-// 				bitmap_aux = bitmap[y_counter];
-// 				bitmap_aux >>= 8-x_counter;
-//
-// 				if(bitmap_aux%2 == 1)
-// 					paintPixel(current_x+x_counter,current_y+y_counter,B,G,R);
-// 				else{
-// 					paintPixel(current_x+x_counter,current_y+y_counter,BG_B,BG_G,BG_R);
-// 				}
-// 			}
-// 		}
-// 		current_x += 8;
-// 	}
-// }
-// void backSpace(){
-// 	if(current_x > 3*8){
-// 		current_x-=8;
-// 		paintCharSpace(current_x, current_y, BG_B, BG_G, BG_R);
-// 	}
-// }
-// void checkLine(){
-// 	if(current_x>=SCREEN_WIDTH){
-// 		current_x=0;
-// 		current_y+=16;
-// 		if(current_y>=SCREEN_HEIGHT){
-// 			current_y-=16;
-// 			shiftVideo();
-// 		}
-// 	}
-// }
-//
-// int countDigits(int num){
-// 	int dig = 1;
-// 	while((num/=10) != 0) dig++;
-// 	return dig;
-// }
-//
-// void printInt(int num, int B, int G, int R){
-// 		int dig = countDigits(num);
-// 		char numbers[MAX_DIGITS] = {};
-// 		int count=0;
-//
-// 		while(count!=dig){
-// 			numbers[dig-1-count++]=num%10+48;
-// 			num /= 10;
-// 		}
-//
-// 		numbers[dig]='\0';
-//
-// 		if (num<0)
-// 			writeChar('-',B,G,R);
-//
-// 		printString(numbers,B,G,R);
-// }
-// void printHex(uint64_t num){
-// 	static char buffer[64] = { '0' };
-// 	uintToBase(num,buffer,16);
-// 	printString(buffer,0,155,255);
-// }
-// uint32_t uintToBase(uint64_t value, char * buffer, uint32_t base)
-// {
-// 	char *p = buffer;
-// 	char *p1, *p2;
-// 	uint32_t digits = 0;
-//
-// 	//Calculate characters for each digit
-// 	do
-// 	{
-// 		uint32_t remainder = value % base;
-// 		*p++ = (remainder < 10) ? remainder + '0' : remainder + 'A' - 10;
-// 		digits++;
-// 	}
-// 	while (value /= base);
-//
-// 	// Terminate string in buffer.
-// 	*p = 0;
-//
-// 	//Reverse string in buffer.
-// 	p1 = buffer;
-// 	p2 = p - 1;
-// 	while (p1 < p2)
-// 	{
-// 		char tmp = *p1;
-// 		*p1 = *p2;
-// 		*p2 = tmp;
-// 		p1++;
-// 		p2--;
-// 	}
-//
-// 	return digits;
-// }
-// void clearScreen(){
-// 	for(int i=0; i<SCREEN_WIDTH; i+=8){
-// 		for(int j=0; j<SCREEN_HEIGHT; j+=16){
-// 			paintCharSpace(i,j,BG_B,BG_G,BG_R);
-// 		}
-// 	}
-// 	current_x=0;
-// 	current_y=SCREEN_HEIGHT-16;
-// }
-//
-// int strleng(const char *str){
-// 	int i=0;
-// 	while(*(str+i)) i++;
-// 	return i;
-// }
-//
-// void newLine(){
-// 	current_x=0;
-// 	current_y+=16;
-// 	if(current_y>=SCREEN_HEIGHT){
-// 		current_y-=16;
-// 		shiftVideo();
-// 	}
-// }
-// void shiftVideo(){
-// 	//memcpy(getVideoPix, getVideoPix+3*SCREEN_WIDTH, 3*(SCREEN_HEIGHT-16)*(SCREEN_WIDTH));
-// 	unsigned char B;
-// 	unsigned char G;
-// 	unsigned char R;
-// 	unsigned char * pixel_address;
-// 	for(int i=0; i<SCREEN_WIDTH;i++){
-// 		for(int j=16; j<SCREEN_HEIGHT;j++){
-// 			pixel_address = getVideoPix() + 3*(i + j*SCREEN_WIDTH);
-// 			B=*(pixel_address);
-// 			G=*(pixel_address+1);
-// 			R=*(pixel_address+2);
-// 			paintPixel(i,j-16,B,G,R);
-// 		}
-// 	}
-// 	int j=SCREEN_HEIGHT-16;
-// 	for(int i=0; i<SCREEN_WIDTH;i+=8){
-// 		paintCharSpace(i,j,BG_B,BG_G,BG_R);
-// 	}
 // }

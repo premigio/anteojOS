@@ -13,7 +13,7 @@ typedef struct modeInfoBlock * modeInfoVBE;
 
 void drawAPixelWithColour(unsigned int x, unsigned int y, colour col);
 int coordanteOutOfBounds(unsigned int x, unsigned int y);
-void drawChar (const char c, colour col);
+void drawChar (const char c);
 void enter();
 void backSpace();
 void refreshCoordenates();
@@ -21,7 +21,7 @@ void clearCoordenate(unsigned int x, unsigned int y);
 void scroll ();
 void paintWindow(colour col);
 void newWindow ();
-void drawString(char * string, colour col);
+void drawString(char * string);
 int length (char * string);
 
 #endif

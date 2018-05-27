@@ -83,12 +83,16 @@ void * initializeKernelBinary()
 
 int main()
 {
-	ncPrint("[Kernel Main]");
-	ncNewline();
-	colour verde = {23, 96, 22};
-	paintWindow(verde);
-	colour negro = {0, 0, 0};
-	drawChar('X', negro);
+	//for (int i=0; i<2800; i++)
+		//drawAPixel(i, i);
+	drawAPixel(0,0);
+	drawAPixel(1,1);
+	//ncPrint("[Kernel Main]");
+	//ncNewline();
+	//colour verde = {23, 96, 22};
+	//paintWindow(verde);
+	//colour negro = {0, 0, 0};
+	//drawChar('X');
 	// ncPrint("  Sample code module at 0x");
 	// ncPrintHex((uint64_t)sampleCodeModuleAddress);
 	// ncNewline();
@@ -104,6 +108,6 @@ int main()
 	// ncPrint((char*)sampleDataModuleAddress);
 	// ncNewline();
 
-	ncPrint("[Finished]");
-	return 0;
+	//ncPrint("[Finished]");
+	//return 0;
 }
