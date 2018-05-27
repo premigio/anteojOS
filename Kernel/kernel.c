@@ -1,9 +1,9 @@
 #include <stdint.h>
 #include <string.h>
 #include <lib.h>
-#include "moduleLoader.h"
-#include "naiveConsole.h"
-#include "videoDriver.h"
+#include <moduleLoader.h>
+#include <naiveConsole.h>
+#include <videoDriver.h>
 
 extern uint8_t text;
 extern uint8_t rodata;
@@ -85,12 +85,12 @@ int main()
 {
 	//for (int i=0; i<2800; i++)
 		//drawAPixel(i, i);
-	drawAPixel(0,0);
-	drawAPixel(1,1);
+	//drawAPixel(0,0);
+	//drawAPixel(1,1);
 	//ncPrint("[Kernel Main]");
 	//ncNewline();
-	//colour verde = {23, 96, 22};
-	//paintWindow(verde);
+	Colour verde = {110, 193, 85};
+	paintWindow(verde);
 	//colour negro = {0, 0, 0};
 	//drawChar('X');
 	// ncPrint("  Sample code module at 0x");
@@ -109,5 +109,5 @@ int main()
 	// ncNewline();
 
 	//ncPrint("[Finished]");
-	//return 0;
+	return 0;
 }

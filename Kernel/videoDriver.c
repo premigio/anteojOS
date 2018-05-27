@@ -1,5 +1,5 @@
-#include "videoDriver.h"
-#include "font.h"
+#include <videoDriver.h>
+#include <font.h>
 #include <stdint.h>
 #define charWidth 8
 #define charHeight 16
@@ -48,13 +48,13 @@ struct modeInfoBlock
 //fields like it would normally do.
 //http://www.delorie.com/djgpp/doc/ug/graphics/vesa.html
 
-modeInfoVBE vbe = (modeInfoVBE)0x5C00;
+modeInfoVBE vbe = (modeInfoVBE)0x0000000000005C00;
 unsigned int currentX = 0;
 unsigned int currentY = 0;
-colour background = {0, 0, 0};									// color NEGRO --> lo usamos para borrar caracteres
-colour font = {255, 255, 255};                  // color BLANCO
+Colour background = {0, 0, 0};									// color NEGRO --> lo usamos para borrar caracteres
+Colour font = {255, 255, 255};                  // color BLANCO
 
-void drawAPixelWithColour(unsigned int x, unsigned int y, colour col)
+void drawAPixelWithColour(unsigned int x, unsigned int y, Colour col)
 {
     uint8_t * video = (uint8_t*) (vbe->physBasePtr + vbe->pitch * currentY + vbe->bitsPerPixel/8 * currentX);
     video[0] = col.blue;				// un pixel ocupa 3 bytes, en cada uno le asignamos un color primario para pintarlo
@@ -104,15 +104,6 @@ void drawChar (const char c)
             {
               drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, background);
             }
-						// pixel >>= 8-i;								// itero por los caracteres
-						// if (pixel % 2 == 0)							// pixel = '_' --> no tengo que pintar
-						// {
-						// 	drawAPixelWithColour(currentX + i, currentY + j, background);
-						// }
-						// else													// pixel = 'X'
-						// {
-						// 	drawAPixelWithColour(currentX + i, currentY + j, font);
-						// }
 					}
 				}
 				currentX += charWidth;
@@ -197,7 +188,7 @@ void clearCoordenate(unsigned int x, unsigned int y)
 
 void scroll ()
 {
-	colour col;
+	Colour col;
 	char * pixelAddress;
 	for (int i=0; i<vbe->xResolution; i++)
 	{
@@ -228,8 +219,9 @@ void newWindow ()
 	}
 }
 
-void paintWindow(colour col)
+void paintWindow(Colour col)
 {
+  background=col;
 	for (int j=0; j<vbe->yResolution; j++)
 	{
 		for (int i=0; i<vbe->xResolution; i++)
@@ -238,78 +230,3 @@ void paintWindow(colour col)
 		}
 	}
 }
-
-// -------------- VERSION PILO ---------------------------------------
-
-// typedef struct __attribute__((packed)) {
-// 	uint16_t attributes;		// deprecated, only bit 7 should be of interest to you, and it indicates the mode supports a linear frame buffer.
-// 	uint8_t window_a;			// deprecated
-// 	uint8_t window_b;			// deprecated
-// 	uint16_t granularity;		// deprecated; used while calculating bank numbers
-// 	uint16_t window_size;
-// 	uint16_t segment_a;
-// 	uint16_t segment_b;
-// 	uint32_t win_func_ptr;		// deprecated; used to switch banks from protected mode without returning to real mode
-// 	uint16_t pitch;			// number of bytes per horizontal line
-// 	uint16_t width;			// width in pixels
-// 	uint16_t height;			// height in pixels
-// 	uint8_t w_char;			// unused...
-// 	uint8_t y_char;			// ...
-// 	uint8_t planes;
-// 	uint8_t bpp;			// bits per pixel in this mode
-// 	uint8_t banks;			// deprecated; total number of banks in this mode
-// 	uint8_t memory_model;
-// 	uint8_t bank_size;		// deprecated; size of a bank, almost always 64 KB but may be 16 KB...
-// 	uint8_t image_pages;
-// 	uint8_t reserved0;
-//
-// 	uint8_t red_mask;
-// 	uint8_t red_position;
-// 	uint8_t green_mask;
-// 	uint8_t green_position;
-// 	uint8_t blue_mask;
-// 	uint8_t blue_position;
-// 	uint8_t reserved_mask;
-// 	uint8_t reserved_position;
-// 	uint8_t direct_color_attributes;
-//
-// 	uint32_t framebuffer;		// physical address of the linear frame buffer; write here to draw to the screen
-// 	uint32_t off_screen_mem_off;
-// 	uint16_t off_screen_mem_size;	// size of memory in the framebuffer but not being displayed on the screen
-// 	uint8_t reserved1[206];
-// } vbe_mode_info_structure;
-//
-//
-// vbe_mode_info_structure * vbe = (vbe_mode_info_structure*)0x5C00;
-// int current_x = 0; //(0,*VIDEO_X)
-// int current_y = 0;
-//
-// void printChar(const char c){
-// 	//unsigned char * char_map;
-// 	//char_map = charMap(6);
-// 	//for (int i = 0; i < 10000; i++) {
-// 	//	color_t color = {121,233,112}; //RGB
-// 	//	putPixel(vbe->framebuffer, i,i,color);
-// 	//}
-// 	// for (int i = 0; i < CHAR_WIDTH; i++) {
-// 	// 	for (int j = 0; j < CHAR_HEIGHT; j++) {
-// 	// 		putPixel(vbe->framebuffer, current_x++, current_y++, COLOUR);
-// 	// 	}
-// 	// }
-//
-// 	unsigned char * charmapeado = charMap(c);
-// 	for (int i=0; i<CHAR_WIDTH; i++){
-// 		for (int j=0; j<CHAR_HEIGHT; j++){
-// 			color_t color = {111, 158, 230};
-// 			putPixel(vbe->framebuffer, current_x++, current_y++, color);
-// 		}
-// 	}
-// }
-//
-// void putPixel(uint32_t where, int x, int y, color_t color) {
-// 		unsigned char * pixel_address;
-// 		pixel_address = (unsigned char * )(where + (vbe->bpp/8)*(x + y*vbe->width));
-// 		for (int i = 0; i < vbe->bpp/8; i++) {
-// 			*(pixel_address+i) = color+i;
-// 		}
-// }
