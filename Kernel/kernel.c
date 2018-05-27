@@ -4,6 +4,7 @@
 #include <moduleLoader.h>
 #include <naiveConsole.h>
 #include <videoDriver.h>
+#include <idtLoader.h>
 
 extern uint8_t text;
 extern uint8_t rodata;
@@ -83,6 +84,10 @@ void * initializeKernelBinary()
 
 int main()
 {
+	load_idt();
+	void (*address)();
+	address = sampleCodeModuleAddress;
+	address();
 	/*ncPrint("[Kernel Main]");
 	ncNewline();
 	ncPrint("  Sample code module at 0x");
