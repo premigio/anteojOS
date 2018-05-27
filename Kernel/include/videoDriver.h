@@ -1,5 +1,6 @@
 #ifndef VIDEODRIVER_H_
 #define VIDEODRIVER_H_
+
 #include <stdint.h>
 
 typedef struct Colour					// un color es la combinacion de los colores primarios
@@ -55,17 +56,28 @@ struct modeInfoBlock
 
 typedef struct modeInfoBlock * modeInfoVBE;
 
-void drawAPixelWithColour(int x, int y, Colour col);
-int coordanteOutOfBounds(unsigned int x, unsigned int y);
-void drawChar (const char c);
-void enter();
-void backSpace();
-void refreshCoordenates();
-void clearCoordenate(unsigned int x, unsigned int y);
-void scroll ();
+/* draws a pixel with the default font colour */
+void drawAPixel(unsigned int, unsigned int);
+
+/* draws a pixel with a given font colour */
+void drawAPixelWithColour(int, int, Colour);
+
+/* draws a character with the default font colour */
+void drawChar (const char);
+
+/* draws a string with the default font colour */
+void drawString (const char *);
+
+/* sets the font colour */
+void setFontColour(Colour);
+
+/* paints the current window with a given colour */
 void paintWindow(Colour col);
+
+/* paints the current window with the default background colour */
 void newWindow ();
-void drawString(char * string);
-int length (char * string);
+
+/* sets the background colour */
+void setBackgroundColour(Colour);
 
 #endif

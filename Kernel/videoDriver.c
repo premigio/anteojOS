@@ -4,6 +4,20 @@
 #define charWidth 8
 #define charHeight 16
 
+void drawAPixelWithColour(int x, int y, Colour col);
+void drawAPixel(unsigned int x, unsigned int y);
+void drawChar (const char c);
+void drawString(const char * string);
+void enter();
+void backSpace();
+void refreshCoordenates();
+void clearCoordenate(unsigned int x, unsigned int y);
+void scroll ();
+void newWindow ();
+void paintWindow(Colour col);
+void setBackgroundColour(Colour col);
+void setFontColour(Colour col);
+
 modeInfoVBE vbe = (modeInfoVBE)0x5C00;
 unsigned int currentX = 0;
 unsigned int currentY = 0;
@@ -12,7 +26,7 @@ Colour fontColour = {255, 255, 255};
 
 void drawAPixelWithColour(int x, int y, Colour col)
 {
-    char * video = (char *) ((uint64_t)(vbe->physBasePtr + vbe->pitch *y + x* (int)(vbe->bitsPerPixel/8)));
+    char * video = (char *) ((uint64_t)(vbe->physBasePtr + vbe->pitch * y + x * (int)(vbe->bitsPerPixel/8)));
     video[0] = col.blue;
     video[1] = col.green;
     video[2] = col.red;
@@ -21,12 +35,6 @@ void drawAPixelWithColour(int x, int y, Colour col)
 void drawAPixel(unsigned int x, unsigned int y)
 {
 	drawAPixelWithColour(x, y, fontColour);
-}
-
-
-int coordanteOutOfBounds(unsigned int x, unsigned int y)
-{
-		return x>=0 && x<=vbe->xResolution && y>=0 && y<=vbe->yResolution;
 }
 
 void drawChar (const char c)
@@ -46,11 +54,11 @@ void drawChar (const char c)
 		else							// tengo un caracter del font.c
 		{
 				char * character = charMap((int)c);
-				for (int j=0; j<charHeight; j++)	
+				for (int j=0; j<charHeight; j++)
 				{
 					for (int i=0; i<charWidth; i++)
 					{
-            if (1<<i & character[j])    
+            if (1<<i & character[j])
             {
               drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fontColour);
             }
@@ -65,24 +73,14 @@ void drawChar (const char c)
 }
 
 
-void drawString(char * string)
+void drawString(const char * string)
 {
-	int n = length(string);
-	for (int i=0; i<n; i++)
-	{
+	int i=0;
+  while (string[i])
+  {
 		drawChar(string[i]);
+    i++;
 	}
-}
-
-int length (char * string)
-{
-	int contador = 0;
-	while (*string != '\n')
-	{
-		contador++;
-		string++;
-	}
-	return contador;
 }
 
 void enter()
@@ -149,8 +147,8 @@ void scroll ()
 	{
 		for (int j=charHeight; j<vbe->yResolution; j++)				// arranca desde charHeight porque copiamos la pantalla desde esa nueva linea
 		{
-			pixelAddress = (char *) (uint64_t)(vbe->physBasePtr + vbe->pitch * currentY + currentX * (int)(vbe->bitsPerPixel/8));
-	    col.blue = pixelAddress[0];
+      pixelAddress = (char *) ((uint64_t)(vbe->physBasePtr + vbe->pitch * j + i * (int)(vbe->bitsPerPixel/8)));
+      col.blue = pixelAddress[0];
 			col.green = pixelAddress[1];
 			col.red = pixelAddress[2];
 			drawAPixelWithColour(i, j-charHeight, col);		// repintamos los pixeles de toda la pantalla
@@ -165,9 +163,9 @@ void scroll ()
 
 void newWindow ()
 {
-	for (int i=0; i<vbe->xResolution; i++)
+	for (int j=0; j<vbe->yResolution; j++)
 	{
-		for (int j=0; j<vbe->yResolution; j++)
+		for (int i=0; i<vbe->xResolution; i++)
 		{
 			drawAPixelWithColour(i, j, backgroundColour);
 		}
@@ -185,3 +183,12 @@ void paintWindow(Colour col)
 	}
 }
 
+void setBackgroundColour(Colour col)
+{
+  backgroundColour = col;
+}
+
+void setFontColour(Colour col)
+{
+  fontColour = col;
+}

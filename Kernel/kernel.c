@@ -102,8 +102,5 @@ int main()
 
 	ncPrint("[Finished]");*/
 
-	Colour green = {45, 130, 52};
-	paintWindow(green);
-
 	return 0;
 }
