@@ -36,7 +36,7 @@ void * getStackBase()
 
 void * initializeKernelBinary()
 {
-	unsigned char buffer[256];
+	char buffer[10];
 
 	ncPrint("[x64BareBones]");
 	ncNewline();
@@ -83,31 +83,27 @@ void * initializeKernelBinary()
 
 int main()
 {
-	//for (int i=0; i<2800; i++)
-		//drawAPixel(i, i);
-	//drawAPixel(0,0);
-	//drawAPixel(1,1);
-	//ncPrint("[Kernel Main]");
-	//ncNewline();
-	Colour verde = {110, 193, 85};
-	paintWindow(verde);
-	//colour negro = {0, 0, 0};
-	//drawChar('X');
-	// ncPrint("  Sample code module at 0x");
-	// ncPrintHex((uint64_t)sampleCodeModuleAddress);
-	// ncNewline();
-	// ncPrint("  Calling the sample code module returned: ");
-	// ncPrintHex(((EntryPoint)sampleCodeModuleAddress)());
-	// ncNewline();
-	// ncNewline();
-	//
-	// ncPrint("  Sample data module at 0x");
-	// ncPrintHex((uint64_t)sampleDataModuleAddress);
-	// ncNewline();
-	// ncPrint("  Sample data module contents: ");
-	// ncPrint((char*)sampleDataModuleAddress);
-	// ncNewline();
+	/*ncPrint("[Kernel Main]");
+	ncNewline();
+	ncPrint("  Sample code module at 0x");
+	ncPrintHex((uint64_t)sampleCodeModuleAddress);
+	ncNewline();
+	ncPrint("  Calling the sample code module returned: ");
+	ncPrintHex(((EntryPoint)sampleCodeModuleAddress)());
+	ncNewline();
+	ncNewline();
 
-	//ncPrint("[Finished]");
+	ncPrint("  Sample data module at 0x");
+	ncPrintHex((uint64_t)sampleDataModuleAddress);
+	ncNewline();
+	ncPrint("  Sample data module contents: ");
+	ncPrint((char*)sampleDataModuleAddress);
+	ncNewline();
+
+	ncPrint("[Finished]");*/
+
+	Colour green = {45, 130, 52};
+	paintWindow(green);
+
 	return 0;
 }

@@ -4,71 +4,25 @@
 #define charWidth 8
 #define charHeight 16
 
-struct modeInfoBlock
-{
-    uint16_t modeAttributes;
-    uint8_t winAAttributes;
-    uint8_t winBAttributes;
-    uint16_t winGranularity;
-    uint16_t winSize;
-    uint16_t winSegmentA;
-    uint16_t winSegmentB;
-    uint32_t winRealFctPtr;
-    uint16_t pitch; // Bytes per ScanLine.
-
-    uint16_t xResolution;
-    uint16_t yResolution;
-    uint8_t xCharSize;
-    uint8_t yCharSize;
-    uint8_t numberOfPlanes;
-    uint8_t bitsPerPixel;
-    uint8_t numberOfBanks;
-    uint8_t memoryModel;
-    uint8_t bankSize;
-    uint8_t numberOfImagePages;
-    uint8_t reservedPage;
-
-    uint8_t redMaskSize;
-    uint8_t redMaskPosition;
-    uint8_t greenMaskSize;
-    uint8_t greenMaskPosition;
-    uint8_t blueMaskSize;
-    uint8_t blueMaskPosition;
-    uint8_t reservedMaskSize;
-    uint8_t reservedMaskPosition;
-    uint8_t directColorAttributes;
-
-    uint32_t physBasePtr;  // Your LFB (Linear Framebuffer) address.
-    uint32_t offScreenMemOffset;
-    uint16_t offScreenMemSize;
-} __attribute__((packed));
-
-//The _attribute_ modifiers are needed to make gcc pack the structure into
-//the standard VESA layout, rather than adding pad bytes between some of the
-//fields like it would normally do.
-//http://www.delorie.com/djgpp/doc/ug/graphics/vesa.html
-
-modeInfoVBE vbe = (modeInfoVBE)0x0000000000005C00;
+modeInfoVBE vbe = (modeInfoVBE)0x5C00;
 unsigned int currentX = 0;
 unsigned int currentY = 0;
-Colour background = {0, 0, 0};									// color NEGRO --> lo usamos para borrar caracteres
-Colour font = {255, 255, 255};                  // color BLANCO
+Colour backgroundColour = {0, 0, 0};
+Colour fontColour = {255, 255, 255};
 
-void drawAPixelWithColour(unsigned int x, unsigned int y, Colour col)
+void drawAPixelWithColour(int x, int y, Colour col)
 {
-    uint8_t * video = (uint8_t*) (vbe->physBasePtr + vbe->pitch * currentY + vbe->bitsPerPixel/8 * currentX);
-    video[0] = col.blue;				// un pixel ocupa 3 bytes, en cada uno le asignamos un color primario para pintarlo
+    char * video = (char *) ((uint64_t)(vbe->physBasePtr + vbe->pitch *y + x* (int)(vbe->bitsPerPixel/8)));
+    video[0] = col.blue;
     video[1] = col.green;
     video[2] = col.red;
 }
 
 void drawAPixel(unsigned int x, unsigned int y)
 {
-    char * video = (char *) (uint64_t)(vbe->physBasePtr + vbe->pitch * currentY + currentX * (int)(vbe->bitsPerPixel/8));
-    video[0] = font.blue;				// un pixel ocupa 3 bytes, en cada uno le asignamos un color primario para pintarlo
-    video[1] = font.green;
-    video[2] = font.red;
+	drawAPixelWithColour(x, y, fontColour);
 }
+
 
 int coordanteOutOfBounds(unsigned int x, unsigned int y)
 {
@@ -92,23 +46,24 @@ void drawChar (const char c)
 		else							// tengo un caracter del font.c
 		{
 				char * character = charMap((int)c);
-				for (int j=0; j<charHeight; j++)			// primero itero en j por como esta hecho el font
+				for (int j=0; j<charHeight; j++)	
 				{
 					for (int i=0; i<charWidth; i++)
 					{
-            if (1<<i & character[j])         // character[j] = 'X'
+            if (1<<i & character[j])    
             {
-              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, font);
+              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fontColour);
             }
             else
             {
-              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, background);
+              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, backgroundColour);
             }
 					}
 				}
 				currentX += charWidth;
 		}
 }
+
 
 void drawString(char * string)
 {
@@ -181,7 +136,7 @@ void clearCoordenate(unsigned int x, unsigned int y)
 	{
 		for (int j = 0; j < charHeight; j++)
 		{
-			drawAPixelWithColour(x+i, y+j, background);			// no puedo usar drawChar porque esta seteado para que dibuje a partir de x e y --> pinto píxeles
+			drawAPixelWithColour(x+i, y+j, backgroundColour);
 		}
 	}
 }
@@ -214,14 +169,13 @@ void newWindow ()
 	{
 		for (int j=0; j<vbe->yResolution; j++)
 		{
-			drawAPixelWithColour(i, j, background);
+			drawAPixelWithColour(i, j, backgroundColour);
 		}
 	}
 }
 
 void paintWindow(Colour col)
 {
-  background=col;
 	for (int j=0; j<vbe->yResolution; j++)
 	{
 		for (int i=0; i<vbe->xResolution; i++)
@@ -230,3 +184,4 @@ void paintWindow(Colour col)
 		}
 	}
 }
+
