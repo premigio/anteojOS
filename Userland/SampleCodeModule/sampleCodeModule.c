@@ -11,7 +11,7 @@ extern int syscall(uint64_t rdi, uint64_t rsi);
 int main() {
 	//All the following code may be removed
     char *sentence = "Hellooooooooooooo ieieeiie";
-    //syscall(1,(uint64_t)sentence);
+    syscall(1,(uint64_t)sentence);
 
 
 	//Test if BSS is properly set up

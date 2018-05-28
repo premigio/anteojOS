@@ -3,9 +3,9 @@ global syscall
 section .text
 
 syscall:
-  push ebp
-  mov ebp, esp
+  push rbp
+  mov rbp, rsp
   int 80h
-  mov esp, ebp
-  pop ebp
+  mov rsp, rbp
+  pop rbp
   ret
