@@ -195,7 +195,7 @@ void setFontColour(Colour col)
 
 void drawClock(short h, short m, short s, Colour colour)
 {
-  
+  setClockCoordinates();
   drawChar(h/10 + '0', colour);
   drawChar(h%10 + '0', colour);
   drawChar(':',colour );

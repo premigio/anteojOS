@@ -2,5 +2,6 @@
 #define CLOCKDRIVER_H_
 
 void showClock();
+void cleanClock();
 
 #endif
