@@ -7,7 +7,11 @@ char keyboardShiftList[128]={0,27,'!','@','#','$','%','^','&','*','(',')','_','+
 int capslock = 0;
 int shift = 0;
 int f1 = 0; //lo seteo como tecla que cambia el color del reloj. De aca deberia salir el beep
-char buffer[BUFFERSIZE]; // hay que crear el buffer
+
+
+char buffer[BUFFERSIZE] = {0}; // hay que crear el buffer
+int bfw = 0; // posicion de escritura, para los putchar
+int bfr = 0; // posicion de lectura, para los getchar
 
 
 void keyboardInterpreter(){
@@ -31,6 +35,16 @@ void keyboardInterpreter(){
     }else if(shift){
         c = keyboardShiftList[key];
     }
+    putchar(c);
+}
 
+void putchar(char c){
+  buffer[bfw] = c;
+  bfw = ++bfw % BUFFERSIZE;
+}
 
+char getchar() {
+  char res = buffer[bfr++];
+  bfr = bfr % BUFFERSIZE;
+  return res;
 }

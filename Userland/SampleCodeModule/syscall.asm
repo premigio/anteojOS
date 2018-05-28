@@ -3,7 +3,9 @@ global syscall
 section .text
 
 syscall:
-  enter
+  push rbp
+  mov rbp, rsp
   int 80h
-  leave
+  mov rsp, rbp
+  pop rbp
   ret

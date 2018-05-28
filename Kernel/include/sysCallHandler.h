@@ -1,4 +1,7 @@
 #ifndef sysCallHandler_h
 #define sysCallHandler_h
-  void sysCallHandler(int i);
+
+  #include <stdint.h>
+
+  void sysCallHandler(uint64_t i);
 #endif
