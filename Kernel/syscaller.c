@@ -9,5 +9,12 @@ void syscaller(uint64_t irq, uint64_t rdi){
     case 2:
       showClock();
       break;
+    case 3:
+      putChar();
+      break;
+    case 4:
+      getChar((char*) rsi);
+      break;
+    }
   }
 }
