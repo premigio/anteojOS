@@ -5,8 +5,8 @@
 
 void drawAPixelWithColour(int x, int y, Colour col);
 void drawAPixel(unsigned int x, unsigned int y);
-void drawChar (const char c);
-void drawString(const char * string);
+void drawChar (const char c, Colour fColour);
+void drawString(const char * string,  Colour fColour);
 void enter();
 void backSpace();
 void refreshCoordenates();
@@ -16,6 +16,8 @@ void newWindow ();
 void paintWindow(Colour col);
 void setBackgroundColour(Colour col);
 void setFontColour(Colour col);
+void drawClock(short h, short m, short s, Colour colour);
+void setClockCoordinates();
 
 modeInfoVBE vbe = (modeInfoVBE)0x5C00;
 unsigned int currentX = 0;
@@ -36,7 +38,7 @@ void drawAPixel(unsigned int x, unsigned int y)
 	drawAPixelWithColour(x, y, fontColour);
 }
 
-void drawChar (const char c)
+void drawChar (const char c, Colour fColour)
 {
 		refreshCoordenates();
 		if (c < 31)						// entonces no es un caracter del font.c
@@ -59,7 +61,7 @@ void drawChar (const char c)
 					{
             if (1<<i & character[j])
             {
-              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fontColour);
+              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fColour);
             }
             else
             {
@@ -71,13 +73,12 @@ void drawChar (const char c)
 		}
 }
 
-
-void drawString(const char * string)
+void drawString(const char * string, Colour fColour)
 {
 	int i=0;
   while (string[i])
   {
-		drawChar(string[i]);
+		drawChar(string[i], fColour);
     i++;
 	}
 }
@@ -190,4 +191,27 @@ void setBackgroundColour(Colour col)
 void setFontColour(Colour col)
 {
   fontColour = col;
+}
+
+void drawClock(short h, short m, short s, Colour colour)
+{
+  newWindow();
+  setClockCoordinates();
+
+  drawChar(h/10 + '0', colour);
+  drawChar(h%10 + '0', colour);
+  drawChar(':',colour );
+  drawChar(m/10 + '0', colour);
+  drawChar(m%10 + '0', colour);
+  drawChar(':', colour);
+  drawChar(s/10 + '0', colour);
+  drawChar(s%10 + '0', colour);
+}
+
+void setClockCoordinates() {
+  int clockFormat = 8;
+  uint16_t xRes = vbe->xResolution;
+  uint16_t yRes = vbe->yResolution;
+  currentY = yRes/2;
+  currentX = xRes/2 - clockFormat/2;
 }

@@ -62,11 +62,11 @@ void drawAPixel(unsigned int, unsigned int);
 /* draws a pixel with a given font colour */
 void drawAPixelWithColour(int, int, Colour);
 
-/* draws a character with the default font colour */
-void drawChar (const char);
+/* draws a character with specified colour */
+void drawChar (const char, Colour c);
 
-/* draws a string with the default font colour */
-void drawString (const char *);
+/* draws a string with specified font colour */
+void drawString (const char *, Colour c);
 
 /* sets the font colour */
 void setFontColour(Colour);
