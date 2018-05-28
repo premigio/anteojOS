@@ -47,7 +47,8 @@ void keyboardInterpreter(){
 
 void putChar(char c){
   buffer[bfw] = c;
-  drawChar(c);
+  Colour colour = {55,55,55};
+  drawChar(c,(Colour)colour);
   bfw = ++bfw % BUFFERSIZE;
   size++;
 }

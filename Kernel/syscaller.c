@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-void syscaller(uint64_t irq, uint64_t rdi){
+void syscaller(uint64_t irq, uint64_t rdi/*, uint64_t rsi, uint64_t r9, uint64_t r8*/){//pa dsps si es que quiero color
 //aca tenemos que poner las funciones de lectura/impresion char etc
   switch (irq) {
     case 1: // WRITE
@@ -13,8 +13,7 @@ void syscaller(uint64_t irq, uint64_t rdi){
       putChar();
       break;
     case 4:
-      getChar((char*) rsi);
+      getChar((char*) rdi);
       break;
-    }
   }
 }
