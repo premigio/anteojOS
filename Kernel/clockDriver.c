@@ -7,7 +7,6 @@ const CLOCK_SIZE = 8;
 void showClock()
 {
   short show = 1;
-  int i = 0;
   Colour colour;
   Colour colours[10] = {
     {10,154,10},
@@ -36,12 +35,12 @@ void showClock()
       os = s;
       c = (c +1)%10 +'0'; // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
     }
-    //c = getChar();
+    //c = getCharz
     if (c == 'q') {
         show = 0;
     } else if(c>= '0' && c<='9'){
       colour = colours[c - '0'];
-      beep();
+      //beep();
     }
   }
 }

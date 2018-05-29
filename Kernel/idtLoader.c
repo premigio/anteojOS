@@ -36,6 +36,7 @@ void load_idt() {
 	picSlaveMask(0xFF);
 
 
+
 	_sti();
 }
 

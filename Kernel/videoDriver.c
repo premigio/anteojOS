@@ -83,6 +83,17 @@ void drawString(const char * string, Colour fColour)
 	}
 }
 
+void drawString2(const char * string)
+{
+	int i=0;
+  Colour fontColour = {255, 255, 255};
+  while (string[i])
+  {
+		drawChar(string[i], fontColour);
+    i++;
+	}
+}
+
 void enter()
 {
 	currentX = 0;

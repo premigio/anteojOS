@@ -4,7 +4,7 @@ void syscaller(uint64_t irq, uint64_t rdi/*, uint64_t rsi, uint64_t r9, uint64_t
 //aca tenemos que poner las funciones de lectura/impresion char etc
   switch (irq) {
     case 1: // WRITE
-      drawString((const char *) rdi);
+      drawString2((const char *) rdi);
       break;
     case 2:
       showClock();

@@ -1,6 +1,6 @@
 #ifndef _keyboardDriver_h
 #define _keyboardDriver_h
-  extern int getkey(void);
+  extern int getKey(void);
   void keyboardInterpreter();
   void putChar(char c);
   void getChar(char * c);

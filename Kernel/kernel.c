@@ -12,6 +12,7 @@ extern uint8_t data;
 extern uint8_t bss;
 extern uint8_t endOfKernelBinary;
 extern uint8_t endOfKernel;
+extern void beep();
 
 static const uint64_t PageSize = 0x1000;
 
@@ -88,6 +89,6 @@ int main()
 	void (*address)();
 	address = sampleCodeModuleAddress;
 	address();
-	
+
 	return 0;
 }

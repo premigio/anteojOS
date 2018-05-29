@@ -1,7 +1,7 @@
-Global getkey
+Global getKey
 section .text
 
-getkey:
+getKey:
     push rbp
     mov rbp,rsp
     mov rax,0h

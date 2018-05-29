@@ -19,7 +19,7 @@ int size = 0;
 
 void keyboardInterpreter(){
 
-    unsigned char key = getkey();
+    unsigned char key = getKey();
     if (key & 0x80){//suelto
       shift = 0;
     }else{ // apretado
