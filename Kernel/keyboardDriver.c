@@ -46,7 +46,7 @@ void keyboardInterpreter()
       char c = keyboardList[key];
       if (c>='a' && c <= 'z')
       {
-          if ((capslock && !shift)||(!capslock && shift))
+          if ( (capslock && !shift) || (!capslock && shift) )
           {
               c = c - ('a'-'A');
           }
@@ -62,8 +62,7 @@ void keyboardInterpreter()
 void putChar(char c)
 {
   buffer[bfw] = c;
-  Colour colour = {55,55,55};
-  drawChar(c,(Colour)colour);
+  drawChar(c);
   bfw = ++bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
   size++;
 }
