@@ -11,7 +11,7 @@ int main() {
       if (ch == "f"){
         //syscall(2,0);
       }
-      syscall(1,ch);
+      syscall(3,ch);
     }
     //syscall(1,(uint64_t)sentence);
 }
