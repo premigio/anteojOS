@@ -62,24 +62,31 @@ void drawAPixel(unsigned int, unsigned int);
 /* draws a pixel with a given font colour */
 void drawAPixelWithColour(int, int, Colour);
 
-/* draws a character with specified colour */
-void drawCharWithColour(const char, Colour c);
+/* draws a character with the default font colour */
+void drawChar(const char);
 
-void drawString(const char * string);
+/* draws a character with a specified colour */
+void drawCharWithColour(const char, Colour);
+
+/* draws a string with the default font colour */
+void drawString(const char *);
 
 /* draws a string with specified font colour */
-void drawStringWithColour(const char *, Colour c);
+void drawStringWithColour(const char *, Colour);
 
 /* sets the font colour */
 void setFontColour(Colour);
 
 /* paints the current window with a given colour */
-void paintWindow(Colour col);
+void paintWindow(Colour);
 
 /* paints the current window with the default background colour */
 void newWindow ();
 
 /* sets the background colour */
 void setBackgroundColour(Colour);
+
+/* given the hour, minutes, seconds and a colour, a clock is drawn */
+void drawClock(short, short, short, Colour);
 
 #endif

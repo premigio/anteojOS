@@ -85,7 +85,7 @@ void * initializeKernelBinary()
 
 int main()
 {
-	load_idt();
+	loadIDT();
 	void (*address)();
 	address = sampleCodeModuleAddress;
 	address();

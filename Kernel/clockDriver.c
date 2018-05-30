@@ -24,21 +24,26 @@ void showClock()
   char c = 0;
   newWindow();
   setClockCoordinates();
-  while (show) {
+  while (show)
+  {
     h = getHour();
     m = getMin();
     s = getSec();
-    if (oh!=h || om!=m || os!=s) {
+    if (oh!=h || om!=m || os!=s)
+    {
       drawClock(h,m,s,colour);
       oh = h;
       om = m;
       os = s;
-      c = (c +1)%10 +'0'; // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
+      c = (c +1)%10 +'0';         // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
     }
     //c = getCharz
-    if (c == 'q') {
+    if (c == 'q')
+    {
         show = 0;
-    } else if(c>= '0' && c<='9'){
+    }
+    else if(c>= '0' && c<='9')
+    {
       colour = colours[c - '0'];
       //beep();
     }
