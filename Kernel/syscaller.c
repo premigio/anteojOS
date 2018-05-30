@@ -1,41 +1,38 @@
 #include <stdint.h>
-#define NFUNCTIONS 5
+#include <videoDriver.h>
+#include <keyboardDriver.h>
+#define NFUNCTIONS 2
 
-// void (*fList)[NFUNCTIONS] = {getChar, putChar};
+void write(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
+void read(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-void syscaller(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8/*,  uint64_t r9*/){//pa dsps si es que quiero color, guia 3
+typedef void (*func_type)();
+
+
+func_type fList[NFUNCTIONS] = {write, read,/* drawAPixel, Systime*/};
+
+void syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){//pa dsps si es que quiero color, guia 3
 //aca tenemos que poner las funciones de lectura/impresion char etc
-  // void (*function)(uint64_t rsi);
-  // function = fList[rdi];
-  // function(rsi);
+  void (*function)(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
+  function = fList[rax-1];
+  function(rdi,rsi,rdx,rcx,r8);
+}
 
-  switch (rdi) {
-    case 1: // WRITE
-      drawString((const char *) rsi);
-      break;
-    case 2:
-      //showClock();
-      break;
-    case 3:
-      putChar();
-      break;
-    case 4:
-      getChar((char*) rsi);
-      break;
-    case 5:
-      *((unsigned int*)rsi) = getHour();
-      break;
-    case 6:
-      *((unsigned int*)rsi) = getMin();
-      break;
-    case 7:
-      *((unsigned int*)rsi) = getSec();
-      break;
-    case 8:
-      drawClock( (char *)rsi, (int)rdx, (int)rcx, (int)r8 );
-      break;
-    case 9:
-      beep();
-      break;
+void write(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
+{
+  const char * string = (const char *) rdi;
+  if(rsi == 0 && rdx == 0 && rcx == 0)
+  {
+    drawString(string);
   }
+  else
+  {
+    Colour colour = {(uint8_t)rdx,(uint8_t)rcx,(uint8_t)r8};
+    drawStringWithColour(string,colour);
+  }
+}
+void read(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
+{
+  char * c = (char*) rdi;
+  getChar(c);
 }
