@@ -1,0 +1,118 @@
+cmake_minimum_required(VERSION 3.10)
+project(anteojOS)
+
+set(CMAKE_CXX_STANDARD 11)
+
+include_directories(Kernel/include)
+include_directories(Toolchain/ModulePacker)
+include_directories(Userland/SampleCodeModule)
+include_directories(Userland/SampleCodeModule/include)
+
+add_executable(anteojOS
+        "Bootloader/BMFS/BareMetal File System.md"
+        Bootloader/BMFS/bmfs.bin
+        Bootloader/BMFS/bmfs.c
+        Bootloader/BMFS/Makefile
+        Bootloader/BMFS/README.md
+        Bootloader/Pure64/docs/CREDITS.TXT
+        Bootloader/Pure64/docs/LICENSE.TXT
+        Bootloader/Pure64/src/bootsectors/bmfs_mbr.asm
+        Bootloader/Pure64/src/bootsectors/pxestart.asm
+        Bootloader/Pure64/src/init/acpi.asm
+        Bootloader/Pure64/src/init/cpu.asm
+        Bootloader/Pure64/src/init/isa.asm
+        Bootloader/Pure64/src/init/pic.asm
+        Bootloader/Pure64/src/init/smp.asm
+        Bootloader/Pure64/src/init/smp_ap.asm
+        Bootloader/Pure64/src/interrupt.asm
+        Bootloader/Pure64/src/pci.asm
+        Bootloader/Pure64/src/pure64.asm
+        Bootloader/Pure64/src/syscalls.asm
+        Bootloader/Pure64/src/sysvar.asm
+        Bootloader/Pure64/bmfs_mbr.sys
+        Bootloader/Pure64/build.bat
+        Bootloader/Pure64/Makefile
+        "Bootloader/Pure64/Pure64 Manual.md"
+        Bootloader/Pure64/pure64.sys
+        Bootloader/Pure64/pxestart.sys
+        Bootloader/Pure64/readme.md
+        Bootloader/Makefile
+        Image/Makefile
+        Kernel/asm/interrupts.asm
+        Kernel/asm/ioDriver.asm
+        Kernel/asm/keyboard.asm
+        Kernel/asm/libasm.asm
+        Kernel/asm/sysCallHandler.asm
+        Kernel/asm/timeDriver.asm
+        Kernel/include/beepDriver.h
+        Kernel/include/clockDriver.h
+        Kernel/include/defs.h
+        Kernel/include/font.h
+        Kernel/include/idtLoader.h
+        Kernel/include/interrupts.h
+        Kernel/include/ioDriver.h
+        Kernel/include/keyboardDriver.h
+        Kernel/include/lib.h
+        Kernel/include/miniVideoDriver.h
+        Kernel/include/moduleLoader.h
+        Kernel/include/naiveConsole.h
+        Kernel/include/sysCallHandler.h
+        Kernel/include/timeDriver.h
+        Kernel/include/utils.h
+        Kernel/include/videoDriver.h
+        Kernel/beepDriver.c
+        Kernel/beepDriver.o
+        Kernel/clock.c
+        Kernel/clock.o
+        Kernel/clockDriver.c
+        Kernel/clockDriver.o
+        Kernel/exceptions.c
+        Kernel/exceptions.o
+        Kernel/font.c
+        Kernel/font.o
+        Kernel/idtLoader.c
+        Kernel/idtLoader.o
+        Kernel/irqDispatcher.c
+        Kernel/irqDispatcher.o
+        Kernel/kernel.c
+        Kernel/kernel.ld
+        Kernel/kernel.o
+        Kernel/keyboardDriver.c
+        Kernel/keyboardDriver.o
+        Kernel/lib.c
+        Kernel/lib.o
+        Kernel/loader.asm
+        Kernel/loader.o
+        Kernel/Makefile
+        Kernel/Makefile.inc
+        Kernel/miniVideoDriver.c
+        Kernel/miniVideoDriver.o
+        Kernel/moduleLoader.c
+        Kernel/moduleLoader.o
+        Kernel/naiveConsole.c
+        Kernel/naiveConsole.o
+        Kernel/syscaller.c
+        Kernel/syscaller.o
+        Kernel/utils.c
+        Kernel/utils.o
+        Kernel/videoDriver.c
+        Kernel/videoDriver.o
+        Toolchain/ModulePacker/main.c
+        Toolchain/ModulePacker/Makefile
+        Toolchain/ModulePacker/modulePacker.h
+        Toolchain/ModulePacker/mp.bin
+        Toolchain/Makefile
+        Userland/SampleCodeModule/_loader.c
+        Userland/SampleCodeModule/clock.c
+        Userland/SampleCodeModule/clock.h
+        Userland/SampleCodeModule/Makefile
+        Userland/SampleCodeModule/sampleCodeModule.c
+        Userland/SampleCodeModule/sampleCodeModule.ld
+        Userland/SampleCodeModule/syscall.asm
+        Userland/Makefile
+        Userland/Makefile.inc
+        docker.sh
+        Dockerfile
+        Makefile
+        README.md
+        run.sh)

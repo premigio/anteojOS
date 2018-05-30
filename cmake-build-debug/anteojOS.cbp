@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="anteojOS"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="anteojOS">
+				<Option output="/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/anteojOS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Kernel/include"/>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Toolchain/ModulePacker"/>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule"/>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 anteojOS"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="anteojOS/fast">
+				<Option output="/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/anteojOS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Kernel/include"/>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Toolchain/ModulePacker"/>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule"/>
+					<Add directory="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 anteojOS/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jimenalozano/Desktop/anteojOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/BMFS/BareMetal File System.md">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/BMFS/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/BMFS/README.md">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/BMFS/bmfs.bin">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/BMFS/bmfs.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/Pure64 Manual.md">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/bmfs_mbr.sys">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/build.bat">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/docs/CREDITS.TXT">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/docs/LICENSE.TXT">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/pure64.sys">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/pxestart.sys">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/readme.md">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/bootsectors/bmfs_mbr.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/bootsectors/pxestart.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/init/acpi.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/init/cpu.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/init/isa.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/init/pic.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/init/smp.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/init/smp_ap.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/interrupt.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/pci.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/pure64.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/syscalls.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Bootloader/Pure64/src/sysvar.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Dockerfile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Image/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/Makefile.inc">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/asm/interrupts.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/asm/ioDriver.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/asm/keyboard.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/asm/libasm.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/asm/sysCallHandler.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/asm/timeDriver.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/beepDriver.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/beepDriver.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/clock.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/clock.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/clockDriver.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/clockDriver.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/exceptions.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/exceptions.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/font.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/font.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/idtLoader.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/idtLoader.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/beepDriver.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/clockDriver.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/defs.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/font.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/idtLoader.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/interrupts.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/ioDriver.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/keyboardDriver.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/lib.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/miniVideoDriver.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/moduleLoader.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/naiveConsole.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/sysCallHandler.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/timeDriver.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/utils.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/include/videoDriver.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/irqDispatcher.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/irqDispatcher.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/kernel.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/kernel.ld">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/kernel.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/keyboardDriver.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/keyboardDriver.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/lib.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/lib.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/loader.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/loader.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/miniVideoDriver.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/miniVideoDriver.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/moduleLoader.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/moduleLoader.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/naiveConsole.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/naiveConsole.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/syscaller.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/syscaller.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/utils.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/utils.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/videoDriver.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Kernel/videoDriver.o">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/README.md">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Toolchain/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Toolchain/ModulePacker/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Toolchain/ModulePacker/main.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Toolchain/ModulePacker/modulePacker.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Toolchain/ModulePacker/mp.bin">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/Makefile.inc">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/Makefile">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/_loader.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/clock.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/clock.h">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/sampleCodeModule.c">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/sampleCodeModule.ld">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/Userland/SampleCodeModule/syscall.asm">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/docker.sh">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/run.sh">
+			<Option target="anteojOS"/>
+		</Unit>
+		<Unit filename="/Users/jimenalozano/Desktop/anteojOS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
