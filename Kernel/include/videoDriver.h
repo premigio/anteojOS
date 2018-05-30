@@ -86,7 +86,7 @@ void newWindow ();
 /* sets the background colour */
 void setBackgroundColour(Colour);
 
-/* given the hour, minutes, seconds and a colour, a clock is drawn */
-void drawClock(short, short, short, Colour);
+/*sets clock initial coordinates to center*/
+void setClockCoordinates();
 
 #endif

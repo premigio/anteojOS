@@ -2,12 +2,15 @@
 #include <clockDriver.h>
 #include <beepDriver.h>
 
-#define CLOCKSIZE 8
+void drawClock(short h, short m, short s, Colour colour);
+void showClock();
 
 void showClock()
 {
   short show = 1;
   Colour colour;
+  short h, m, s, oh, om, os = -1;
+  char c = '0';
   Colour colours[10] = {
     {10,154,10},
     {50,50,50},
@@ -20,10 +23,7 @@ void showClock()
     {11,133,210},
     {30,176,130},
   };
-  short h, m, s, oh, om, os = -1;
-  char c = 0;
   newWindow();
-  setClockCoordinates();
   while (show)
   {
     h = getHour();
@@ -37,7 +37,7 @@ void showClock()
       os = s;
       c = (c +1)%10 +'0';         // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
     }
-    //c = getCharz
+    //c = getChar();
     if (c == 'q')
     {
         show = 0;
@@ -48,4 +48,17 @@ void showClock()
       //beep();
     }
   }
+}
+
+void drawClock(short h, short m, short s, Colour colour)
+{
+  setClockCoordinates();
+  drawCharWithColour(h/10 + '0', colour);
+  drawCharWithColour(h%10 + '0', colour);
+  drawCharWithColour(':',colour );
+  drawCharWithColour(m/10 + '0', colour);
+  drawCharWithColour(m%10 + '0', colour);
+  drawCharWithColour(':', colour);
+  drawCharWithColour(s/10 + '0', colour);
+  drawCharWithColour(s%10 + '0', colour);
 }
