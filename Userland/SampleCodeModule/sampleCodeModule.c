@@ -9,7 +9,7 @@ int main() {
     while (1){
       syscall(4,&ch);
       if (ch == "f"){
-        syscall(2,0);
+        //syscall(2,0);
       }
       syscall(1,ch);
     }

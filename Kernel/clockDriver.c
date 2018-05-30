@@ -2,7 +2,7 @@
 #include <clockDriver.h>
 #include <beepDriver.h>
 
-const CLOCK_SIZE = 8;
+#define CLOCKSIZE 8
 
 void showClock()
 {

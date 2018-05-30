@@ -5,8 +5,10 @@
 
 void drawAPixelWithColour(int x, int y, Colour col);
 void drawAPixel(unsigned int x, unsigned int y);
-void drawChar (const char c, Colour fColour);
-void drawString(const char * string,  Colour fColour);
+void drawCharWithColour(const char c, Colour fColour);
+void drawChar(const char c);
+void drawStringWithColour(const char * string,  Colour fColour);
+void drawString(const char * string);
 void enter();
 void backSpace();
 void refreshCoordenates();
@@ -38,7 +40,7 @@ void drawAPixel(unsigned int x, unsigned int y)
 	drawAPixelWithColour(x, y, fontColour);
 }
 
-void drawChar (const char c, Colour fColour)
+void drawCharWithColour (const char c, Colour fColour)
 {
 		refreshCoordenates();
 		if (c < 31)						// entonces no es un caracter del font.c
@@ -73,25 +75,24 @@ void drawChar (const char c, Colour fColour)
 		}
 }
 
-void drawString(const char * string, Colour fColour)
+void drawChar(const char c)
+{
+    drawCharWithColour(c, fontColour);
+}
+
+void drawStringWithColour(const char * string, Colour fColour)
 {
 	int i=0;
   while (string[i])
   {
-		drawChar(string[i], fColour);
+		drawCharWithColour(string[i], fColour);
     i++;
 	}
 }
 
-void drawString2(const char * string)
+void drawString(const char * string)
 {
-	int i=0;
-  Colour fontColour = {255, 255, 255};
-  while (string[i])
-  {
-		drawChar(string[i], fontColour);
-    i++;
-	}
+	drawStringWithColour(string, fontColour);
 }
 
 void enter()
@@ -207,14 +208,14 @@ void setFontColour(Colour col)
 void drawClock(short h, short m, short s, Colour colour)
 {
   setClockCoordinates();
-  drawChar(h/10 + '0', colour);
-  drawChar(h%10 + '0', colour);
-  drawChar(':',colour );
-  drawChar(m/10 + '0', colour);
-  drawChar(m%10 + '0', colour);
-  drawChar(':', colour);
-  drawChar(s/10 + '0', colour);
-  drawChar(s%10 + '0', colour);
+  drawCharWithColour(h/10 + '0', colour);
+  drawCharWithColour(h%10 + '0', colour);
+  drawCharWithColour(':',colour );
+  drawCharWithColour(m/10 + '0', colour);
+  drawCharWithColour(m%10 + '0', colour);
+  drawCharWithColour(':', colour);
+  drawCharWithColour(s/10 + '0', colour);
+  drawCharWithColour(s%10 + '0', colour);
 }
 
 void setClockCoordinates() {
