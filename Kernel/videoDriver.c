@@ -24,6 +24,9 @@ void setClockCoordinates();
 modeInfoVBE vbe = (modeInfoVBE)0x5C00;
 unsigned int currentX = 0;
 unsigned int currentY = 0;
+unsigned int enterXCoordenates[300];
+unsigned int enterYCoordenates[300];
+unsigned int sizeEnter = 0;
 Colour backgroundColour = {0, 0, 0};
 Colour fontColour = {255, 255, 255};
 
@@ -49,7 +52,7 @@ void drawCharWithColour (const char c, Colour fColour)
 			{
 				enter();				// me muevo a una nueva linea
 			}
-			if (c == 8 )			// entonces quiere borrar el ultimo caracter
+			if (c == '\b' )			// entonces quiere borrar el ultimo caracter
 			{
 				backSpace();
 			}
@@ -97,7 +100,20 @@ void drawString(const char * string)
 
 void enter()
 {
-	currentX = 0;
+  if (sizeEnter == 0)
+  {
+    int i=0;
+    while ( i < vbe->yResolution )
+    {
+      enterXCoordenates[i]=0;
+      enterYCoordenates[i]=0;
+      i++;
+    }
+  }
+  enterXCoordenates[sizeEnter] = currentX;
+  enterYCoordenates[sizeEnter++] = currentY;
+
+  currentX = 0;
 	currentY += charHeight;
 	if (currentY >= vbe->yResolution)
 	{
@@ -108,36 +124,55 @@ void enter()
 
 void backSpace()
 {
-	currentX -= charWidth;
-	if (currentX < 0)
-	{
-		currentY -= charHeight;
-		if (currentY < 0)
-		{
-			currentY = 0;
-			currentX = 0;
-		}
-		else
-		{
-			currentX = vbe->xResolution - charWidth;
-		}
-	}
+  if (currentX == 0 && currentY!=0)
+  {
+    sizeEnter--;
+    currentX = enterXCoordenates[sizeEnter];
+    currentY = enterYCoordenates[sizeEnter];
+    enterXCoordenates[sizeEnter] = enterYCoordenates[sizeEnter] = 0;
+  }
+  else
+  {
+    currentX -= charWidth;
+  	if (currentX < 0)
+  	{
+  		currentY -= charHeight;
+  		if (currentY < 0)
+  		{
+  			currentY = 0;
+  			currentX = 0;
+  		}
+  		else
+  		{
+  			currentX = vbe->xResolution - charWidth;
+  		}
+  	}
+  }
 	clearCoordenate(currentX, currentY);					// "limpio" el lugar donde estan parados X e Y
 }
 
 void refreshCoordenates()
 {
-		if (currentX >= vbe->xResolution)
-		{
-			currentX = 0;
-			currentY += charHeight;
-		}
+	if (currentX >= vbe->xResolution)
+	{
+    enterXCoordenates[sizeEnter] = currentX-charWidth;
+    if (currentY < vbe->yResolution)
+    {
+      enterYCoordenates[sizeEnter++] = currentY;
+    }
+    else
+    {
+      enterYCoordenates[sizeEnter++] = currentY - charHeight;
+    }
+		currentX = 0;
+		currentY += charHeight;
+	}
 
-		if (currentY >= vbe->yResolution)
-		{
-			currentY -= charHeight;
-			scroll();
-		}
+	if (currentY >= vbe->yResolution)
+	{
+		currentY -= charHeight;
+		scroll();
+	}
 }
 
 void clearCoordenate(unsigned int x, unsigned int y)

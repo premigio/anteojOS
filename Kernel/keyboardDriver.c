@@ -26,7 +26,7 @@ void keyboardInterpreter()
     unsigned char key = getKey();
     if (key & 0x80)                         //suelto
     {
-      if(key == 0x2A || key == 0x36)
+      if(key == 0xAA || key == 0xB6)
         shift = 0;
     }
     else                                    //apretado
@@ -62,16 +62,19 @@ void keyboardInterpreter()
 
 void putChar(char c)
 {
-  buffer[bfw] = c;
-  drawChar(c);
-  bfw = ++bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
-  size++;
+  if (c != 0){
+    buffer[bfw] = c;
+    bfw = ++bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
+    size++;
+  }
 }
 
 void getChar(char * res)
 {
-  if(size == 0)
-    return 0;
+  if(size == 0){
+    *res = 0;
+    return;
+  }
   *res = buffer[bfr++];
   bfr = bfr % BUFFERSIZE;                   // bfr = BUFFERREAD
   size--;
