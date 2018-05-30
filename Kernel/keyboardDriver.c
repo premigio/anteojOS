@@ -69,13 +69,14 @@ void putChar(char c)
   }
 }
 
-void getChar(char * res)
+char getChar()
 {
+  char res = 0;
   if(size == 0){
-    *res = 0;
-    return;
+    return res;
   }
-  *res = buffer[bfr++];
+  res = buffer[bfr++];
   bfr = bfr % BUFFERSIZE;                   // bfr = BUFFERREAD
   size--;
+  return res;
 }

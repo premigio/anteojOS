@@ -13,5 +13,4 @@ typedef struct Colour					// un color es la combinacion de los colores primarios
 
 void showClock();
 
-
 #endif

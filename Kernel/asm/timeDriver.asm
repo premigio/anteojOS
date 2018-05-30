@@ -1,6 +1,6 @@
-GLOBAL getHour
-GLOBAL getMin
-GLOBAL getSec
+GLOBAL getTimeHour
+GLOBAL getTimeMin
+GLOBAL getTimeSec
 section .text
 
 getTime:
@@ -8,7 +8,7 @@ out 70h, al
 in al, 71h
 ret
 
-getHour:
+getTimeHour:
 push rbp
 mov rbp, rsp
 call configStatusRegisterB
@@ -19,7 +19,7 @@ mov rsp, rbp
 pop rbp
 ret
 
-getMin:
+getTimeMin:
 push rbp
 mov rbp, rsp
 call configStatusRegisterB
@@ -30,7 +30,7 @@ mov rsp, rbp
 pop rbp
 ret
 
-getSec:
+getTimeSec:
 push rbp
 mov rbp, rsp
 call configStatusRegisterB

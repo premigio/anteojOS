@@ -2,8 +2,8 @@
 #define TIMEDRIVER_H_
 
 unsigned int getTime();
-unsigned int getHour();
-unsigned int getMin();
-unsigned int getSec();
+unsigned int getTimeHour();
+unsigned int getTimeMin();
+unsigned int getTimeSec();
 
 #endif

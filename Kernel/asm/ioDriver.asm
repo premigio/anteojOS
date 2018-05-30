@@ -1,7 +1,7 @@
-GLOBAL beep
+GLOBAL kernelBeep
 section .text
 
-beep:
+kernelBeep:
   push rbp
   mov rbp, rsp
 

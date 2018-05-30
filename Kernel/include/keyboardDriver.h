@@ -3,5 +3,5 @@
   extern int getKey(void);
   void keyboardInterpreter();
   void putChar(char c);
-  void getChar(char * c);
+  char getChar();
 #endif

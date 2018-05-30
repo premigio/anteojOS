@@ -4,9 +4,11 @@
 
 extern int syscall(uint64_t rdi, uint64_t rsi, uint64_t rcx, uint64_t rdx, uint64_t r8);
 
-int main() {
+int main()
+{
   char aux[128] = {0};
   char ch;
+  showClock();
   while (1)
   {
     syscall(2,&ch,0,0,0);

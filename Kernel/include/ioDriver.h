@@ -1,6 +1,6 @@
-#ifndef BEEP_H_
-#define BEEP_H_
+#ifndef IODRIVER_H_
+#define IODRIVER_H_
 
-extern void beep(void);
+extern void kernelB(void);
 
 #endif
