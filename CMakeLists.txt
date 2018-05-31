@@ -115,4 +115,4 @@ add_executable(anteojOS
         Dockerfile
         Makefile
         README.md
-        run.sh)
+        run.sh Userland/StandardLibrary/stdio.c Userland/StandardLibrary/stdio.h)

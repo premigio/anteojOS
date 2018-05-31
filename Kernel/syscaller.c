@@ -21,7 +21,7 @@ typedef uint64_t (*func_type)();
 func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed/* drawAPixel, Systime*/};
 
 uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){//pa dsps si es que quiero color, guia 3
-//aca tenemos que poner las funciones de lectura/impresion char etc
+  //aca tenemos que poner las funciones de lectura/impresion char etc
   uint64_t (*function)(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
   function = fList[rax-1];
   return function(rdi,rsi,rdx,rcx,r8);
