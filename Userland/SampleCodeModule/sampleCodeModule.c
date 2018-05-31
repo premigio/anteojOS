@@ -13,6 +13,6 @@ int main()
     image[i] = colour;
     //drawPixel(i,i,&colour);
   }
-  drawImage(0,0,image,50, 50);
+  drawImage(123,123,image,50, 50);
   return 0;
 }
