@@ -6,12 +6,18 @@ extern int syscall(uint64_t rdi, uint64_t rsi, uint64_t rcx, uint64_t rdx, uint6
 
 int main()
 {
-  char aux[128] = {0};
-  char ch;
-  showClock();
+  unsigned int aux[64];
+  char mes[64] = "asdfasdfasdfasdfasdfasdfasdf";
+  unsigned int ch;
+  //showClock();
   while (1)
   {
-    syscall(2,&ch,0,0,0);
-    syscall(1,&ch,0,0,0);
+    ch = syscall(7,0,0,0,0);
+    for (int i = 0; i < 64; ++i) {
+      aux[63-i] = ch%10;
+      ch = ch/10;
+    }
+    syscall(1,aux,0,0,0);
+    syscall(1,mes,0,0,0);
   }
 }

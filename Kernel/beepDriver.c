@@ -3,7 +3,7 @@
 
 void motherBeep(){
     beepon();
-    sleep(12);
+    sleep(1000);
     beepoff();
 }
 

@@ -1,22 +1,26 @@
 #include <timeDriver.h>
 
-void sleep(unsigned int miliSec){
-/*    double start = getTicks(); // ticks sdespues de las 12
-    double current;
-    short flag = 0;
-    unsigned int resp, counter = 0;
-    do {
-        current = getTicks();
-        if (current < start){ // pasamos las 12 de la noche
-            flag = 1;
-            counter++;
-            resp = counter*(TICKSPERMILISEC*1000*60*60*24) -
-        }
-    }while()*/
-    for (int i = 0; i < 1000000; ++i) {
-        for (int j = 0; j < 10000000; ++j) {
-            
-        }
-    }
+static const short TICKSPERSEC = 18;
+static const short TICKSPERMILSEC = 0.018;
+static unsigned long ticks = 0;
 
+void timerHandler() {
+    ticks++;
+}
+
+int ticksToSeconds(unsigned int ticks) {
+    return ticks / TICKSPERSEC; // 18 ticks por segundo => 0.018 ticks por milisegundo
+}
+
+int ticksElapsed() {
+    return ticks;
+}
+
+int secondsElapsed() {
+    return ticksToSeconds(ticks);
+}
+
+void sleep(unsigned int miliSec){
+    unsigned long old = ticks; // es tan largo que las chances de overflow son nulas
+    while ((ticks - old) / TICKSPERMILSEC);
 }

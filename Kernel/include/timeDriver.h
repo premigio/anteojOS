@@ -1,13 +1,16 @@
 #ifndef TIMEDRIVER_H_
 #define TIMEDRIVER_H_
 
-//const double TICKSPERMILISEC = 0.0182; //18.2 por segundo
 
 extern unsigned int getTime();
 extern unsigned int getTimeHour();
 extern unsigned int getTimeMin();
 extern unsigned int getTimeSec();
-extern unsigned int getTicks();
+
+void timerHandler(void);
+int ticksToSeconds(unsigned int ticks);
+int ticksElapsed(void);
+int secondsElapsed(void);
 void sleep(unsigned int);
 
 #endif

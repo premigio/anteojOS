@@ -1,7 +1,6 @@
 GLOBAL getTimeHour
 GLOBAL getTimeMin
 GLOBAL getTimeSec
-GlOBAL getTicks
 
 section .text
 
@@ -54,8 +53,4 @@ mov rsp, rbp
 pop rbp
 ret
 
-getTicks:
-    mov rax, 0
-    int 0x1A
-    mov rax, rcx
 

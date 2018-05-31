@@ -1,24 +1,27 @@
 #include <stdint.h>
 #include "keyboardDriver.h"
 #include "videoDriver.h"
+#include "timeDriver.h"
 
 static void int_20();
 
 void irqDispatcher(uint64_t irq) {
-	//drawString2("irq");
 	switch (irq) {
 		case 0:
-		//drawString2("dio 0");
-			//int_20();
+			int_20();
 			break;
-    case 1:
-		//drawString2("dio 1");
-      keyboardInterpreter();
-      break;
+		case 1:
+			int_21();
+			break;
 	}
 	return;
 }
 
 void int_20() {
-	//timerhandler();
+	timerHandler();
 }
+
+void int_21() {
+	keyboardInterpreter();
+}
+
