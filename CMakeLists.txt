@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(Kernel/include)
 include_directories(Toolchain/ModulePacker)
 include_directories(Userland/SampleCodeModule)
-include_directories(Userland/SampleCodeModule/include)
 
 add_executable(anteojOS
         "Bootloader/BMFS/BareMetal File System.md"
@@ -37,15 +36,28 @@ add_executable(anteojOS
         Bootloader/Pure64/pxestart.sys
         Bootloader/Pure64/readme.md
         Bootloader/Makefile
+        cmake-build-debug/anteojOS.cbp
+        cmake-build-debug/cmake_install.cmake
+        cmake-build-debug/CMakeCache.txt
+        cmake-build-debug/Makefile
         Image/Makefile
+        Image/packedKernel.bin
+        Image/x64BareBonesImage.img
+        Image/x64BareBonesImage.qcow2
+        Image/x64BareBonesImage.vmdk
         Kernel/asm/interrupts.asm
+        Kernel/asm/interrupts.o
         Kernel/asm/ioDriver.asm
+        Kernel/asm/ioDriver.o
         Kernel/asm/keyboard.asm
+        Kernel/asm/keyboard.o
         Kernel/asm/libasm.asm
+        Kernel/asm/libasm.o
         Kernel/asm/sysCallHandler.asm
+        Kernel/asm/sysCallHandler.o
         Kernel/asm/timeDriver.asm
+        Kernel/asm/timeDriver.o
         Kernel/include/beepDriver.h
-        Kernel/include/clockDriver.h
         Kernel/include/defs.h
         Kernel/include/font.h
         Kernel/include/idtLoader.h
@@ -53,18 +65,11 @@ add_executable(anteojOS
         Kernel/include/ioDriver.h
         Kernel/include/keyboardDriver.h
         Kernel/include/lib.h
-        Kernel/include/miniVideoDriver.h
         Kernel/include/moduleLoader.h
         Kernel/include/naiveConsole.h
         Kernel/include/sysCallHandler.h
         Kernel/include/timeDriver.h
-        Kernel/include/utils.h
         Kernel/include/videoDriver.h
-        Kernel/beepDriver.c
-        Kernel/beepDriver.o
-        Kernel/clock.c
-        Kernel/clock.o
-        Kernel/clockDriver.c
         Kernel/clockDriver.o
         Kernel/exceptions.c
         Kernel/exceptions.o
@@ -74,6 +79,7 @@ add_executable(anteojOS
         Kernel/idtLoader.o
         Kernel/irqDispatcher.c
         Kernel/irqDispatcher.o
+        Kernel/kernel.bin
         Kernel/kernel.c
         Kernel/kernel.ld
         Kernel/kernel.o
@@ -85,8 +91,6 @@ add_executable(anteojOS
         Kernel/loader.o
         Kernel/Makefile
         Kernel/Makefile.inc
-        Kernel/miniVideoDriver.c
-        Kernel/miniVideoDriver.o
         Kernel/moduleLoader.c
         Kernel/moduleLoader.o
         Kernel/naiveConsole.c
@@ -103,16 +107,23 @@ add_executable(anteojOS
         Toolchain/ModulePacker/mp.bin
         Toolchain/Makefile
         Userland/SampleCodeModule/_loader.c
+        Userland/SampleCodeModule/_loader.o
         Userland/SampleCodeModule/clock.c
         Userland/SampleCodeModule/clock.h
+        Userland/SampleCodeModule/clock.o
         Userland/SampleCodeModule/Makefile
         Userland/SampleCodeModule/sampleCodeModule.c
         Userland/SampleCodeModule/sampleCodeModule.ld
+        Userland/SampleCodeModule/sampleCodeModule.o
         Userland/SampleCodeModule/syscall.asm
+        Userland/SampleCodeModule/syscall.o
+        Userland/0000-sampleCodeModule.bin
+        Userland/0001-sampleDataModule.bin
         Userland/Makefile
         Userland/Makefile.inc
+        CMakeLists.txt
         docker.sh
         Dockerfile
         Makefile
         README.md
-        run.sh Userland/StandardLibrary/stdio.c Userland/StandardLibrary/stdio.h)
+        run.sh Kernel/beepDriver.c)
