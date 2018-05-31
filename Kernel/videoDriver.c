@@ -255,4 +255,3 @@ int getXResolution(){
 int getYResolution(){
     return vbe->yResolution;
 }
-
