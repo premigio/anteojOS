@@ -2,6 +2,7 @@
 #include <videoDriver.h>
 #include <keyboardDriver.h>
 #include <timeDriver.h>
+#include <beepDriver.h>
 
 
 #define NFUNCTIONS 6 // <-------------- jojojojojojojoo
@@ -53,6 +54,6 @@ uint64_t getSec(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t
   return getTimeSec();
 }
 uint64_t beep(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
-  kernelBeep();
+  motherBeep();
   return 0;
 }
