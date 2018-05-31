@@ -1,6 +1,6 @@
 #include <videoDriver.h>
 #include <font.h>
-#include <clockDriver.h>
+
 #define charWidth 8
 #define charHeight 16
 
@@ -19,7 +19,8 @@ void newWindow ();
 void paintWindow(Colour col);
 void setBackgroundColour(Colour col);
 void setFontColour(Colour col);
-void setClockCoordinates();
+int kernelRequestUserDraw();
+
 
 modeInfoVBE vbe = (modeInfoVBE)0x5C00;
 unsigned int currentX = 0;
@@ -240,9 +241,8 @@ void setFontColour(Colour col)
   fontColour = col;
 }
 
-void setClockCoordinates() {
-  uint16_t xRes = vbe->xResolution;
-  uint16_t yRes = vbe->yResolution;
-  currentY = yRes/2 - charHeight /2;
-  currentX = xRes/2 - ((CLOCKSIZE/2) * charWidth);
+int kernelRequestUserDraw(){
+	newWindow();
+	return 1;
 }
+

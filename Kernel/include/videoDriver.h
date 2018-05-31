@@ -86,7 +86,6 @@ void newWindow ();
 /* sets the background colour */
 void setBackgroundColour(Colour);
 
-/*sets clock initial coordinates to center*/
-void setClockCoordinates();
+int kernelRequestUserDraw();
 
 #endif

@@ -5,7 +5,6 @@
 #include <beepDriver.h>
 
 
-#define NFUNCTIONS 7 // <-------------- jojojojojojojoo
 
 uint64_t write(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 uint64_t read(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
@@ -14,11 +13,13 @@ uint64_t getMin(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t
 uint64_t getSec(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 uint64_t beep(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 uint64_t timeElapsed(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
+uint64_t sleep(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
+uint64_t requestDraw(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
 typedef uint64_t (*func_type)();
 
-
-func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed/* drawAPixel, Systime*/};
+#define NFUNCTIONS 9 // <-------------- jojojojojojojoo
+func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed, sleep, requestDraw/* drawAPixel, Systime*/};
 
 uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){//pa dsps si es que quiero color, guia 3
   //aca tenemos que poner las funciones de lectura/impresion char etc
@@ -43,7 +44,7 @@ uint64_t write(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t 
 }
 uint64_t read(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
-  return getChar();
+  return (uint64_t) getChar();
 }
 uint64_t getHour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
   return getTimeHour();
@@ -59,6 +60,13 @@ uint64_t beep(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r
   return 0;
 }
 uint64_t timeElapsed(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
-    return secondsElapsed();
+    return (uint64_t) secondsElapsed();
+}
+uint64_t sleep(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
+  kernelSleep((unsigned int) rdi);
+  return 0;
+}
+uint64_t requestDraw(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
+    return (uint64_t) kernelRequestUserDraw();
 }
 

@@ -1,8 +1,9 @@
 #ifndef CLOCK_H_
 #define CLOCK_H_
 
-#define CLOCKSIZE 8
-#define CLOCKSCALE 2
+const CLOCKSIZE = 8;
+const CLOCKFONTHIEGHT = 10;
+const CLOCKFONTWIDTH  = 5;
 
 typedef struct Colour					// un color es la combinacion de los colores primarios
 {

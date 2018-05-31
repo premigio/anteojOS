@@ -1,9 +1,11 @@
+#include <zconf.h>
 #include "clock.h"
+#include "videoModule.h"
 
 void showClock()
 {
   short show = 1;
-  unsigned int h, m, s, oh, om, os = -1;
+  int h, m, s, oh, om, os = -1;
   char c = '4';
   char times[CLOCKSIZE+1];
   Colour colours[10] = {
@@ -26,22 +28,17 @@ void showClock()
     s = syscall(5,0,0,0,0);
     if (oh!=h || om!=m || os!=s)
     {
-      times[0] = h/10+'0';
-      times[1] = h%10+'0';
-      times[2] = ':';
-      times[3] = m/10+'0';
-      times[4] = m%10+'0';
-      times[5] = ':';
-      times[6] = s/10+'0';
-      times[7] = s%10+'0';
-      times[9] = 0;
-      syscall(1, times, colour.red , colour.green , colour.blue);
+
+      drawClock(h,m,s,colour);
+      //syscall(1, times, colour.red , colour.green , colour.blue);
       oh = h;
       om = m;
       os = s;
       //c = (c - '0' +1)%10 +'0';         // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
     }
+
     c = (char)syscall(2,0,0,0,0);
+
     if (c == 'q')
     {
         show = 0;
@@ -49,8 +46,17 @@ void showClock()
     else if(c>= '0' && c<='9')
     {
       colour = colours[c - '0'];
-      syscall(1, times, colour.red , colour.green , colour.blue);
+      drawClock(h,m,s,colour);
+      //syscall(1, times, colour.red , colour.green , colour.blue);
       syscall(6,0,0,0,0);
     }
   }
+}
+
+
+void drawClock(int h, int m, int s,Colour colour)
+{
+
+  setClockCoordinates();
+
 }

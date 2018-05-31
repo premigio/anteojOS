@@ -1,9 +1,10 @@
 #include <beepDriver.h>
 #include <ioDriver.h>
+#include <timeDriver.h>
 
 void motherBeep(){
     beepon();
-    sleep(1000);
+    kernelSleep(1000);
     beepoff();
 }
 

@@ -11,6 +11,6 @@ void timerHandler(void);
 int ticksToSeconds(unsigned int ticks);
 int ticksElapsed(void);
 int secondsElapsed(void);
-void sleep(unsigned int);
+void kernelSleep(unsigned int);
 
 #endif
