@@ -1,13 +1,12 @@
-#include <zconf.h>
 #include "clock.h"
 #include "videoModule.h"
+#include "colours.h"
 
 void showClock()
 {
   short show = 1;
   int h, m, s, oh, om, os = -1;
   char c = '4';
-  char times[CLOCKSIZE+1];
   Colour colours[10] = {
     {10,154,10},
     {50,50,50},

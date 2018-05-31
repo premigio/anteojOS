@@ -88,4 +88,8 @@ void setBackgroundColour(Colour);
 
 int kernelRequestUserDraw();
 
+int getXResolution();
+
+int getYResolution();
+
 #endif

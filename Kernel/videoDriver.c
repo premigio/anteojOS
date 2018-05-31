@@ -20,6 +20,8 @@ void paintWindow(Colour col);
 void setBackgroundColour(Colour col);
 void setFontColour(Colour col);
 int kernelRequestUserDraw();
+int getXResolution();
+int getYResolution();
 
 
 modeInfoVBE vbe = (modeInfoVBE)0x5C00;
@@ -244,5 +246,13 @@ void setFontColour(Colour col)
 int kernelRequestUserDraw(){
 	newWindow();
 	return 1;
+}
+
+int getXResolution(){
+    return vbe->xResolution;
+}
+
+int getYResolution(){
+    return vbe->yResolution;
 }
 

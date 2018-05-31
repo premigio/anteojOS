@@ -26,7 +26,7 @@ void loadIDT() {
     _cli();                                                 // el flag de INTR = 0 --> no le llegan interrupciones
 
     setupIDTEntry (0x00, (uint64_t)&_exception0Handler);    //hasta 20h excepciones
-    setupIDTEntry (0x06, (uint64_t)&_exception6Handler); //Invalid Opcode
+    //setupIDTEntry (0x06, (uint64_t)&_exception6Handler); //Invalid Opcode
     setupIDTEntry (0x20, (uint64_t)&_irq00Handler);
     setupIDTEntry (0x21, (uint64_t)&_irq01Handler);
     setupIDTEntry (0x80, (uint64_t)&sysCallHandler);

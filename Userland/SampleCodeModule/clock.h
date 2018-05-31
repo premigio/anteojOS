@@ -1,17 +1,13 @@
 #ifndef CLOCK_H_
 #define CLOCK_H_
 
-const CLOCKSIZE = 8;
-const CLOCKFONTHIEGHT = 10;
-const CLOCKFONTWIDTH  = 5;
+#include "colours.h"
 
-typedef struct Colour					// un color es la combinacion de los colores primarios
-{
- 	int red;
- 	int green;
- 	int blue;
-} Colour;
+#define CLOCKSIZE 8
+#define CLOCKFONTHIEGHT 10
+#define CLOCKFONTWIDTH  5
 
+void drawClock(int h, int m, int s,Colour );
 void showClock();
 
 #endif
