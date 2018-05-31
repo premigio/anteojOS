@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include "videoModule.h"
 
+extern int zeroDivisionException();
+
 extern int syscall(uint64_t rdi, uint64_t rsi, uint64_t rcx, uint64_t rdx, uint64_t r8);
 
 int main()
