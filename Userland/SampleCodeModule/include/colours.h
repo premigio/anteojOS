@@ -2,7 +2,8 @@
 #define COLOURS_H_
 
 #include <stdint.h>
-typedef struct Colour					// un color es la combinacion de los colores primarios
+
+typedef struct Colour
 {
     uint8_t red;
     uint8_t green;
