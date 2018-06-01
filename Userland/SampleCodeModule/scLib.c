@@ -41,7 +41,7 @@ void userDrawPixel(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint6
 {
     syscall(9,rdi,rsi,rdx,rcx,r8);
 }
-void getResolutions(uint64_t rdi, uint64_t rsi)
+void getResolutions(unsigned int * rdi, unsigned int * rsi)
 {
     syscall(10,rdi,rsi,0,0,0);
 }

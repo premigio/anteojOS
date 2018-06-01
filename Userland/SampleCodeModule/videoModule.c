@@ -77,23 +77,13 @@ void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour 
     }
 }
 // no funciona
-void renderBitmap(Colour * start, Colour pColour, Colour bColour, const unsigned short* bitMap, int width, int height, int pixelsPerWidth) {
-
-    for (int i=0; i<height; i++)
-    {
-        for (int j=0; j<width; j++)
-        {
-            if (bitMap[i*width+j] != 0)
-            {
-                start[i*width+j] = pColour ;
-                drawAPixelWithColour(j,i,pColour);
-            }
-            else
-            {
-                start[i*width+j] = bColour ;
-                drawAPixelWithColour(j,i,bColour);
-            }
+void renderBitmap(Colour ** start, const unsigned short* bitMap, int width, int height) {
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            unsigned short hexValue = bitMap[i*width + j];
+            (*start)[i*width + j].red =   (hexValue >> 16) & 0xFF;  // Extract the RR byte
+            (*start)[i*width + j].green = (hexValue >> 8) & 0xFF;   // Extract the GG byte
+            (*start)[i*width + j].blue =  (hexValue) & 0xFF;
         }
     }
-
 }

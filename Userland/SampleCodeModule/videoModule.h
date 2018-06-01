@@ -10,7 +10,7 @@ void check();
 void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height);
 void drawImage2(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height);
 //bitmap is es ya el caracter,
-void renderBitmap(Colour * start, Colour pColour, Colour bColour, const unsigned short* bitMap, int width, int height, int length);
+void renderBitmap(Colour ** start, const unsigned short* bitMap, int width, int height);
 
 void drawAPixelWithColour(int x, int y, Colour col);
 
