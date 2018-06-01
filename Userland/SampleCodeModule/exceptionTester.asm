@@ -41,7 +41,8 @@ section .text
 
 invalidOpcodeException:
   pushState
-  UD2 ; ud genera invalidOpcode exceptions. uso el de tipo 2 que no tiene operandos
+  ;ud2 ; ud genera invalidOpcode exceptions. uso el de tipo 2 que no tiene operandos
+  RSM
   popState
   ret
 
