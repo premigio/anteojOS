@@ -22,6 +22,7 @@ void setFontColour(Colour col);
 int kernelRequestUserDraw();
 int getXResolution();
 int getYResolution();
+void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height);
 
 
 modeInfoVBE vbe = (modeInfoVBE)0x5C00;
@@ -59,26 +60,23 @@ void drawCharWithColour (const char c, Colour fColour)
 			{
 				backSpace();
 			}
-		}
-		else							// tengo un caracter del font.c
-		{
-				char * character = charMap((int)c);
-				for (int j=0; j<charHeight; j++)
-				{
-					for (int i=0; i<charWidth; i++)
-					{
-            if (1<<i & character[j])
+		} else                            // tengo un caracter del font.c
+        {
+            char *character = charMap((int) c);
+            for (int j = 0; j < charHeight; j++)
             {
-              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fColour);
+                for (int i = 0; i < charWidth; i++)
+                {
+                    if (1 << i & character[j])
+                    {
+                        drawAPixelWithColour(currentX + charWidth - 1 - i , j + currentY, fColour);
+                    } else {
+                        drawAPixelWithColour(currentX + charWidth - 1 - i, j + currentY, backgroundColour);
+                    }
+                }
             }
-            else
-            {
-              drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, backgroundColour);
-            }
-					}
-				}
-				currentX += charWidth;
-		}
+            currentX += charWidth;
+        }
 }
 
 void drawChar(const char c)
@@ -254,5 +252,17 @@ int getXResolution(){
 
 int getYResolution(){
     return vbe->yResolution;
+}
+
+void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height){
+	//newWindow();
+	refreshCoordenates();
+    int counter = 0;
+    for (int j = 0; j < height; j++)  {
+        for (int i = 0; i < width; i++)
+        {
+            drawAPixelWithColour(ox+i , oy+j, pixelMap[counter++]);
+        }
+    }
 }
 

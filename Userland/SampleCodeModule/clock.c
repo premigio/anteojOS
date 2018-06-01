@@ -1,25 +1,14 @@
 #include "clock.h"
 #include "videoModule.h"
 #include "colours.h"
+#include <stdint.h>
 
 void showClock()
 {
   short show = 1;
   int h, m, s, oh, om, os = -1;
   char c = '4';
-  Colour colours[10] = {
-    {10,154,10},
-    {50,50,50},
-    {120,50,70},
-    {120,150,120},
-    {255,210,170},
-    {45,237,1},
-    {25,103,130},
-    {60,130,161},
-    {11,133,210},
-    {30,176,130},
-  };
-  Colour colour = colours[1];
+  Colour colour = userColours[1];
   while (show)
   {
     h = syscall(3,0,0,0,0);
@@ -29,7 +18,7 @@ void showClock()
     {
 
       drawClock(h,m,s,colour);
-      //syscall(1, times, colour.red , colour.green , colour.blue);
+
       oh = h;
       om = m;
       os = s;
@@ -44,10 +33,10 @@ void showClock()
     }
     else if(c>= '0' && c<='9')
     {
-      colour = colours[c - '0'];
+      colour = userColours[c - '0'];
       drawClock(h,m,s,colour);
-      //syscall(1, times, colour.red , colour.green , colour.blue);
-      syscall(6,0,0,0,0);
+
+      syscall(6,0,0,0,0); //beep
     }
   }
 }
@@ -55,7 +44,5 @@ void showClock()
 
 void drawClock(int h, int m, int s,Colour colour)
 {
-
   setClockCoordinates();
-
 }

@@ -3,11 +3,14 @@
 
 #include "colours.h"
 
-void check(void);
-void setClockCoordinates(void);
-void drawPixel(unsigned int x, unsigned int y, Colour *pixel);
+void setClockCoordinates();
+
+void check();
+
 void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height);
-int exitKernelDraw();
-int requestKernelDraw();
+//bitmap is es ya el caracter,
+void renderBitmap(Colour * start, Colour fColour, Colour bColour, const char* bitMap, int height, int width);
+
+void drawAPixelWithColour(int x, int y, Colour col);
 
 #endif

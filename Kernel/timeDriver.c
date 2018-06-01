@@ -26,7 +26,7 @@ void kernelSleep(unsigned int miliSec){
     while ((ticks - old) / TICKSPERMILSEC){
 
     }*/
-    for (int i = 0; i < 100000000; ++i) {
+    for (int i = 0; i < 100000000; i++) {
 
     }
 }

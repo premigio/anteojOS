@@ -92,4 +92,6 @@ int getXResolution();
 
 int getYResolution();
 
+void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height);
+
 #endif
