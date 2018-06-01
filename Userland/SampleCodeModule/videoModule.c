@@ -23,7 +23,7 @@ void setClockCoordinates(unsigned int *x, unsigned int *y){
 
 void check(){
     if (xRes == 0 || yRes == 0){
-        syscall(10,&xRes,&yRes);
+        getResolutions(&xRes,&yRes);
     }
 }
 

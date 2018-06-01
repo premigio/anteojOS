@@ -48,7 +48,7 @@ int main()
     }
 
     //renderBitmap(image1, c, a, biohazard2_XL, 128, 128, 8);
-    drawImage(0, 0,image1,128,128);
-    //drawImage2(300, 300,image1,128,128);
+    //drawImage(0, 0,image1,128,128);
+    drawImage2(300, 300,image1,128,128);
   return 0;
 }
