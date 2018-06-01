@@ -2,6 +2,8 @@
 #include "videoModule.h"
 #include "colours.h"
 #include <stdint.h>
+#include "piloNumbers.h"
+#include "scLib.h"
 
 void showClock()
 {
@@ -11,9 +13,9 @@ void showClock()
   Colour colour = userColours[1];
   while (show)
   {
-    h = syscall(3,0,0,0,0);
-    m = syscall(4,0,0,0,0);
-    s = syscall(5,0,0,0,0);
+    h = getHour();
+    m = getMinute();
+    s = getSecond();
     if (oh!=h || om!=m || os!=s)
     {
 
@@ -25,7 +27,7 @@ void showClock()
       //c = (c - '0' +1)%10 +'0';         // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
     }
 
-    c = (char)syscall(2,0,0,0,0);
+    c = read();
 
     if (c == 'q')
     {

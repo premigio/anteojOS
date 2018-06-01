@@ -26,7 +26,7 @@ static void zeroDivision()
 
 static void invalidOpcode()
 {
-	drawString("No method as such\n");
+	drawString("No such function\n");
 }
 
 void printRegisters(uint64_t * rsp)
