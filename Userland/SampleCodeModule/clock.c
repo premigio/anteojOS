@@ -7,44 +7,77 @@
 
 void showClock()
 {
-  short show = 1;
-  int h, m, s, oh, om, os = -1;
-  char c = '4';
-  Colour colour = userColours[1];
-  while (show)
-  {
-    h = getHour();
-    m = getMinute();
-    s = getSecond();
-    if (oh!=h || om!=m || os!=s)
+    short show = 1;
+    int h, m, s, oh, om, os = -1;
+    char c = '4';
+    Colour bColour = userColours[0];
+    Colour fColour = userColours[1];
+    while (show)
     {
+        h = getHour();
+        m = getMinute();
+        s = getSecond();
+        if (oh!=h || om!=m || os!=s)
+        {
 
-      drawClock(h,m,s,colour);
+            drawClock(h,m,s,fColour, bColour);
 
-      oh = h;
-      om = m;
-      os = s;
-      //c = (c - '0' +1)%10 +'0';         // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
+            oh = h;
+            om = m;
+            os = s;
+            //c = (c - '0' +1)%10 +'0';         // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
+        }
+
+        c = read();
+
+        if (c == 'q')
+        {
+            show = 0;
+        }
+        else if(c>= '1' && c<='5')
+        {
+            fColour = userColours[c - '0'];
+            drawClock(h,m,s,fColour,  bColour);
+            beep();
+        }
+        else if(c>= '6' && c<='9' || c == '0')
+        {
+            bColour = userColours[c - '0'];
+            drawClock(h,m,s,fColour,  bColour);
+            beep();
+        }
     }
-
-    c = read();
-
-    if (c == 'q')
-    {
-        show = 0;
-    }
-    else if(c>= '0' && c<='9')
-    {
-      colour = userColours[c - '0'];
-      drawClock(h,m,s,colour);
-
-      syscall(6,0,0,0,0); //beep
-    }
-  }
 }
 
 
-void drawClock(int h, int m, int s,Colour colour)
+void drawClock(int h, int m, int s,Colour fColour, Colour bColour)
 {
-  setClockCoordinates();
+    unsigned int  x, y;
+    setClockCoordinates(&x,&y);
+    Colour font[NUMWIDTH*NUMHEIGHT];
+    renderFont(font,getNumber,h/10,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+    renderFont(font,getNumber,h%10,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+    renderFont(font,getNumber,COLON,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+    renderFont(font,getNumber,m/10,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+    renderFont(font,getNumber,m%10,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+    renderFont(font,getNumber,COLON,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+    renderFont(font,getNumber,s/10,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+    renderFont(font,getNumber,s%10,fColour,bColour);
+    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    x = x + NUMWIDTH;
+
 }

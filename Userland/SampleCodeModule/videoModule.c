@@ -1,11 +1,8 @@
 #include "videoModule.h"
 #include "clock.h"
 #include <stdint.h>
-#include "SevenSegNumFontPlus.h"
+#include "piloNumbers.h"
 #include "scLib.h"
-
-#define MAXRES = 10000;
-#define MAXRES = 10000;
 
 unsigned int currentX = 0;
 unsigned int currentY = 0;
@@ -16,10 +13,12 @@ unsigned int yRes = 0;
 Colour backgroundColour = {0, 0, 0};
 Colour fontColour = {255, 255, 255};
 
-void setClockCoordinates(){
+void setClockCoordinates(unsigned int *x, unsigned int *y){
     check();
-    currentX = xRes/2 - CLOCKSIZE/2;
-    currentY = yRes/2 - CLOCKFONTHIEGHT/2;
+    currentX = xRes/2 - (NUMWIDTH*CLOCKSIZE/2);
+    currentY = yRes/2 - (NUMHEIGHT/2);
+    *x = currentX;
+    *y = currentY;
 }
 
 void check(){
@@ -32,27 +31,55 @@ void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int 
     printImage(ox,oy,pixelMap,width,height);
 }
 
-//bitmap is es ya el caracter,
-void renderBitmap(Colour * start, Colour pColour, Colour bColour, const unsigned char* bitMap, int width, int height, int charsPerRow) {
-    int j,i,k;
-    for (j = 0; j < height; j++) {
-        for (k = 0; k < charsPerRow; k++) {
-            for (i = 0; i < 4; i++) {
-                if ((1 << i) & bitMap[j*charsPerRow + k]) {
-                    start[j * height + i] = pColour;
-                    drawAPixelWithColour(width - 1 - i , j , pColour);
-                } else {
-                    start[j * height + i] = bColour;
-                    drawAPixelWithColour(height - 1 - i, j , bColour);
-                }
-            }
-        }
-    }
-    drawImage(100, 200, start, 32, 50);
-}
-
 void drawAPixelWithColour(int x, int y, Colour col)
 {
     syscall(9, x, y, col.red, col.green, col.blue);
 }
+void drawFont(int x, int y,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour){
 
+    for (int i = 0; i < NUMHEIGHT; i++) {
+        const char * bitString = (*getFont)(font,i);
+
+        for (int j = 0; j < NUMWIDTH; j++) {
+            if (bitString[j] == '1'){
+
+                drawAPixelWithColour(x+j,y+i,fColour);
+            }else{
+                drawAPixelWithColour(x+j,y+i,bColour);
+            }
+        }
+    }
+}
+
+void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour){
+
+    for (int i = 0; i < NUMHEIGHT; i++) {
+        const char * bitString = (*getFont)(font,i);
+
+        for (int j = 0; j < NUMWIDTH; j++) {
+            if (bitString[j] == '1'){
+                start[i*NUMWIDTH +j] = fColour;
+                //drawAPixelWithColour(j,i,fColour);
+            }else{
+                start[i*NUMWIDTH +j] = bColour;
+                //drawAPixelWithColour(j,i,bColour);
+            }
+        }
+    }
+}
+
+// no funciona
+void renderBitmap(Colour * start, Colour pColour, Colour bColour, const char** bitMap, int width, int height, int length) {
+    int i,j;
+    for (i = 0; i < height; i++) {
+        for (j = 0; j < width; ++j) {
+            if (bitMap[i][j] == '1') {
+                start[i*width + j] = pColour;
+                //drawAPixelWithColour(j,i, pColour);
+            } else {
+                start[i] = bColour;
+                //drawAPixelWithColour(j,i, bColour);
+            }
+        }
+    }
+}

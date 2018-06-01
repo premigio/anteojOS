@@ -261,10 +261,9 @@ int getYResolution()
 
 void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height){
 	refreshCoordenates();
-	unsigned long counter = 0;
-	for (int j = 0; j < height; ++j) {
-		for (int i = 0; i < width; ++i) {
-			drawAPixelWithColour(ox+i, oy+j, pixelMap[counter++]);
+	for (int i = 0; i < height; ++i) {
+		for (int j = 0; j < width; ++j) {
+			drawAPixelWithColour(ox+j, oy+i, pixelMap[i*width + j]);
 		}
 	}
 }

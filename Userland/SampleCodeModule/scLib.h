@@ -2,10 +2,10 @@
 #define SCLIB_H
 
     void write(char * string);
-    void read();
-    void getHour();
-    void getMinute();
-    void getSecond();
+    char read();
+    unsigned int getHour();
+    unsigned int  getMinute();
+    unsigned int  getSecond();
     void beep();
     void timeElapsed();
     void sleep(unsigned int rdi);

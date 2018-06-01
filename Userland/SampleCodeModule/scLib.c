@@ -5,24 +5,24 @@ void write(char * string)
 {
     syscall(1,(uint64_t) string, 0,0,0);
 }
-void read()
+char read()
 {
-    syscall(2,0,0,0,0);
+    return syscall(2,0,0,0,0);
 }
 
-void getHour()
+unsigned int getHour()
 {
-    syscall(3,0,0,0,0);
+    return syscall(3,0,0,0,0);
 }
 
-void getMinute()
+unsigned int getMinute()
 {
-    syscall(4,0,0,0,0);
+    return syscall(4,0,0,0,0);
 }
 
-void getSecond()
+unsigned int getSecond()
 {
-    syscall(5,0,0,0,0);
+    return syscall(5,0,0,0,0);
 }
 
 void beep()
