@@ -64,7 +64,8 @@ void putChar(char c)
 {
   if (c != 0){
     buffer[bfw] = c;
-    bfw = ++bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
+    bfw++;
+    bfw = bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
     size++;
   }
 }

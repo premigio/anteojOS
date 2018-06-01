@@ -5,6 +5,7 @@
 #include "piloNumbers.h"
 #include "biohazard2_XL.h"
 #include "scLib.h"
+#include "shell.h"
 
 int main()
 {
@@ -25,7 +26,8 @@ int main()
     write("hola");
     drawPixelImage(500, 500, image, 10, 10);
 
-    //drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);
+    drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);
+    shell();
 
     //drawImage(200,200,biohazard2_XL,128,128);
 

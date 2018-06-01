@@ -94,7 +94,7 @@ int getYResolution();
 
 void drawHexa(uint64_t reg);
 
-static char toHexa(uint64_t n);
+char toHexa(uint64_t n);
 
 void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height);
 

@@ -1,6 +1,7 @@
 #ifndef SCLIB_H
 #define SCLIB_H
 
+
     void write(char * string);
     char read();
     unsigned int getHour();

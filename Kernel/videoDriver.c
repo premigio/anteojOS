@@ -305,7 +305,7 @@ void drawHexa(uint64_t number) {
       }
    }
 
-static char toHexa(uint64_t n)
+char toHexa(uint64_t n)
 {
   char ret;
   switch(n)

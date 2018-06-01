@@ -3484,5 +3484,5 @@ unsigned char __font_bitmap__[] = {
 char * charMap(int c) {
 	// 31 es el numero (segun codigo ascii) a partir del cual están las letras
 	// en el arreglo __font_bitmap__
-	return __font_bitmap__ + CHAR_HEIGHT * (c-31);
+	return (char *) (__font_bitmap__ + CHAR_HEIGHT * (c - 31));
 }

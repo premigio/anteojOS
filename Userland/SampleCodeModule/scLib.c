@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "colours.h"
 
+
 void write(char * string)
 {
     syscall(1,(uint64_t) string, 0,0,0);

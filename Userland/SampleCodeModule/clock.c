@@ -40,7 +40,7 @@ void showClock()
             drawClock(h,m,s,fColour,  bColour);
             beep();
         }
-        else if(c>= '6' && c<='9' || c == '0')
+        else if((c>= '6' && c<='9' )|| c == '0')
         {
             bColour = userColours[c - '0'];
             drawClock(h,m,s,fColour,  bColour);
@@ -56,28 +56,28 @@ void drawClock(int h, int m, int s,Colour fColour, Colour bColour)
     setClockCoordinates(&x,&y);
     Colour font[NUMWIDTH*NUMHEIGHT];
     renderFont(font,getNumber,h/10,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
     renderFont(font,getNumber,h%10,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
     renderFont(font,getNumber,COLON,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
     renderFont(font,getNumber,m/10,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
     renderFont(font,getNumber,m%10,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
     renderFont(font,getNumber,COLON,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
     renderFont(font,getNumber,s/10,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
     renderFont(font,getNumber,s%10,fColour,bColour);
-    drawImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
 
 }

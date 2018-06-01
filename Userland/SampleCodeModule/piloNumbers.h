@@ -8,7 +8,7 @@
 #define COLON      10
 
 const char * getNumber(int num, int i);
-const char ** getNum(int num);
+
 //char ** getColon();
 static const char numbers[11][50][32] = {
         {
