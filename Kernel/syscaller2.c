@@ -1,3 +1,4 @@
+/*
 #include <stdint.h>
 #include <videoDriver.h>
 #include <keyboardDriver.h>
@@ -82,4 +83,4 @@ uint64_t printImage(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint
     drawImage((unsigned int) rdi, (unsigned int) rsi, (Colour *) rdx, (unsigned int) rcx, (unsigned int) r8);
     return 0;
 }
-
+*/
