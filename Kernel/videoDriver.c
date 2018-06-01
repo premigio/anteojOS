@@ -35,7 +35,7 @@ Colour fontColour = {255, 255, 255};
 
 void drawAPixelWithColour(int x, int y, Colour col)
 {
-    char * video = (char *) ((uint64_t)(vbe->physBasePtr + vbe->pitch * y + x * (int)(vbe->bitsPerPixel/8)));
+    char * video = (char *) ((uint64_t)(vbe->physBasePtr + vbe->pitch * y + x * (vbe->bitsPerPixel / 8)));
     video[0] = col.blue;
     video[1] = col.green;
     video[2] = col.red;
@@ -260,7 +260,7 @@ int getYResolution()
 }
 
 void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height){
-	refreshCoordenates();
+	currentX = currentY = 0;
 	for (int i = 0; i < height; ++i) {
 		for (int j = 0; j < width; ++j) {
 			drawAPixelWithColour(ox+j, oy+i, pixelMap[i*width + j]);

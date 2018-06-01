@@ -27,13 +27,22 @@ void check(){
     }
 }
 
-void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height){
+void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height)
+{
     printImage(ox,oy,pixelMap,width,height);
+}
+void drawImage2(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height) {
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            drawAPixelWithColour(ox + j, oy + i, pixelMap[i * width + j]);
+        }
+    }
 }
 
 void drawAPixelWithColour(int x, int y, Colour col)
 {
-    syscall(9, x, y, col.red, col.green, col.blue);
+    userDrawPixel(x,y,col.red,col.green,col.blue);
+    //syscall(9, x, y, col.red, col.green, col.blue);
 }
 void drawFont(int x, int y,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour){
 
@@ -68,24 +77,21 @@ void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour 
     }
 }
 // no funciona
-void renderBitmap(Colour * start, Colour pColour, Colour bColour, const char* bitMap, int width, int height, int pixelsPerWidth) {
+void renderBitmap(Colour * start, Colour pColour, Colour bColour, const unsigned short* bitMap, int width, int height, int pixelsPerWidth) {
 
     for (int i=0; i<height; i++)
     {
         for (int j=0; j<width; j++)
         {
-            for (int k = 0; k < pixelsPerWidth; ++k)
+            if (bitMap[i*width+j] != 0)
             {
-                if (1<<k & bitMap[i*width+j])
-                {
-                    start[i*width+ j*pixelsPerWidth +k ] = pColour ;
-                    //drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fColour);
-                }
-                else
-                {
-                    start[i*width+ j*pixelsPerWidth +k ] = bColour ;
-                    //drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, backgroundColour);
-                }
+                start[i*width+j] = pColour ;
+                drawAPixelWithColour(j,i,pColour);
+            }
+            else
+            {
+                start[i*width+j] = bColour ;
+                drawAPixelWithColour(j,i,bColour);
             }
         }
     }
