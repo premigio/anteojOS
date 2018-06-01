@@ -1,17 +1,18 @@
 /* sampleCodeModule.c */
-#include "clock.h"
+#include "include/clock.h"
 #include <stdint.h>
-#include "videoModule.h"
-#include "piloNumbers.h"
-#include "biohazard2_XL.h"
-#include "scLib.h"
+#include "include/videoModule.h"
+#include "include/piloNumbers.h"
+#include "include/biohazard2_XL.h"
+#include "include/scLib.h"
 
 int main()
 {
+    write("hola");
 
+    /*
     //showClock();
     //Colour colour = {123,255,121};
-    write("hola");
     Colour c = {123,255,121};
     Colour a = {35, 100, 255};
     Colour image[100] = {
@@ -34,7 +35,6 @@ int main()
 
     renderBitmap((Colour **) image2, biohazard2_XL, 128, 128);
     drawImage2(0, 0, image2, 128, 128);
-*/
 
     Colour b;
     for (int i = 0; i <128 ; ++i) {
@@ -52,5 +52,6 @@ int main()
 
 
     //drawImage2(300, 300,image1,128,128);
+            */
   return 0;
 }

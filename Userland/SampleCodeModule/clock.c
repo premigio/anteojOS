@@ -1,9 +1,8 @@
-#include "clock.h"
-#include "videoModule.h"
-#include "colours.h"
+#include "include/clock.h"
+#include "include/videoModule.h"
+#include "include/colours.h"
 #include <stdint.h>
-#include "piloNumbers.h"
-#include "scLib.h"
+#include "include/piloNumbers.h"
 
 void showClock()
 {
@@ -40,7 +39,7 @@ void showClock()
             drawClock(h,m,s,fColour,  bColour);
             beep();
         }
-        else if(c>= '6' && c<='9' || c == '0')
+        else if((c>= '6' && c<='9') || c == '0')
         {
             bColour = userColours[c - '0'];
             drawClock(h,m,s,fColour,  bColour);
