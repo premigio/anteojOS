@@ -16,4 +16,4 @@
 
 
 
-#endif SCLIB_H
+#endif

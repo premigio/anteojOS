@@ -10,7 +10,7 @@ int main()
     Colour a = {35, 100, 255};
     Colour image[100] = {
             a,a,a,a,c,c,a,a,a,a,
-            a,a,a,a,c,c,a,a,a,a,
+            a,c,c,a,c,c,a,c,c,a,
             a,a,a,a,c,c,a,a,a,a,
             a,a,a,a,c,c,a,a,a,a,
             a,a,a,a,c,c,a,a,a,a,
@@ -37,7 +37,7 @@ int main()
 
     Colour image1[32*50];
 
-    renderBitmap(image1, fColour, bColour, (const unsigned char *) (const char *) charMap(1), 32, 50, 4);
+    renderBitmap(image1, fColour, bColour, charMap(1), 32, 50, 4);
     //drawImage(100, 100, image1, 32, 50);
 
     //showClock();

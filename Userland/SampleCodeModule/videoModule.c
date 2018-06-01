@@ -34,14 +34,22 @@ void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int 
 
 //bitmap is es ya el caracter,
 void renderBitmap(Colour * start, Colour pColour, Colour bColour, const unsigned char* bitMap, int width, int height, int charsPerRow) {
-    fColour = {123,255,121};
-    bColour = {255,255,255};
+    Colour a = {123,255,121};
+    Colour c = {255,255,255};
+    pColour = a;
+    bColour = c;
     Colour image1[32*50];
     start = image1;
+    bitMap = charMap(0);
+    width = 32;
+    height= 50;
+    charsPerRow = 4;
+    int bitsPerChar = 8;
+
     int j,i,k;
-    for (j = 0; j < height; j++) {
-        for (k = 0; k < charsPerRow; k++) {
-            for (i = 0; i < 8; i++) {
+    for (j = 0; j < height; j++) { // cda fila
+        for (k = 0; k < charsPerRow; k++) { // cada char
+            for (i = 0; i < bitsPerChar; i++) { // cada bit
                 if ((1 << i) & bitMap[j*charsPerRow + k]) {
                     start[j * height + i] = pColour;
                     //drawAPixelWithColour(width - 1 - i , j , pColour);
@@ -52,7 +60,7 @@ void renderBitmap(Colour * start, Colour pColour, Colour bColour, const unsigned
             }
         }
     }
-    drawImage(100, 200, image1, 32, 50);
+    drawImage(100, 200, start, 32, 50);
 }
 
 void drawAPixelWithColour(int x, int y, Colour col)
