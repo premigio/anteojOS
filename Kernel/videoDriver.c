@@ -220,6 +220,7 @@ void newWindow ()
 			drawAPixelWithColour(i, j, backgroundColour);
 		}
 	}
+
 }
 
 void paintWindow(Colour col)

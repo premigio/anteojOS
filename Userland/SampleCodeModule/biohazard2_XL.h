@@ -6,7 +6,8 @@
 // Time generated : Tue, 05 Jul 11 15:43:24 +0200  (Server timezone: CET)
 // Image Size     : 128x128 pixels
 // Memory usage   : 32768 bytes
-
+#define IMAGEWIDTH  128
+#define IMAGEHEIGHT 128
 
 static const unsigned short biohazard2_XL[16384]={
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,   // 0x0010 (16) pixels

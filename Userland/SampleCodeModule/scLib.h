@@ -15,7 +15,10 @@
     void getResolutions(unsigned int * rdi, unsigned int * rsi);
     void setFontColour(uint8_t R, uint8_t G, uint8_t B);
     void printImage(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8);
-
+    int  newToRead();
+    void notifyExitRequest();
+    void newWindow();
+    int putChar(char c);
 
 
 #endif

@@ -25,7 +25,6 @@ unsigned int getSecond()
 {
     return syscall(5,0,0,0,0);
 }
-
 void beep()
 {
     syscall(6,0,0,0,0);
@@ -53,5 +52,20 @@ void setFontColour(uint8_t R, uint8_t G, uint8_t B)
 void printImage(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
 {
     syscall(12,rdi,rsi,rdx,rcx,r8);
+}
+int newToRead(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
+{
+    return syscall(13);
+}
+int notifyExitRequest(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
+{
+    return syscall(14);
+}
+void newWindow(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
+{
+    syscall(15);
+}
+int putChar(char c){
+    return syscall(16, c);
 }
 

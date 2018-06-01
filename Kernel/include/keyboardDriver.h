@@ -2,6 +2,7 @@
 #define _keyboardDriver_h
   extern int getKey(void);
   void keyboardInterpreter();
-  void putChar(char c);
-  char getChar();
+  void charToBuffer(unsigned char c);
+  char returnNextChar();
+  int newToRead();
 #endif
