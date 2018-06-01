@@ -41,7 +41,7 @@ int main()
 
     Colour image1[32*50];
 
-    renderBitmap(image1, fColour, bColour, (const char *) charMap(0), 32, 50);
+    renderBitmap(image1, fColour, bColour, (const char *) charMap(0), 32, 50, 4);
     drawImage(100, 100, image1, 32, 50);
 
     //showClock();
