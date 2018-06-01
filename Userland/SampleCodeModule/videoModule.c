@@ -67,19 +67,27 @@ void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour 
         }
     }
 }
-
 // no funciona
-void renderBitmap(Colour * start, Colour pColour, Colour bColour, const char** bitMap, int width, int height, int length) {
-    int i,j;
-    for (i = 0; i < height; i++) {
-        for (j = 0; j < width; ++j) {
-            if (bitMap[i][j] == '1') {
-                start[i*width + j] = pColour;
-                //drawAPixelWithColour(j,i, pColour);
-            } else {
-                start[i] = bColour;
-                //drawAPixelWithColour(j,i, bColour);
+void renderBitmap(Colour * start, Colour pColour, Colour bColour, const char* bitMap, int width, int height, int pixelsPerWidth) {
+
+    for (int i=0; i<height; i++)
+    {
+        for (int j=0; j<width; j++)
+        {
+            for (int k = 0; k < pixelsPerWidth; ++k)
+            {
+                if (1<<k & bitMap[i*width+j])
+                {
+                    start[i*width+ j*pixelsPerWidth +k ] = pColour ;
+                    //drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fColour);
+                }
+                else
+                {
+                    start[i*width+ j*pixelsPerWidth +k ] = bColour ;
+                    //drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, backgroundColour);
+                }
             }
         }
     }
+
 }

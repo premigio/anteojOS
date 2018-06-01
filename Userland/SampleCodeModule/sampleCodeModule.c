@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include "videoModule.h"
 #include "piloNumbers.h"
+#include "biohazard2_XL.h"
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
       }
   }
     */
-    showClock();
+    //showClock();
     //Colour colour = {123,255,121};
     //drawCharWithColour(0,colour);
     Colour c = {123,255,121};
@@ -35,5 +36,9 @@ int main()
             a,a,a,a,c,c,a,a,a,a
     };
     drawImage(0, 0, image, 10, 10);
+
+    Colour image1[128*128];
+    renderBitmap(image1, c, a, (const char *) biohazard2_XL, 128, 128, 8);
+    drawImage(100, 100, image1,128,128);
   return 0;
 }
