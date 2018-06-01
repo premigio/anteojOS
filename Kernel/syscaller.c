@@ -3,12 +3,13 @@
 #include <keyboardDriver.h>
 #include <timeDriver.h>
 #include <beepDriver.h>
+#include <videoModule.h>
 #include "syscaller.h"
 
 
 typedef uint64_t (*func_type)();
 
-func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed, sleep, userDrawPixel, getResolutions, changeFontColour};
+func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed, sleep, userDrawPixel, getResolutions, changeFontColour, drawImage};
 
 uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){//pa dsps si es que quiero color, guia 3
   //aca tenemos que poner las funciones de lectura/impresion char etc
@@ -64,10 +65,13 @@ uint64_t getResolutions(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, 
     *((int*)rsi) = getYResolution();
     return 0;
 }
-
 uint64_t changeFontColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
   Colour col = {(uint8_t)rdi,(uint8_t)rsi,(uint8_t)rdx};
   setFontColour(col);
   return 0;
+}
+uint64_t printImage(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
+    drawImage((unsigned int) rdi, (unsigned int) rsi, (Colour *) rdx, (unsigned int) rcx, (unsigned int) r8);
+    return 0;
 }
