@@ -1,5 +1,5 @@
 // SevenSegNumFontPlus.c
-#include "include/SevenSegNumFontPlus.h"
+#include "SevenSegNumFontPlus.h"
 
 
 const unsigned short * charMap(int c) {

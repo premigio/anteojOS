@@ -2,10 +2,6 @@
 #define _VIDEOMODULE_h
 
 #include "colours.h"
-#include "clock.h"
-#include <stdint.h>
-#include "piloNumbers.h"
-#include "scLib.h"
 
 void setClockCoordinates(unsigned int *x, unsigned int *y);
 
@@ -23,7 +19,4 @@ void drawFont(int, int, const char* (*getFont)(int,int), int font, Colour, Colou
 void drawImageFromHexaMap(unsigned  int ox, unsigned int oy, const unsigned short* hexaMap, unsigned int width, unsigned int height);
 
 void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour);
-
-void newWindow();
-
 #endif

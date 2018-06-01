@@ -126,4 +126,4 @@ add_executable(anteojOS
         Dockerfile
         Makefile
         README.md
-        run.sh Kernel/beepDriver.c Userland/SampleCodeModule/include/shell.h)
+        run.sh Kernel/beepDriver.c)

@@ -1,9 +1,9 @@
-/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jimenalozano/Desktop/anteojOS
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/pilo/Desktop/anteojOS
 -- Configuring done
 CMake Error at CMakeLists.txt:10 (add_executable):
   Cannot find source file:
 
-    Image/packedKernel.bin
+    Kernel/clockDriver.o
 
   Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
   .hxx .in .txx
@@ -12,4 +12,4 @@ CMake Error at CMakeLists.txt:10 (add_executable):
 CMake Error: CMake can not determine linker language for target: anteojOS
 CMake Error: Cannot determine link language for target "anteojOS".
 -- Generating done
--- Build files have been written to: /Users/jimenalozano/Desktop/anteojOS/cmake-build-debug
+-- Build files have been written to: /Users/pilo/Desktop/anteojOS/cmake-build-debug

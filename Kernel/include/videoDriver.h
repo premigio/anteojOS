@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-typedef struct Colour
+typedef struct Colour					// un color es la combinacion de los colores primarios
 {
  	uint8_t red;
  	uint8_t green;
@@ -97,5 +97,6 @@ void drawHexa(uint64_t reg);
 static char toHexa(uint64_t n);
 
 void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height);
+
 
 #endif
