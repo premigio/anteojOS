@@ -92,4 +92,10 @@ int getXResolution();
 
 int getYResolution();
 
+void drawHexa(uint64_t reg);
+
+static char toHexa(uint64_t n);
+
+
+
 #endif

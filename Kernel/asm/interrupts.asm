@@ -14,6 +14,7 @@ GLOBAL _irq04Handler
 GLOBAL _irq05Handler
 
 GLOBAL _exception0Handler
+GLOBAL _exception6Handler
 
 EXTERN irqDispatcher
 EXTERN exceptionDispatcher
@@ -80,6 +81,7 @@ SECTION .text
 	call exceptionDispatcher
 
 	popState
+
 	iretq
 %endmacro
 
@@ -147,6 +149,7 @@ _exception0Handler:
 ;Invalid Opcode Exception
 _exception6Handler:
 	exceptionHandler 6
+;n
 
 haltcpu:
 	cli

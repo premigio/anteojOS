@@ -243,15 +243,74 @@ void setFontColour(Colour col)
   fontColour = col;
 }
 
-int kernelRequestUserDraw(){
+int kernelRequestUserDraw()
+{
 	newWindow();
 	return 1;
 }
 
-int getXResolution(){
+int getXResolution()
+{
     return vbe->xResolution;
 }
 
-int getYResolution(){
+int getYResolution()
+{
     return vbe->yResolution;
+}
+
+// void drawHexa(uint64_t reg)
+// {
+//   drawString("0x");
+//   char n[16] = {0};
+//   int j = 0;
+//   while(reg >= 0)
+//   {
+//      n[15 - j] = toHexa(reg%16);
+//      reg = reg/16;
+//      j++;
+//   }
+//   for(int i = 0; i < 16; i++)
+//   {
+//      if(n[i])
+//      {
+//         drawChar(n[i]);
+//      }
+//   }
+// }
+void drawHexa(uint64_t number) {
+      char n[16] ={0};
+      int index = 0,i;
+      do{
+         n[15 - index] = toHexa(number%16);
+         number = number/16;
+         index++;
+      }while(number);
+      for(i = 0; i<16; i++){
+         if(n[i])
+            drawChar(n[i]);
+      }
+   }
+
+static char toHexa(uint64_t n)
+{
+  char ret;
+  switch(n)
+  {
+    case 10:
+       ret = 'A';
+    case 11:
+       ret = 'B';
+    case 12:
+       ret = 'C';
+    case 13:
+       ret = 'D';
+    case 14:
+       ret = 'E';
+    case 15:
+       ret = 'F';
+    default:
+      ret = (char)(n+48);
+  }
+  return ret;
 }
