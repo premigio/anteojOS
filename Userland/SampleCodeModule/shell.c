@@ -12,10 +12,13 @@ void setShell()
 
 void shell()
 {
-    setShell();
-    char * string = "Jime sos muy capa!!!";
-    write(string);
-    //printf("jime sos muy capa");
+    int run = 1;
+    while(run) {
+        setShell();
+        char *string = "Jime sos muy capa!!!";
+        write(string);
+        //printf("jime sos muy capa");
+    }
 
 }
 
