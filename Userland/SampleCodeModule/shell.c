@@ -21,6 +21,7 @@
 
 void shell()
 {
+<<<<<<< HEAD
     char buffer[MAX_BUFFER_SIZE];
     unsigned int bufferPtr;
     RESET_BUFFER;
@@ -52,6 +53,12 @@ void shell()
     }
     doBeforeExit();
 }
+=======
+    setShell();
+    char * string = "Jime sos muy capa!!!";
+    write(string);
+    //printf("jime sos muy capa");
+>>>>>>> parent of daa33c1... asdf
 
 void turnOn(){
     int x, y;
