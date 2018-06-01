@@ -9,16 +9,16 @@ int main()
     Colour c = {123,255,121};
     Colour a = {35, 100, 255};
     Colour image[100] = {
-            c,a,c,a,c,a,c,a,c,a,
-            a,c,a,c,a,c,a,c,a,c,
-            c,a,c,a,c,a,c,a,c,a,
-            a,c,a,c,a,c,a,c,a,c,
-            c,a,c,a,c,a,c,a,c,a,
-            a,c,a,c,a,c,a,c,a,c,
-            c,a,c,a,c,a,c,a,c,a,
-            a,c,a,c,a,c,a,c,a,c,
-            c,a,c,a,c,a,c,a,c,a,
-            a,c,a,c,a,c,a,c,a,c
+            a,a,a,a,c,c,a,a,a,a,
+            a,a,a,a,c,c,a,a,a,a,
+            a,a,a,a,c,c,a,a,a,a,
+            a,a,a,a,c,c,a,a,a,a,
+            a,a,a,a,c,c,a,a,a,a,
+            c,c,c,c,c,c,c,c,c,c,
+            a,a,a,a,c,c,a,a,a,a,
+            a,a,a,a,c,c,a,a,a,a,
+            a,a,a,a,c,c,a,a,a,a,
+            a,a,a,a,c,c,a,a,a,a
     };
     drawImage(0, 0, image, 10, 10);
 /*  Colour image[100][100];
@@ -38,7 +38,7 @@ int main()
     Colour image1[32*50];
 
     renderBitmap(image1, fColour, bColour, (const unsigned char *) (const char *) charMap(1), 32, 50, 4);
-    drawImage(100, 100, image1, 32, 50);
+    //drawImage(100, 100, image1, 32, 50);
 
     //showClock();
     //Colour colour = {123,255,121};
