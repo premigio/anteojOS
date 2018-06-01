@@ -62,11 +62,11 @@ void drawCharWithColour (const char c, Colour fColour)
 		}
 		else							// tengo un caracter del font.c
 		{
-				char * character = charMap((int)c);
-				for (int j=0; j<charHeight; j++)
-				{
-					for (int i=0; i<charWidth; i++)
-					{
+        char * character = charMap((int)c);
+        for (int j=0; j<charHeight; j++)
+        {
+            for (int i=0; i<charWidth; i++)
+            {
             if (1<<i & character[j])
             {
               drawAPixelWithColour(charWidth - 1 - i + currentX, j + currentY, fColour);
@@ -259,6 +259,15 @@ int getYResolution()
     return vbe->yResolution;
 }
 
+void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height){
+	refreshCoordenates();
+	unsigned long counter = 0;
+	for (int i = 0; i < width; ++i) {
+		for (int j = 0; j < height; ++j) {
+			drawAPixelWithColour(ox+i, oy+j, pixelMap[counter++]);
+		}
+	}
+}
 // void drawHexa(uint64_t reg)
 // {
 //   drawString("0x");
