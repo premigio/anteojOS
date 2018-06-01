@@ -12,12 +12,12 @@ int capslock = 0;
 int shift = 0;
 int f1 = 0; //lo seteo como tecla que cambia el color del reloj. De aca deberia salir el beep
 
-
-unsigned char buffer[BUFFERSIZE] = {0}; // hay que crear el buffer
+char buffer[BUFFERSIZE] = {0}; // hay que crear el buffer
 int bfw = 0; // posicion de escritura, para los putchar
 int bfr = 0; // posicion de lectura, para los getchar
-int newChar = 0;
 
+int size = 0;
+int newChar = 0;
 
 void keyboardInterpreter()
 {
@@ -48,7 +48,7 @@ void keyboardInterpreter()
         {
             if ( (capslock && !shift) || (!capslock && shift) )
             {
-                c = (char) (c - ('a' - 'A'));
+                c = c - ('a'-'A');
             }
         }
         else if(shift)
@@ -59,27 +59,32 @@ void keyboardInterpreter()
     }
 }
 
+
 void charToBuffer(unsigned char c)
 {
     if (c != 0){
         buffer[bfw] = c;
         bfw++;
         bfw = bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
-        newChar = 1;
+        size++;
     }
 }
 
 char returnNextChar()
 {
-    char res = -1;
-    if(bfr >= 0){
-        res = buffer[bfr++];
-        bfr = bfr % BUFFERSIZE;                   // bfr = BUFFERREAD
-        newChar = 0;
+    char res = 0;
+    if(size == 0){
+        return res;
     }
+    res = buffer[bfr++];
+    bfr = bfr % BUFFERSIZE;                   // bfr = BUFFERREAD
+    size--;
     return res;
 }
 
 int newToRead(){
     return newChar;
 }
+
+
+
