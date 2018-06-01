@@ -49,7 +49,7 @@ void setFontColour(uint8_t R, uint8_t G, uint8_t B)
 {
     syscall(11,(uint64_t)R, (uint64_t)G, (uint64_t)B,0);
 }
-void printImage(unsigned int rdi, unsigned int rsi, Colour *rdx, unsigned int rcx, unsigned int r8)
+void printImage(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
 {
     syscall(12,rdi,rsi,rdx,rcx,r8);
 }

@@ -259,13 +259,18 @@ int getYResolution()
     return vbe->yResolution;
 }
 
-void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height){
+void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height){
 	refreshCoordenates();
-	for (int i = 0; i < height; ++i) {
-		for (int j = 0; j < width; ++j) {
-			drawAPixelWithColour(ox+j, oy+i, pixelMap[i*width + j]);
-		}
-	}
+    Colour b;
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            unsigned short hexValue = hexaMap[i*width + j];
+            b.red = (uint8_t) ((hexValue >> 16) & 0xFF);  // Extract the RR byte
+            b.green = (uint8_t) ((hexValue >> 8) & 0xFF);   // Extract the GG byte
+            b.blue = (uint8_t) ((hexValue) & 0xFF);
+            drawAPixelWithColour(ox+j,oy+i,b);
+        }
+    }
 }
 // void drawHexa(uint64_t reg)
 // {

@@ -27,11 +27,11 @@ void check(){
     }
 }
 
-void drawImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height)
+void drawImage(unsigned int ox, unsigned int oy, const unsigned short* hexaMap, unsigned int width, unsigned int height)
 {
-    printImage(ox,oy,pixelMap,width,height);
+    printImage(ox,oy,hexaMap,width,height);
 }
-void drawImage2(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height) {
+void drawPixelImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height) {
     for (int i = 0; i < height; ++i) {
         for (int j = 0; j < width; ++j) {
             drawAPixelWithColour(ox + j, oy + i, pixelMap[i * width + j]);
@@ -60,6 +60,19 @@ void drawFont(int x, int y,const char* (*getFont)(int,int), int font,Colour fCol
     }
 }
 
+void drawImageFromHexaMap(unsigned  int ox, unsigned int oy, const unsigned short* hexaMap, unsigned int width, unsigned int height){
+    Colour b;
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            unsigned short hexValue = hexaMap[i*width + j];
+            b.red = (uint8_t) ((hexValue >> 16) & 0xFF);  // Extract the RR byte
+            b.green = (uint8_t) ((hexValue >> 8) & 0xFF);   // Extract the GG byte
+            b.blue = (uint8_t) ((hexValue) & 0xFF);
+            drawAPixelWithColour(ox+j,oy+i,b);
+        }
+    }
+}
+
 void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour){
 
     for (int i = 0; i < NUMHEIGHT; i++) {
@@ -77,7 +90,7 @@ void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour 
     }
 }
 // no funciona
-void renderBitmap(Colour ** start, const unsigned short* bitMap, int width, int height) {
+void renderBitmap(Colour ** start, const unsigned short* bitMap, unsigned int width, unsigned int height) {
     for (int i = 0; i < height; ++i) {
         for (int j = 0; j < width; ++j) {
             unsigned short hexValue = bitMap[i*width + j];

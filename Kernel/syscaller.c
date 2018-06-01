@@ -72,6 +72,6 @@ uint64_t changeFontColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx
   return 0;
 }
 uint64_t printImage(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
-    drawImage((unsigned int) rdi, (unsigned int) rsi, (Colour *) rdx, (unsigned int) rcx, (unsigned int) r8);
+    drawImage((unsigned int) rdi, (unsigned int) rsi, (const unsigned short *)rdx, (unsigned int) rcx, (unsigned int) r8);
     return 0;
 }
