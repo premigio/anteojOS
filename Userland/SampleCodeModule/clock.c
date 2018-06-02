@@ -18,19 +18,7 @@ void showClock()
         h = getHour();
         m = getMinute();
         s = getSecond();
-        if (oh!=h || om!=m || os!=s)
-        {
-
-            drawClock(h,m,s,fColour, bColour);
-
-            oh = h;
-            om = m;
-            os = s;
-            //c = (c - '0' +1)%10 +'0';         // esto se borra cuando pedro termine de hacer la cosas que tiene que hacer LPM! PEDRO
-        }
-
         c = read();
-
         if (c == 'q')
         {
             show = 0;
@@ -46,6 +34,15 @@ void showClock()
             bColour = userColours[c - '0'];
             drawClock(h,m,s,fColour,  bColour);
             beep();
+        }
+        if (oh!=h || om!=m || os!=s)
+        {
+            drawClock(h,m,s,fColour, bColour);
+
+            oh = h;
+            om = m;
+            os = s;
+
         }
     }
 }
