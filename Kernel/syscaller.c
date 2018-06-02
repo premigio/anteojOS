@@ -6,16 +6,16 @@
 #include <videoDriver.h>
 #include "syscaller.h"
 
-
 typedef uint64_t (*func_type)();
 
 func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed,
                                sleep, userDrawPixel, getResolutions, changeFontColour,
-                               printImage, newCharInBuffer, exit, userRequestNewWindow, putChar};
+                               printImage, newCharInBuffer, exit, userRequestNewWindow,
+                               putChar, removeChar};
 
 uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){//pa dsps si es que quiero color, guia 3
     //aca tenemos que poner las funciones de lectura/impresion char etc
-    uint64_t (*function)(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
+    uint64_t (*function)(uint64_t , uint64_t , uint64_t , uint64_t , uint64_t );
     function = fList[rax-1]; //<------- pedro soluciona esto
     return function(rdi,rsi,rdx,rcx,r8);
 }
@@ -96,4 +96,9 @@ uint64_t putChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_
 {
     drawChar((const char) rdi);
     return rdi;
+}
+uint64_t removeChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
+{
+    backSpace();
+    return 0;
 }

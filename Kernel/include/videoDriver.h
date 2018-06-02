@@ -98,5 +98,8 @@ char toHexa(uint64_t n);
 
 void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height);
 
+void resetCoordenades();
+
+void backSpace();
 
 #endif

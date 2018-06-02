@@ -27,9 +27,11 @@ int main()
     drawPixelImage(500, 500, image, 10, 10);
 
     drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);*/
-    shell();
-
+    //showClock();
+    //shell();
     //drawImage(200,200,biohazard2_XL,128,128);
 
+    //drawImage(200,200,biohazard2_XL,128,128);
+    shell();
   return 0;
 }

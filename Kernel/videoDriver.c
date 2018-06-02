@@ -220,8 +220,11 @@ void newWindow ()
 			drawAPixelWithColour(i, j, backgroundColour);
 		}
 	}
+	resetCoordenades();
 }
-
+void resetCoordenades(){
+    currentY = currentX = 0;
+}
 void paintWindow(Colour col)
 {
 	for (int j=0; j<vbe->yResolution; j++)

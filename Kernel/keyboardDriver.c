@@ -1,11 +1,15 @@
 #include <keyboardDriver.h>
 #include <videoDriver.h>
+
 #define BUFFERSIZE 1024
+#define TRUE  1;
+#define FALSE 0;
 
 char keyboardList[128] = {0,27,'1','2','3','4','5','6','7','8','9','0','-','=','\b','\t','q','w','e','r','t','y','u','i',
                           'o','p','[',']','\n',0,'a','s','d','f','g','h','j','k','l',';','\'','`',0,'\\', 'z','x','c','v','b',
                           'n','m',',','.','/',0, '*', 0, ' ', 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'-',0,0,0,
                           '+',0,0,0,0,0,0,0,0,0,0,0};     //hecho con la pagina de osdev
+
 char keyboardShiftList[128]={0,27,'!','@','#','$','%','^','&','*','(',')','_','+','\b','\t','q','w','e','r','t','y','u','i','o','p','{','}','\n',0,'a','s','d','f','g','h','j','k','l',':','\"','~',0,'|', 'z','x','c','v','b','n','m','<','>','?',0, '*', 0, ' ', 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'-',0,0,0,'+',0,0,0,0,0,0,0,0,0,0,0};
 
 int capslock = 0;
@@ -21,7 +25,6 @@ int newChar = 0;
 
 void keyboardInterpreter()
 {
-
     unsigned char key = (unsigned char) getKey();
     if (key & 0x80)                         //suelto
     {
@@ -59,7 +62,6 @@ void keyboardInterpreter()
     }
 }
 
-
 void charToBuffer(unsigned char c)
 {
     if (c != 0){
@@ -67,6 +69,7 @@ void charToBuffer(unsigned char c)
         bfw++;
         bfw = bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
         size++;
+        newChar = TRUE;
     }
 }
 
@@ -79,12 +82,10 @@ char returnNextChar()
     res = buffer[bfr++];
     bfr = bfr % BUFFERSIZE;                   // bfr = BUFFERREAD
     size--;
+    newChar = FALSE;
     return res;
 }
 
 int newToRead(){
     return newChar;
 }
-
-
-

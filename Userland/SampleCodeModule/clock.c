@@ -12,6 +12,7 @@ void showClock()
     char c = '4';
     Colour bColour = userColours[0];
     Colour fColour = userColours[1];
+    newWindow();
     while (show)
     {
         h = getHour();
