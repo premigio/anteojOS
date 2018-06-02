@@ -9,6 +9,7 @@ static void int_21();
 void irqDispatcher(uint64_t irq) {
 	switch (irq) {
 		case 0:
+			drawChar('h');
 			int_20();
 			break;
 		case 1:
@@ -25,4 +26,3 @@ void int_20() {
 void int_21() {
 	keyboardInterpreter();
 }
-

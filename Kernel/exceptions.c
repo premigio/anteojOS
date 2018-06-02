@@ -1,5 +1,6 @@
 #include "videoDriver.h"
 #include "exceptions.h"
+#include "keyboardDriver.h"
 
 #define REGS 16
 
@@ -8,6 +9,7 @@ static char* registers[REGS] = {" rax: "," rbx: "," rcx: ", " rdx: "," rbp: "," 
 
 void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
 {
+	char c;
 	if (exception == ZERO_EXCEPTION_ID)
 	{
 		zeroDivision();
@@ -17,21 +19,29 @@ void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
 		invalidOpcode();
 	}
 	printRegisters(rsp);
+	do // hago esto para que quede visible los registros, de ultima lo borro
+	{
+		keyboardInterpreter();
+		c = returnNextChar();
+	}
+	while(c != '\n' || c == 0);
 }
 
 static void zeroDivision()
 {
-	drawString("Cannot divide by 0\n");
+	drawString("\n Cannot divide by 0\n");
 }
 
 static void invalidOpcode()
 {
-	drawString("No such function\n");
+	drawString("\n No such function\n");
 }
 
 void printRegisters(uint64_t * rsp)
 {
-	for (int i = 0; i < REGS; i++)
+	drawString(registers[REGS-1]);
+	drawHexa(*(rsp-8));
+	for (int i = 0; i < REGS-1; i++)
 	{
 		if (i % 8 == 0)
 		{
