@@ -9,7 +9,7 @@ unsigned unsignedToAlpha(unsigned long number, char * buffer, unsigned base)
     do
     {
         unsigned remainder = number % base;
-        *p++ = (remainder < 10) ? remainder + '0' : remainder + 'A' - 10;
+        *p++ = (char) ((remainder < 10) ? remainder + '0' : remainder + 'A' - 10);
         digits++;
     }
     while (number /= base);

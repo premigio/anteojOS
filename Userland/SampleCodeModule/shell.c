@@ -88,7 +88,29 @@ void doBeforeExit(){
 }
 
 int parseAndInterpret(char *buffer){ // se lee desde indice 0 hasta un \n
-    showClock(DEFAULT_TIME_ZONE);
+    char commandInterpreter[MAX_BUFFER_SIZE];
+    int i = 0;
+    int argc = 0;
+    char * argv[MAX_BUFFER_SIZE];
+    char ant = 0;
+
+    while (*buffer)
+    {
+        if (*buffer != ' ' && ant == ' ')
+        {
+            i=0;
+            argc++;
+            argv[argc][i] = *buffer;
+            i++;
+        }
+        else if ( *buffer != ' ' && ant != ' ')
+        {
+            argv[argc][i] = *buffer;
+            i++;
+        }
+        buffer++;
+        ant = *buffer;
+    }
 
     newShell();
     return 1;

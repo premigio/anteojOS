@@ -8,7 +8,7 @@ char getChar();
 unsigned int getHour();
 unsigned int  getMinute();
 unsigned int  getSecond();
-void beep();
+void kernelBeep();
 void timeElapsed();
 void sleep();
 void userDrawPixel(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);

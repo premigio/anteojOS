@@ -38,13 +38,13 @@ void showClock(int timeZone)
         {
             fColour = userColours[c - '0'];
             drawClock(h,m,s,fColour,  bColour);
-            beep();
+            kernelBeep();
         }
         else if((c>= '6' && c<='9' )|| c == '0')
         {
             bColour = userColours[c - '0'];
             drawClock(h,m,s,fColour,  bColour);
-            beep();
+            kernelBeep();
         }
     }
 }

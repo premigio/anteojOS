@@ -25,7 +25,7 @@ unsigned int getSecond()
 {
     return syscall(5,0,0,0,0,0);
 }
-void beep()
+void kernelBeep()
 {
     syscall(6,0,0,0,0,0);
 }
