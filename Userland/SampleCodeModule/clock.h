@@ -7,6 +7,6 @@
 #define TIMEZONE_BSAS -3
 
 void drawClock(int h, int m, int s,Colour, Colour bColour );
-void showClock();
+void showClock(int timeZone);
 
 #endif

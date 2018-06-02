@@ -5,10 +5,12 @@
 #include "piloNumbers.h"
 #include "scLib.h"
 
-void showClock()
+#define TIME_FORMAT 24
+
+void showClock(int timeZone)
 {
     short show = 1;
-    int h, m, s, oh, om, os = -1;
+    short h, m, s, oh, om, os = -1;
     char c = '4';
     Colour bColour = userColours[0];
     Colour fColour = userColours[1];
@@ -18,6 +20,15 @@ void showClock()
         h = getHour();
         m = getMinute();
         s = getSecond();
+        h = (h+timeZone)%TIME_FORMAT;
+        if (oh!=h || om!=m || os!=s)
+        {
+            drawClock(h,m,s,fColour, bColour);
+
+            oh = h;
+            om = m;
+            os = s;
+        }
         c = read();
         if (c == 'q')
         {
@@ -34,15 +45,6 @@ void showClock()
             bColour = userColours[c - '0'];
             drawClock(h,m,s,fColour,  bColour);
             beep();
-        }
-        if (oh!=h || om!=m || os!=s)
-        {
-            drawClock(h,m,s,fColour, bColour);
-
-            oh = h;
-            om = m;
-            os = s;
-
         }
     }
 }

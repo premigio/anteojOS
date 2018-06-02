@@ -12,13 +12,15 @@
 #define MAX_BUFFER_SIZE 1000
 #define RESET_BUFFER bufferPtr = 0
 
-#define NULL_CMMD -1
-#define EXIT_CMMD  0
+#define NULL_CMMD 0
+#define EXIT_CMMD  -1
 
 #define FALSE 0
 #define TRUE  1
 
 #define OS_SHELL_LINE "anteojOS:$ "
+
+#define DEFAULT_TIME_ZONE -3
 
 void shell()
 {
@@ -87,7 +89,8 @@ void doBeforeExit(){
 }
 
 int parseAndInterpret(char *buffer){ // se lee desde indice 0 hasta un \n
-    showClock();
+    showClock(DEFAULT_TIME_ZONE);
+
     newShell();
     return 1;
 }
