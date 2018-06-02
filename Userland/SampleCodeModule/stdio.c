@@ -1,9 +1,5 @@
-#include "include/stdio.h"
+#include "stdio.h"
 
-void putchar(const char c)
-{
-    write(&c);
-}
 
 void printf(const char * fmt, ... )
 {
@@ -22,7 +18,7 @@ void printf(const char * fmt, ... )
             }
             else
             {
-                putchar(fmt[i]);
+                putChar(fmt[i]);
             }
         }
 
@@ -34,29 +30,29 @@ void printf(const char * fmt, ... )
                     intToAlpha(va_arg(arguments, int), buffer, 10);
                     for (int i1 = 0; buffer[i1] != '\n'; i1++)
                     {
-                        putchar(buffer[i1]);
+                        putChar(buffer[i1]);
                     }
                     break;
                 case 's':
                     write(va_arg(arguments, char *));
                     /*for (int i2=0; string[i2] != '\n'; i2++)
                     {
-                        putchar(string[i2]);
+                        putChar(string[i2]);
                     }*/
                     break;
                 case 'c':
-                    putchar((char)va_arg(arguments, int));
+                    putChar((char)va_arg(arguments, int));
                     break;
                 case 'g':
                    /* doubleToAlpha(va_arg(arguments, double), buffer, 10);
                     for (int i3=0; buffer[i3] != '\n'; i3++)
                     {
-                        putchar(buffer[i3]);
+                        putChar(buffer[i3]);
                     }
                     break;*/ // NO ANDA
                 default:
-                    putchar('%');
-                    putchar(fmt[i]);
+                    putChar('%');
+                    putChar(fmt[i]);
                     break;
             }
             formatBoolean=0;
@@ -84,10 +80,10 @@ char * readLine()
             {
                 line[i++] = character;
             }
-            putchar(character);
+            putChar(character);
         }
     }
-    putchar(character);
+    putChar(character);
     line[i]='\n';
     return line;
 }

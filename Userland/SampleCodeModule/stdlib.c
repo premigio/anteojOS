@@ -1,4 +1,4 @@
-#include "include/stdlib.h"
+#include "stdlib.h"
 
 unsigned unsignedToAlpha(unsigned long number, char * buffer, unsigned base)
 {
@@ -60,7 +60,7 @@ void doubleToAlpha(double value, char * buffer, unsigned base)
     }
 }
 
-int strlen(char * string)
+int strlen(const char * string)
 {
     int i=0;
     while (string[i] != '\n')
