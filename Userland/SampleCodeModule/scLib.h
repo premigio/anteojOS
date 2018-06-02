@@ -21,4 +21,5 @@ void newWindow();
 int putChar(char c);
 int removeChar();
 
+
 #endif

@@ -26,7 +26,16 @@ int main()
 
     drawPixelImage(500, 500, image, 10, 10);
 
+    //drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);
+    //while (1){
+        //putChar('a');
+    sleep(1);
     drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);
+/*    while (1){
+        1+1;
+    }*/
+    //}
+
     //showClock();
     //shell();
     //drawImage(200,200,biohazard2_XL,128,128);

@@ -29,7 +29,7 @@ void beep()
 {
     syscall(6,0,0,0,0,0);
 }
-void timeElapsed()
+void getTotalTicks()
 {
     syscall(7,0,0,0,0,0);
 }

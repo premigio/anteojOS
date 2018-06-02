@@ -19,7 +19,9 @@ void irqDispatcher(uint64_t irq) {
 }
 
 void int_20() {
+    //drawChar('s');
 	timerHandler();
+	//drawChar('h');
 }
 
 void int_21() {
