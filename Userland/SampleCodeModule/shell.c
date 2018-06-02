@@ -70,9 +70,8 @@ void turnOnOff(){
     int x, y;
     setPresentatonImageCoordinates(&x,&y,IMAGEWIDTH, IMAGEHEIGHT);
     drawImageFromHexaMap(x, y, biohazard2_XL, IMAGEWIDTH, IMAGEHEIGHT);
-    sleep(343);
-    sleep(343);
-    sleep(343);
+    sleep();
+    sleep();
     newWindow();
 }
 void newShell()

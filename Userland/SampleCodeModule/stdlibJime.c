@@ -60,7 +60,7 @@ void doubleToAlpha(double value, char * buffer, unsigned base)
     }
 }
 
-int strLEN(const char *string)
+int strlen(const char *string)
 {
     int i=0;
     while (string[i] != '\n')
@@ -75,7 +75,7 @@ int isDigit(char c)
     return c>='0' && c<='9' ? 1 : 0 ;
 }
 
-int strCMP(char *s1, char *s2)
+int strcmp(char *s1, char *s2)
 {
     while (*s1 && *s2)
     {

@@ -6,8 +6,8 @@
 unsigned intToAlpha(long number, char * buffer, unsigned base);
 unsigned unsignedToAlpha(unsigned long number, char * buffer, unsigned base);
 void doubleToAlpha(double value, char * buffer, unsigned base);
-int strLEN(const char *string);
+int strlen(const char *string);
 int isDigit(char);
-int strCMP(char *a, char *b);
+int strcmp(char *a, char *b);
 
 #endif

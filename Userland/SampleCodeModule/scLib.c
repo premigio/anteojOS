@@ -33,9 +33,9 @@ void getTotalTicks()
 {
     syscall(7,0,0,0,0,0);
 }
-void sleep(unsigned int rdi)
+void sleep()
 {
-    syscall(8,(uint64_t)rdi,0,0,0,0);
+    syscall(8,0,0,0,0,0);
 }
 void userDrawPixel(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
