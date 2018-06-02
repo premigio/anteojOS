@@ -88,8 +88,6 @@ void enter();
 /* sets the background colour */
 void setBackgroundColour(Colour);
 
-int kernelRequestUserDraw();
-
 int getXResolution();
 
 int getYResolution();

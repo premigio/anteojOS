@@ -6,7 +6,7 @@ void write(char * string)
 {
     syscall(1,(uint64_t) string, 0,0,0,0);
 }
-char read()
+char getChar()
 {
     return syscall(2,0,0,0,0,0);
 }

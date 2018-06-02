@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 void write(char * string);
-char read();
+char getChar();
 unsigned int getHour();
 unsigned int  getMinute();
 unsigned int  getSecond();
@@ -20,6 +20,5 @@ void notifyExitRequest();
 void newWindow();
 int putChar(char c);
 int removeChar();
-
 
 #endif

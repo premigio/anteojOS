@@ -41,7 +41,7 @@ void shell()
         while(c != '\n'){
 
             if (newToRead()){
-                c = read();
+                c = getChar();
 
                 if (isPrintableChar(c)){
                     buffer[bufferPtr++] = c; // bufferPtr siemrpapunta a dpnde agregar

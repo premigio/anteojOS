@@ -29,7 +29,7 @@ void showClock(int timeZone)
             om = m;
             os = s;
         }
-        c = read();
+        c = getChar();
         if (c == 'q')
         {
             show = 0;

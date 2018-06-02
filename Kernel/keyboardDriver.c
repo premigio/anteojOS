@@ -40,11 +40,6 @@ void keyboardInterpreter()
         {
             shift = 1;
         }
-        if (key == 1)
-        {
-            //llama lo que deberia llamar para cambiar el color del reloj y hacer el beep
-            //necesito crear el metodo        putchar('\a');
-        }
         char c = keyboardList[key];
         if (c>='a' && c <= 'z')
         {

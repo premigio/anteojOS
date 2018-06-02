@@ -6,6 +6,7 @@ static const short TICKSPERMILSEC = 0.018;
 static unsigned long ticks = 0;
 
 void timerHandler() {
+    drawChar('a');
     ticks++;
 }
 

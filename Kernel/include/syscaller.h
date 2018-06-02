@@ -1,7 +1,7 @@
 #ifndef SYSCALLER_H
 #define SYSCALLER_H
 
-  #define NFUNCTIONS 20 // <-------------- jojojojojojojoo
+  #define NFUNCTIONS 30 // <-------------- jojojojojojojoo
 
   uint64_t write(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
   uint64_t read(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
@@ -20,4 +20,5 @@
   uint64_t userRequestNewWindow(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
   uint64_t putChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
   uint64_t removeChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
+
 #endif
