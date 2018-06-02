@@ -89,10 +89,30 @@ void doBeforeExit(){
 }
 
 int parseAndInterpret(char *buffer){ // se lee desde indice 0 hasta un \n
-    showClock(DEFAULT_TIME_ZONE);
+  /*char commandInterpreter[MAX_COMMAND_LENGTH];
+  int i = 0;
+  int argc = 0;
+  char * argv[MAX_BUFFER_SIZE];
+  char ant = 0;
 
-    newShell();
-    return 1;
+  while (*buffer)
+  {
+    if (*buffer != ' ' && ant == ' ')
+    {
+      i=0;
+      argc++;
+      argv[argc][i] = *buffer;
+      i++;
+    }
+    else if ( *buffer != ' ' && ant != ' ')
+    {
+      argv[argc][i] = *buffer;
+      i++;
+    }
+    buffer++;
+    ant = *buffer;
+  }
+  return 1;*/
 }
 
 void setPresentatonImageCoordinates(int *x, int*y,int width, int height){
