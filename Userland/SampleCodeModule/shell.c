@@ -89,7 +89,7 @@ void doBeforeExit(){
 }
 
 int parseAndInterpret(char *buffer){ // se lee desde indice 0 hasta un \n
-  /*char commandInterpreter[MAX_COMMAND_LENGTH];
+  char commandInterpreter[MAX_COMMAND_LENGTH];
   int i = 0;
   int argc = 0;
   char * argv[MAX_BUFFER_SIZE];
@@ -112,7 +112,8 @@ int parseAndInterpret(char *buffer){ // se lee desde indice 0 hasta un \n
     buffer++;
     ant = *buffer;
   }
-  return 1;*/
+
+  return getCommand(argc, argv);
 }
 
 void setPresentatonImageCoordinates(int *x, int*y,int width, int height){

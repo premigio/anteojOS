@@ -4,7 +4,7 @@ int help (int argc, char * argv[]);
 int echo (int argc, char * argv[]);
 int time (int argc, char * argv[]);
 int clear (int argc, char * argv[]);
-int beep (int argc, char * argv[]);
+int beepSound (int argc, char * argv[]);
 int exit (int argc, char * argv[]);
 int newFontColour (int argc, char * argv[]);
 
@@ -13,7 +13,7 @@ command commands[]={
   {"echo", "This command shows the content given", echo},
   {"time", "This command displays a clock", time},
   {"clear", "This command clears the screen", clear},
-  {"beep", "This command makes a beeping sound", beep},
+  {"beep", "This command makes a beeping sound", beepSound},
   {"exit", "This command exits the terminal", exit}
   {"newFontColour", "This commands sets a new font colour", newFontColour}
 };
@@ -32,6 +32,7 @@ int help (int argc, char * argv[])
       printf("%s\n", commands[i].description);
     }
   }
+  return argc;
 }
 
 int echo (int argc, char * argv[])
@@ -41,7 +42,7 @@ int echo (int argc, char * argv[])
     printf("%s ", argv[i]);
   }
   putchar('\n');
-  return 1;
+  return argc;
 }
 
 int time (int argc, char * argv[])
@@ -52,7 +53,7 @@ int time (int argc, char * argv[])
     return 0;
   }
   showClock();
-  return 1;
+  return argc;
 }
 
 int clear (int argc, char * argv[])
@@ -63,10 +64,10 @@ int clear (int argc, char * argv[])
     return 0;
   }
   newShell();
-  return 1;
+  return argc;
 }
 
-int beep (int argc, char * argv[])
+int beepSound (int argc, char * argv[])
 {
   if (argc > 1)
   {
@@ -74,7 +75,7 @@ int beep (int argc, char * argv[])
     return 0;
   }
   beep();
-  return 1;
+  return argc;
 }
 
 int exit (int argc, char * argv[])
@@ -95,15 +96,32 @@ int newFontColour(int argc, char * argv[])
     return 0;
   }
   // lo hace pilo
+  return argc;
 }
 
 int checkCommand(char * name)
 {
   for (int i=0; i<NUM_COMMANDS; i++)
   {
-    if (strcmp(name, commands[i]))
+    if (strcmp(name, commands[i].name) == 0)
     {
       return 1;
+    }
+  }
+  return 0;
+}
+
+int getCommand(char * name, int argc, char * argv[])
+{
+  if (!checkCommand(name))
+  {
+    return 0;
+  }
+  for (int i=0; i<NUM_COMMANDS && !found; i++)
+  {
+    if (strcmp(name, commands[i].name) == 0)
+    {
+        return commands[i].fn(argc, argv);
     }
   }
   return 0;
