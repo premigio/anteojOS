@@ -94,7 +94,7 @@ uint64_t userRequestNewWindow(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t
 }
 uint64_t putChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
-    drawChar((const char) rdi);
+    drawChar((char) rdi);
     return rdi;
 }
 uint64_t removeChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)

@@ -21,7 +21,6 @@ int bfw = 0; // posicion de escritura, para los putchar
 int bfr = 0; // posicion de lectura, para los getchar
 
 int size = 0;
-int newChar = 0;
 
 void keyboardInterpreter()
 {
@@ -69,7 +68,6 @@ void charToBuffer(unsigned char c)
         bfw++;
         bfw = bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
         size++;
-        newChar = TRUE;
     }
 }
 
@@ -82,10 +80,12 @@ char returnNextChar()
     res = buffer[bfr++];
     bfr = bfr % BUFFERSIZE;                   // bfr = BUFFERREAD
     size--;
-    newChar = FALSE;
     return res;
 }
 
 int newToRead(){
-    return newChar;
+    if (size == 0 || bfr == bfw){
+        return 0;
+    }
+    return 1;
 }

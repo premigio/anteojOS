@@ -63,10 +63,10 @@ void drawAPixel(unsigned int, unsigned int);
 void drawAPixelWithColour(int, int, Colour);
 
 /* draws a character with the default font colour */
-void drawChar(const char);
+void drawChar(char);
 
 /* draws a character with a specified colour */
-void drawCharWithColour(const char, Colour);
+void drawCharWithColour( char, Colour);
 
 /* draws a string with the default font colour */
 void drawString(const char *);
@@ -82,6 +82,8 @@ void paintWindow(Colour);
 
 /* paints the current window with the default background colour */
 void newWindow ();
+
+void enter();
 
 /* sets the background colour */
 void setBackgroundColour(Colour);

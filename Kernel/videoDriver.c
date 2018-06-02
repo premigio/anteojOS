@@ -3,6 +3,7 @@
 
 #define charWidth 8
 #define charHeight 16
+#define SPACE_BETWEEN_LINES 4
 
 void drawAPixelWithColour(int x, int y, Colour col);
 void drawAPixel(unsigned int x, unsigned int y);
@@ -46,7 +47,7 @@ void drawAPixel(unsigned int x, unsigned int y)
 	drawAPixelWithColour(x, y, fontColour);
 }
 
-void drawCharWithColour (const char c, Colour fColour)
+void drawCharWithColour ( char c, Colour fColour)
 {
 		refreshCoordenates();
 		if (c < 31)						// entonces no es un caracter del font.c
@@ -81,9 +82,13 @@ void drawCharWithColour (const char c, Colour fColour)
 		}
 }
 
-void drawChar(const char c)
+void drawChar( char c)
 {
-    drawCharWithColour(c, fontColour);
+    if (c == '\n'){
+        enter();
+    }else{
+        drawCharWithColour(c, fontColour);
+    }
 }
 
 void drawStringWithColour(const char * string, Colour fColour)
@@ -156,26 +161,26 @@ void backSpace()
 
 void refreshCoordenates()
 {
-	if (currentX >= vbe->xResolution)
-	{
-    enterXCoordenates[sizeEnter] = currentX-charWidth;
-    if (currentY < vbe->yResolution)
+    if (currentX >= vbe->xResolution)
     {
-      enterYCoordenates[sizeEnter++] = currentY;
+        enterXCoordenates[sizeEnter] = currentX-charWidth;
+        if (currentY < vbe->yResolution)
+        {
+            enterYCoordenates[sizeEnter++] = currentY;
+        }
+        else
+        {
+            enterYCoordenates[sizeEnter++] = currentY - charHeight;
+        }
+        currentX = 0;
+        currentY += charHeight;
     }
-    else
-    {
-      enterYCoordenates[sizeEnter++] = currentY - charHeight;
-    }
-		currentX = 0;
-		currentY += charHeight;
-	}
 
-	if (currentY >= vbe->yResolution)
-	{
-		currentY -= charHeight;
-		scroll();
-	}
+    if (currentY >= vbe->yResolution)
+    {
+        currentY -= charHeight;
+        scroll();
+    }
 }
 
 void clearCoordenate(unsigned int x, unsigned int y)
@@ -225,6 +230,7 @@ void newWindow ()
 void resetCoordenades(){
     currentY = currentX = 0;
 }
+
 void paintWindow(Colour col)
 {
 	for (int j=0; j<vbe->yResolution; j++)

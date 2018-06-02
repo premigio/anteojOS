@@ -10,6 +10,7 @@
 
 
 #define MAX_BUFFER_SIZE 1000
+#define RESET_BUFFER bufferPtr = 0
 
 #define NULL_CMMD -1
 #define EXIT_CMMD  0
@@ -23,17 +24,43 @@ void shell()
 {
 
     char buffer[MAX_BUFFER_SIZE];
+    int bufferPtr;
 
     int run = TRUE;
     int specialCmmd = NULL_CMMD;
 
     turnOnOff();
+    char c;
 
-/*    while(run) { // agregar funcionalidad para apretar flecha para arriba
-
+    while(run) { // agregar funcionalidad para apretar flecha para arriba
+        c = 0;
+        RESET_BUFFER;
         printShellLine();
+        while(c != '\n'){
 
-    }*/
+            if (newToRead()){
+                c = read();
+
+                if (isPrintableChar(c)){
+                    buffer[bufferPtr++] = c; // bufferPtr siemrpapunta a dpnde agregar
+                    putChar(c);
+                }else if (c == '\b' && bufferPtr > 0){ // no tendria sentido seguir borrando
+                    removeChar();
+                    bufferPtr--;
+                }else if(c == '\n'){
+                    if (bufferPtr > 0){ //sino solamente imprimo una linea nueva pero no mando el comando
+                        buffer[bufferPtr] = c; // para que jime sepa hasta donde leer
+                        specialCmmd = parseAndInterpret(buffer);
+                    } else{
+                        putChar(c);
+                    }
+                }
+            }
+        }
+        if (specialCmmd == EXIT_CMMD){
+            run = FALSE;
+        }
+    }
     doBeforeExit();
 }
 
@@ -59,7 +86,9 @@ void doBeforeExit(){
     notifyExitRequest();
 }
 
-int parseAndInterpet(char *buffer){ // se lee desde indice 0 hasta un \n
+int parseAndInterpret(char *buffer){ // se lee desde indice 0 hasta un \n
+    showClock();
+    newShell();
     return 1;
 }
 

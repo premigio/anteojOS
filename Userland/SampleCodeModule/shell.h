@@ -6,7 +6,7 @@ void turnOnOff();
 void setPresentatonImageCoordinates(int *x, int*y,int width, int height);
 void setNewShell();
 void doBeforeExit();
-int  parseAndInterpet(char *buffer);
+int  parseAndInterpret(char *buffer);
 int  isPrintableChar(char c);
 void printShellLine();
 void newShell();
