@@ -6,9 +6,6 @@ static const double TICKSPERMILSEC = 0.018;
 static unsigned long ticks = 0;
 
 void timerHandler() {
-    //char adentro[] = "adnetro deTIme HAndler";
-    //drawString(adentro);
-    //drawChar(ticks%10+'0');
     ticks++;
 }
 
@@ -25,11 +22,7 @@ int secondsElapsed() {
 }
 
 void kernelSleep(unsigned int sec){
-    unsigned long old = ticksElapsed(); // es tan largo que las chances de overflow son nulas
+    for (int i = 0; i <10000000; ++i) {
 
-    while (((ticksElapsed() - old) / TICKSPERSEC ) < sec) {
-        drawChar(ticksElapsed() %10+'0');
-        //drawChar(old%10+'0');
-        //rest
     }
 }

@@ -9,7 +9,7 @@
 
 int main()
 {
-    Colour c = {123,255,121};
+/*    Colour c = {123,255,121};
     Colour a = {35, 100, 255};
     Colour image[100] = {
             a,a,a,a,c,c,a,a,a,a,
@@ -22,25 +22,15 @@ int main()
             a,a,a,a,c,c,a,a,a,a,
             a,a,a,a,c,c,a,a,a,a,
             a,a,a,a,c,c,a,a,a,a
-    };
+    };*/
 
+/*
     drawPixelImage(500, 500, image, 10, 10);
 
-    //drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);
-    //while (1){
-        //putChar('a');
-    sleep(1);
-    drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);
-/*    while (1){
-        1+1;
-    }*/
-    //}
-
-    //showClock();
-    //shell();
-    //drawImage(200,200,biohazard2_XL,128,128);
+    drawImage(200,200,biohazard2_XL,128,128);
+*/
 
     //drawImage(200,200,biohazard2_XL,128,128);
-    //shell();
+    shell();
   return 0;
 }
