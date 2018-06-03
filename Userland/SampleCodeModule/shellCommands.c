@@ -10,8 +10,11 @@ int set_font_colour (int argc, argVector argv);
 int set_backgroud_colour(int argc, argVector argv);
 
 #define CERO_ARGUMENTS_ERROR "Too many arguments passed, function takes 0 arguments"
+#define SET_FONT_MSSG "Choose a colour by typing a number."
+#define SET_FONT_EX "This is a colour example."
 
-command commands[]={
+#define NUM_COMMANDS 7 //<----------
+command commands[NUM_COMMANDS]={
         {"help",  "Shows the different commands available and their description.", help},
         {"echo",  "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
         {"time",  "Prints the current system time with default Timezone. Timezone can be changed with 'timezone' command", time},
@@ -57,7 +60,6 @@ int help (int argc, argVector argv)
     }
     return 1;
 }
-
 int echo (int argc, argVector argv)
 {
     for (int i=1; i<argc; i++)
@@ -83,7 +85,6 @@ int echo (int argc, argVector argv)
     }
     return 1;
 }
-
 int time (int argc, argVector argv)
 {
     if (argc > 1)
@@ -94,7 +95,6 @@ int time (int argc, argVector argv)
     printF("Current time: %d:%d:%d", getHour(), getMinute(), getSecond());
     return 1;
 }
-
 int clear (int argc, argVector argv)
 {
     if (argc > 1)
@@ -105,7 +105,6 @@ int clear (int argc, argVector argv)
     newShell();
     return 1;
 }
-
 int beep (int argc, argVector argv)
 {
     if (argc > 1)
@@ -116,7 +115,6 @@ int beep (int argc, argVector argv)
     kernelBeep();
     return 1;
 }
-
 int exitShell (int argc, argVector argv)
 {
     if (argc > 1)
@@ -126,8 +124,6 @@ int exitShell (int argc, argVector argv)
     }
     return EXIT_CMMD;
 }
-#define SET_FONT_MSSG "Choose a colour by typing a number, or press q to exit."
-#define SET_FONT_EX "Choose your colour:"
 int set_font_colour(int argc, argVector argv)
 {
     if (argc > 1)
@@ -135,20 +131,19 @@ int set_font_colour(int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    NEW_LINE;
+    printF("%s\n", SET_FONT_MSSG);
     for (int i = 0; i < COLOURS_AMOUNT; ++i) {
         changeFontColour(userColours[i]);
-        printF("%d) %s \n", i+1, SET_FONT_EX );
+        //printF("%d) %s \n", i+1, SET_FONT_EX );
+        write("Colour reflect your personality!");
+        NEW_LINE;
     }
-    printF("%s\n", SET_FONT_MSSG);
     char c;
     int ask = 1;
     while (ask){
         if (newToRead()){
             c = getChar();
-            if (c == 'q'){// nos vamos
-                ask = 0;
-            }else if (isDigit(c)){
+            if (isDigit(c)){
                 changeFontColour(userColours[c-'0']);
                 ask = 0;
             }

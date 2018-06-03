@@ -4,8 +4,8 @@
 #include <stdint.h>
 
 #define COLOURS_AMOUNT 9
-#define WHITE 0
-#define BLACK 1
+#define DEFAULT_F_COLOUR 1
+#define DEFAULT_B_COLOUR 0
 
 typedef struct Colour					// un color es la combinacion de los colores primarios
 {

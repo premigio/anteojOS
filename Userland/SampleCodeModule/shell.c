@@ -5,18 +5,12 @@ static Colour backColour = {1,1,1};
 
 void shell()
 {
-    changeFontColour(fontColour);
-    changeBackgroundColour(backColour);
-
     char buffer[MAX_BUFFER_SIZE];
     int bufferPtr;
-
     int run = TRUE;
     int resp = NULL_CMMD;
-
-    turnOnOff();
     char c;
-
+    turnOnOff();
     while(run) { // agregar funcionalidad para apretar flecha para arriba
         c = 0;
         RESET_BUFFER;
@@ -57,6 +51,8 @@ void shell()
 void turnOnOff()
 {
     int x, y;
+    changeFontColour(fontColour);
+    changeBackgroundColour(backColour);
     setPresentatonImageCoordinates(&x,&y,IMAGEWIDTH, IMAGEHEIGHT);
     drawImageFromHexaMap(x, y, biohazard2_XL, IMAGEWIDTH, IMAGEHEIGHT);
     sleep();

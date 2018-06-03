@@ -15,8 +15,6 @@
 #define MAX_ARGS 10
 #define MAX_ARG_LENGTH (MAX_BUFFER_SIZE - (MAX_ARGS) )/MAX_ARGS  // por los espacios
 
-#define NUM_COMMANDS 5 //<----------
-
 #define STR1(z) #z
 #define STR(z) STR1(z)
 #define JOIN(a,b,c) a STR(b) c
