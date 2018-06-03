@@ -5,11 +5,11 @@
 #include "stdlibJime.h"
 #include "scLib.h"
 
+
 #define INT_MAX 2147483647
 #define INT_MAXLENGTH 10
 
-void putchar(const char);
-void printf(const char *, ...);
-int scanf(const char *, ...);
+void printF(const char *,...);
+
 
 #endif

@@ -1,9 +1,4 @@
 #include "clock.h"
-#include "videoModule.h"
-#include "colours.h"
-#include <stdint.h>
-#include "piloNumbers.h"
-#include "scLib.h"
 
 #define TIME_FORMAT 24
 

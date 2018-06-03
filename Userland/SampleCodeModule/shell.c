@@ -1,14 +1,4 @@
-#include <stdint.h>
 #include "shell.h"
-#include "videoModule.h"
-#include "colours.h"
-#include "stdio.h"
-#include "scLib.h"
-#include "clock.h"
-#include "piloNumbers.h"
-#include "biohazard2_XL.h"
-#include "shellCommands.h"
-#include "stdlibJime.h"
 
 void shell()
 {
@@ -134,7 +124,7 @@ int parseAndInterpret(const char *string)// se lee desde indice 0 hasta un \n
                 argsVector[argIndex][letterIndex++] = *c;
         }
 
-<<<<<<< HEAD
+
         argsVector[argIndex][letterIndex] = 0;
         c++;
     }
@@ -158,34 +148,7 @@ int parseAndInterpret(const char *string)// se lee desde indice 0 hasta un \n
     //write("saliendo de execute Command");
     //putChar('\n');
     return resp;
-=======
-int parseAndInterpret(char *buffer){ // se lee desde indice 0 hasta un \n
-  char commandInterpreter[MAX_COMMAND_LENGTH];
-  int i = 0;
-  int argc = 0;
-  char * argv[MAX_BUFFER_SIZE];
-  char ant = 0;
 
-  while (*buffer)
-  {
-    if (*buffer != ' ' && ant == ' ')
-    {
-      i=0;
-      argc++;
-      argv[argc][i] = *buffer;
-      i++;
-    }
-    else if ( *buffer != ' ' && ant != ' ')
-    {
-      argv[argc][i] = *buffer;
-      i++;
-    }
-    buffer++;
-    ant = *buffer;
-  }
-
-  return getCommand(argc, argv);
->>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
 }
 void setPresentatonImageCoordinates(int *x, int*y,int width, int height)
 {
@@ -195,9 +158,7 @@ void setPresentatonImageCoordinates(int *x, int*y,int width, int height)
     *y = yRes/2 - height/2;
 }
 
-<<<<<<< HEAD
-=======
 int isPrintableChar(char c){
     return c >= 32 && c<=126;
 }
->>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
+

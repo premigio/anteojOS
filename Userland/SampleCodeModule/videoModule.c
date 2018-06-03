@@ -1,8 +1,4 @@
 #include "videoModule.h"
-#include "clock.h"
-#include <stdint.h>
-#include "piloNumbers.h"
-#include "scLib.h"
 
 unsigned int currentX = 0;
 unsigned int currentY = 0;
