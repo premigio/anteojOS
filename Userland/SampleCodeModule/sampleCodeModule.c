@@ -10,7 +10,7 @@
 
 int main()
 {
-    Colour j = {123,255,121};
+/*    Colour j = {123,255,121};
     Colour a = {35, 100, 255};
     Colour image[100] = {
             a,a,a,a,j,j,a,a,a,a,
@@ -30,9 +30,9 @@ int main()
     //drawImage(200,200,biohazard2_XL,128,128);
 
 
-    drawImage(200,200,biohazard2_XL,128,128);
-    shell();
-    /*char * strings[] = {"Hola Mundo\n", "echo \"soy Pilo LPMM SOY CRACKK\" \n", "clock -3 \n", " \n"};
+    drawImage(200,200,biohazard2_XL,128,128);*/
+    //shell();
+    /*char * strings[] = {"Hola Mundo\n", "echo \"soy Pilo LPMM SOY CRACKK\" \n", "clock -3\n", " \n"};
 
 
     for (int i = 0; i < 4; ++i) {
@@ -54,7 +54,7 @@ int main()
             switch (state){
                 case INITIAL:
                     if (isSpace(*c)){
-                        state = SPACE;
+                        state = INITIAL;
                     }else{
                         letterIndex = 0;
                         argsVector[argIndex][letterIndex++] = *c;
@@ -107,8 +107,9 @@ int main()
         putChar('\n');
         putChar('\n');
         //write("Fin1");
-    }
-    write("Fin2");*/
-
+    }*/
+    //parseAndInterpret("echo hola\n");
+    shell();
+    write("Fin2");
     return 0;
 }

@@ -10,13 +10,10 @@
 #include "shellCommands.h"
 #include "stdlibJime.h"
 
-
-
 void shell()
 {
-
-    char string[MAX_BUFFER_SIZE];
-    int stringPtr;
+    char buffer[MAX_BUFFER_SIZE];
+    int bufferPtr;
 
     int run = TRUE;
     int resp = NULL_CMMD;
@@ -34,33 +31,31 @@ void shell()
                 c = getChar();
 
                 if (isGraph(c)){
-                    string[stringPtr++] = c; // stringPtr siemrpapunta a dpnde agregar
+                    buffer[bufferPtr++] = c; // bufferPtr siemrpapunta a dpnde agregar
                     putChar(c);
-                }else if (c == '\b' && stringPtr > 0){ // no tendria sentido seguir borrando
+                }else if (c == '\b' && bufferPtr > 0){ // no tendria sentido seguir borrando
                     removeChar();
-                    stringPtr--;
+                    bufferPtr--;
                 }else if(c == '\n'){
-                    if (stringPtr > 0){ //sino solamente imprimo una linea nueva pero no mando el comando
-                        string[stringPtr] = c; // para que jime sepa hasta donde leer
-                        resp = parseAndInterpret(string);
-                        newShell();
+                    if (bufferPtr > 0){ //sino solamente imprimo una linea nueva pero no mando el comando
+                        buffer[bufferPtr] = c; // para que jime sepa hasta donde leer
                     } else{
                         putChar(c);
                     }
                 }
             }
         }
-        if (resp == EXIT_CMMD){
+        resp = parseAndInterpret(buffer);
+        if (resp == EXIT_CMMD){ // modularizar
             run = FALSE;
         } else if(resp == NULL_CMMD){
-            putChar('\n');
+            NEW_LINE;
             write(NO_SUCH_CMMD_MSG);
-            putChar('\n');
         } else if (resp == ILLEGAL_INPUT){
-            putChar('\n');
+            NEW_LINE;
             write(ILLEGAL_INPUT_MSG);
-            putChar('\n');
         }
+        NEW_LINE;
     }
     doBeforeExit();
 }
@@ -86,12 +81,12 @@ void doBeforeExit()
     turnOnOff();
     notifyExitRequest();
 }
-int parseAndInterpret(const char *string)
-{ // se lee desde indice 0 hasta un \n
+int parseAndInterpret(const char *string)// se lee desde indice 0 hasta un \n
+{
     int state = INITIAL;
     int argIndex = 0;
     int letterIndex = 0;
-    char argsVector[MAX_ARGS][MAX_ARG_LENGTH]; // vector de punteros a string
+    argVector argsVector; // vector de punteros a string
     char * c = (char *) string;
 
     while (*c != '\n') //los strings los tenes ue pasar enteros ""
@@ -105,7 +100,7 @@ int parseAndInterpret(const char *string)
         switch (state){
             case INITIAL:
                 if (isSpace(*c)){
-                    state = SPACE;
+                    state = INITIAL;
                 }else{
                     letterIndex = 0;
                     argsVector[argIndex][letterIndex++] = *c;
@@ -142,7 +137,7 @@ int parseAndInterpret(const char *string)
         argsVector[argIndex][letterIndex] = 0;
         c++;
     }
-    write("Function name: ");
+    /*write("Function name: ");
     write(argsVector[0]);
     putChar('\n');
     write("There are: ");
@@ -153,15 +148,21 @@ int parseAndInterpret(const char *string)
     for (int k = 1; k <= argIndex; ++k) {
         write(argsVector[k]);
         write(" ; ");
-    }
-    putChar('\n');
-    putChar('\n');
-    return 0;//executeCommand();
+    }*/
+    //putChar('\n');
+    //putChar('\n');
+    //write("Entrado a execute Command");
+    //putChar('\n');
+    int resp = executeCommand(argIndex+1, argsVector);
+    //write("saliendo de execute Command");
+    //putChar('\n');
+    return resp;
 }
-
-void setPresentatonImageCoordinates(int *x, int*y,int width, int height){
+void setPresentatonImageCoordinates(int *x, int*y,int width, int height)
+{
     unsigned int xRes, yRes;
     getResolutions(&xRes,&yRes);
     *x = xRes/2 - width/2;
     *y = yRes/2 - height/2;
 }
+

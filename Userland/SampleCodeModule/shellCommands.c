@@ -3,13 +3,13 @@
 
 #define NO_SUCH_CMMD_INDEX -1
 
-int help (int argc, char * argv[]);
-int echo (int argc, char * argv[]);
-int time (int argc, char * argv[]);
-int clear (int argc, char * argv[]);
-int beep (int argc, char * argv[]);
-int exitShell (int argc, char * argv[]);
-int newFontColour (int argc, char * argv[]);
+int help (int argc, argVector argv);
+int echo (int argc, argVector argv);
+int time (int argc, argVector argv);
+int clear (int argc, argVector argv);
+int beep (int argc, argVector argv);
+int exitShell (int argc, argVector argv);
+int newFontColour (int argc, argVector argv);
 
 
 command commands[]={
@@ -22,15 +22,33 @@ command commands[]={
         {"newFontColour", "This commands sets a new font colour", newFontColour}
 };
 
-int executeCommand(int argc, char * argv[]){
-    int cmd;
-    if ((cmd=commandExists(argv[0])) == NO_SUCH_CMMD_INDEX){
-        return 0;
+int executeCommand(int argc, argVector argv)
+{
+    //write("In ExectueCOmmand recibimos:");
+    //write((char *) argv[0]);
+    int cmd = commandExists(argv[0]);
+
+    if (cmd == NO_SUCH_CMMD_INDEX){
+        //write("NO such Command");
+        return NO_SUCH_CMMD_INDEX;
     }
-    return (*commands[cmd].fn)(argc,argv);
+    //write("Command FOund");
+    return (*commands[cmd].fn)(argc,argv); //jfjhgjhgjhghjg
+}
+int commandExists(const char *name)
+{
+    for (int i=0; i<NUM_COMMANDS; i++)
+    {
+        if (strcmp((char *) name, commands[i].name))
+        {
+            return i;
+        }
+    }
+    write("no such COmmand found");
+    return NO_SUCH_CMMD_INDEX;
 }
 
-int help (int argc, char * argv[])
+int help (int argc, argVector argv)
 {
     if (argc > 1)
     {
@@ -47,17 +65,19 @@ int help (int argc, char * argv[])
     return 1;
 }
 
-int echo (int argc, char * argv[])
+int echo (int argc, argVector argv)
 {
-    for (int i=0; i<argc; i++)
+    NEW_LINE;
+    for (int i=1; i<argc; i++)
     {
         //printf("%s ", argv[i]);
+                write(argv[i]);
+        write(" ");
     }
-    putChar('\n');
     return 1;
 }
 
-int time (int argc, char * argv[])
+int time (int argc, argVector argv)
 {
     if (argc > 1)
     {
@@ -68,7 +88,7 @@ int time (int argc, char * argv[])
     return 1;
 }
 
-int clear (int argc, char * argv[])
+int clear (int argc, argVector argv)
 {
     if (argc > 1)
     {
@@ -79,7 +99,7 @@ int clear (int argc, char * argv[])
     return 1;
 }
 
-int beep (int argc, char * argv[])
+int beep (int argc, argVector argv)
 {
     if (argc > 1)
     {
@@ -90,7 +110,7 @@ int beep (int argc, char * argv[])
     return 1;
 }
 
-int exitShell (int argc, char * argv[])
+int exitShell (int argc, argVector argv)
 {
     if (argc > 1)
     {
@@ -100,7 +120,7 @@ int exitShell (int argc, char * argv[])
     return -1;
 }
 
-int newFontColour(int argc, char * argv[])
+int newFontColour(int argc, argVector argv)
 {
     if (argc > 1)
     {
@@ -111,14 +131,4 @@ int newFontColour(int argc, char * argv[])
     return 1;
 }
 
-int commandExists(char * name)
-{
-    for (int i=0; i<NUM_COMMANDS; i++)
-    {
-        if (strcmp(name, commands[i].name))
-        {
-            return i;
-        }
-    }
-    return NO_SUCH_CMMD_INDEX;
-}
+

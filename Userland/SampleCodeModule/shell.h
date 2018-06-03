@@ -4,7 +4,7 @@
 #define MAX_BUFFER_SIZE 10000
 #define MAX_ARGS 10
 #define MAX_ARG_LENGTH (MAX_BUFFER_SIZE - (MAX_ARGS) )/MAX_ARGS  // por los espacios
-#define RESET_BUFFER stringPtr = 0
+#define RESET_BUFFER bufferPtr = 0
 
 #define NULL_CMMD 0
 #define EXIT_CMMD  -1
@@ -24,6 +24,10 @@
 #define IN_STRING    4
 
 #define DEFAULT_TIME_ZONE -3
+
+#define NEW_LINE putChar('\n')
+
+typedef char argVector[MAX_ARGS][MAX_ARG_LENGTH];
 
 void shell();
 void turnOnOff();

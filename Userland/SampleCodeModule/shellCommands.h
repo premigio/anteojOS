@@ -11,8 +11,8 @@ typedef struct
 {
     char * name;
     char * description;
-    int (* fn) (int argc, char * argv[]);
+    int (* fn) (int argc, argVector argv);
 } command;
 
-int commandExists(char *);
-int executeCommand(int argc, char * argv[]);
+int commandExists(const char *);
+int executeCommand(int argc, argVector argv);
