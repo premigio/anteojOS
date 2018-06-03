@@ -110,6 +110,10 @@ int main()
     }*/
     //parseAndInterpret("echo hola\n");
     shell();
+    //int c = strlen("hola");
+    //putChar(c + '0');
+    //putChar(c);
+    //printf("%s ", "scooby doo papa Y el BOOM BOOM BOOM BOOM BOOM");
     write("Fin2");
     return 0;
 }

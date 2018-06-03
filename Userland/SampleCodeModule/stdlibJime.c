@@ -63,11 +63,8 @@ void doubleToAlpha(double value, char * buffer, unsigned base)
 int strlen(const char *string)
 {
     int i=0;
-    while (string[i] != '\n')
-    {
-        i++;
-    }
-    return i;
+    while (string[i++]) {}
+    return i-1;
 }
 
 int isDigit(char c)
@@ -97,13 +94,16 @@ int strcmp(char *s1, char *s2)
     return 1;
 }
 
-int isSpace(char c) {
+int isSpace(char c)
+{
     return c == ' '||(c >= 9 && c <= 13 );
 }
 
-int isGraph(char c){
+int isGraph(char c)
+{
     return c >= 32 && c<=126;
 }
-int isQuote(char c){
+int isQuote(char c)
+{
     return c == '"' || c == '\'';
 }

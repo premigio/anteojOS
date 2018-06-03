@@ -13,13 +13,13 @@ int newFontColour (int argc, argVector argv);
 
 
 command commands[]={
-        {"help", "This command shows the different commands available and their description", help},
-        {"echo", "This command shows the content given", echo},
-        {"time", "This command displays a clock", time},
-        {"clear", "This command clears the screen", clear},
-        {"beep", "This command makes a beeping sound", beep},
-        {"exitShell", "This command exits the terminal", exitShell},
-        {"newFontColour", "This commands sets a new font colour", newFontColour}
+        {"help", "Shows the different commands available and their description.", help},
+        {"echo", "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
+        {"time", "Prints the current system time with default Timezone: . Timezone can be changed with 'timezone' command", time},
+        {"clear", "This command clears the screen.", clear},
+        {"beep", "This command makes a beeping sound.", beep},
+        {"exitShell", "This command exits the terminal.", exitShell},
+        {"newFontColour", "This commands sets a new font colour.", newFontColour}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -48,18 +48,19 @@ int commandExists(const char *name)
     return NO_SUCH_CMMD_INDEX;
 }
 
+#define HELP_MAX_ARGUMENTS_ERROR "help: Too many arguments passed, help takes 0 arguments"
 int help (int argc, argVector argv)
 {
     if (argc > 1)
     {
-        //printf("%s\n", "Error: illegal argument");
+        printf("%s\n", HELP_MAX_ARGUMENTS_ERROR);
         return 0;
     }
     else
     {
         for (int i=0; i<NUM_COMMANDS; i++)
         {
-            //printf("%s\n", commands[i].description);
+            printf("%s: %s\n",commands[i].name ,commands[i].description);
         }
     }
     return 1;
@@ -70,9 +71,22 @@ int echo (int argc, argVector argv)
     NEW_LINE;
     for (int i=1; i<argc; i++)
     {
-        //printf("%s ", argv[i]);
-                write(argv[i]);
-        write(" ");
+        if (isQuote(argv[i][0]))
+        {
+            char prev = argv[i][1];
+            int j=2;
+            while (argv[i][j])
+            {
+                printf("%c", prev);
+                prev = argv[i][j++];
+            }
+            if(!isQuote(prev)){
+                printf("%c", prev);
+            }
+        }else
+            {
+            printf("%s\n", argv[i]);
+        }
     }
     return 1;
 }
