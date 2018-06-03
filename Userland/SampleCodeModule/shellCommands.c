@@ -1,5 +1,7 @@
 #include "shellCommands.h"
+#include "stdlibJime.h"
 
+#define NO_SUCH_CMMD_INDEX -1
 
 int help (int argc, char * argv[]);
 int echo (int argc, char * argv[]);
@@ -8,6 +10,7 @@ int clear (int argc, char * argv[]);
 int beep (int argc, char * argv[]);
 int exitShell (int argc, char * argv[]);
 int newFontColour (int argc, char * argv[]);
+
 
 command commands[]={
         {"help", "This command shows the different commands available and their description", help},
@@ -18,6 +21,14 @@ command commands[]={
         {"exitShell", "This command exits the terminal", exitShell},
         {"newFontColour", "This commands sets a new font colour", newFontColour}
 };
+
+int executeCommand(int argc, char * argv[]){
+    int cmd;
+    if ((cmd=commandExists(argv[0])) == NO_SUCH_CMMD_INDEX){
+        return 0;
+    }
+    return (*commands[cmd].fn)(argc,argv);
+}
 
 int help (int argc, char * argv[])
 {
@@ -100,14 +111,14 @@ int newFontColour(int argc, char * argv[])
     return 1;
 }
 
-int checkCommand(char * name)
+int commandExists(char * name)
 {
     for (int i=0; i<NUM_COMMANDS; i++)
     {
-        if (1)//(strcmp(name, commands[i]))
+        if (strcmp(name, commands[i].name))
         {
-            return 1;
+            return i;
         }
     }
-    return 0;
+    return NO_SUCH_CMMD_INDEX;
 }

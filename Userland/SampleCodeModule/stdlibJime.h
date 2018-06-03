@@ -9,5 +9,8 @@ void doubleToAlpha(double value, char * buffer, unsigned base);
 int strlen(const char *string);
 int isDigit(char);
 int strcmp(char *a, char *b);
+int isSpace(char c);
+int isGraph(char c);
+int isQuote(char c);
 
 #endif

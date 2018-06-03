@@ -14,4 +14,5 @@ typedef struct
     int (* fn) (int argc, char * argv[]);
 } command;
 
-int checkCommand(char *);
+int commandExists(char *);
+int executeCommand(int argc, char * argv[]);
