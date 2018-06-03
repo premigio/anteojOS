@@ -34,14 +34,14 @@ int help (int argc, char * argv[])
 {
     if (argc > 1)
     {
-        //printf("%s\n", "Error: illegal argument");
+        printf("%s\n", "Error: illegal argument");
         return 0;
     }
     else
     {
         for (int i=0; i<NUM_COMMANDS; i++)
         {
-            //printf("%s\n", commands[i].description);
+            printf("%s\n", commands[i].description);
         }
     }
     return 1;
@@ -51,7 +51,7 @@ int echo (int argc, char * argv[])
 {
     for (int i=0; i<argc; i++)
     {
-        //printf("%s ", argv[i]);
+        printf("%s ", argv[i]);
     }
     putChar('\n');
     return 1;
@@ -61,7 +61,7 @@ int time (int argc, char * argv[])
 {
     if (argc > 1)
     {
-        //printf("%s\n", "Error: illegal argument");
+        printf("%s\n", "Error: illegal argument");
         return 0;
     }
     showClock(TIMEZONE_BSAS);
@@ -72,7 +72,7 @@ int clear (int argc, char * argv[])
 {
     if (argc > 1)
     {
-        //printf("%s\n", "Error: illegal argument");
+        printf("%s\n", "Error: illegal argument");
         return 0;
     }
     newShell();
@@ -83,7 +83,7 @@ int beep (int argc, char * argv[])
 {
     if (argc > 1)
     {
-        //printf("%s\n", "Error: illegal argument");
+        printf("%s\n", "Error: illegal argument");
         return 0;
     }
     kernelBeep();
@@ -94,7 +94,7 @@ int exitShell (int argc, char * argv[])
 {
     if (argc > 1)
     {
-        //printf("%s\n", "Error: illegal argument");
+        printf("%s\n", "Error: illegal argument");
         return 0;
     }
     return -1;
@@ -104,7 +104,7 @@ int newFontColour(int argc, char * argv[])
 {
     if (argc > 1)
     {
-        //printf("%s\n", "Error: illegal argument");
+        printf("%s\n", "Error: illegal argument");
         return 0;
     }
     // lo hace pilo

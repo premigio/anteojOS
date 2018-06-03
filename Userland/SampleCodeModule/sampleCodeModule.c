@@ -10,27 +10,27 @@
 
 int main()
 {
-    Colour j = {123,255,121};
-    Colour a = {35, 100, 255};
-    Colour image[100] = {
-            a,a,a,a,j,j,a,a,a,a,
-            a,j,j,a,j,j,a,j,j,a,
-            a,a,a,a,j,j,a,a,a,a,
-            a,a,a,a,j,j,a,a,a,a,
-            a,a,a,a,j,j,a,a,a,a,
-            j,j,j,j,j,j,j,j,j,j,
-            a,a,a,a,j,j,a,a,a,a,
-            a,a,a,a,j,j,a,a,a,a,
-            a,a,a,a,j,j,a,a,a,a,
-            a,a,a,a,j,j,a,a,a,a
-    };
-
-    drawPixelImage(500, 500, image, 10, 10);
-
-    //drawImage(200,200,biohazard2_XL,128,128);
-
-
-    drawImage(200,200,biohazard2_XL,128,128);
+    // Colour j = {123,255,121};
+    // Colour a = {35, 100, 255};
+    // Colour image[100] = {
+    //         a,a,a,a,j,j,a,a,a,a,
+    //         a,j,j,a,j,j,a,j,j,a,
+    //         a,a,a,a,j,j,a,a,a,a,
+    //         a,a,a,a,j,j,a,a,a,a,
+    //         a,a,a,a,j,j,a,a,a,a,
+    //         j,j,j,j,j,j,j,j,j,j,
+    //         a,a,a,a,j,j,a,a,a,a,
+    //         a,a,a,a,j,j,a,a,a,a,
+    //         a,a,a,a,j,j,a,a,a,a,
+    //         a,a,a,a,j,j,a,a,a,a
+    // };
+    //
+    // drawPixelImage(500, 500, image, 10, 10);
+    //
+    // //drawImage(200,200,biohazard2_XL,128,128);
+    //
+    //
+    // drawImage(200,200,biohazard2_XL,128,128);
     shell();
     /*char * strings[] = {"Hola Mundo\n", "echo \"soy Pilo LPMM SOY CRACKK\" \n", "clock -3 \n", " \n"};
 
