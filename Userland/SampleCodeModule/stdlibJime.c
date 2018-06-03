@@ -9,7 +9,11 @@ unsigned unsignedToAlpha(unsigned long number, char * buffer, unsigned base)
     do
     {
         unsigned remainder = number % base;
+<<<<<<< HEAD
         *p++ = (char) ((remainder < 10) ? remainder + '0' : remainder + 'A' - 10);
+=======
+        *p++ = (remainder < 10) ? remainder + '0' : remainder + 'A' - 10;
+>>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
         digits++;
     }
     while (number /= base);
@@ -60,11 +64,22 @@ void doubleToAlpha(double value, char * buffer, unsigned base)
     }
 }
 
+<<<<<<< HEAD
 int strlen(const char *string)
 {
     int i=0;
     while (string[i++]) {}
     return i-1;
+=======
+int strlen(const char * string)
+{
+    int i=0;
+    while (string[i] != '\n')
+    {
+        i++;
+    }
+    return i;
+>>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
 }
 
 int isDigit(char c)
@@ -72,7 +87,11 @@ int isDigit(char c)
     return c>='0' && c<='9' ? 1 : 0 ;
 }
 
+<<<<<<< HEAD
 int strcmp(char *s1, char *s2)
+=======
+int strcmp(char * s1, char * s2)
+>>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
 {
     while (*s1 && *s2)
     {
@@ -93,6 +112,7 @@ int strcmp(char *s1, char *s2)
     }
     return 1;
 }
+<<<<<<< HEAD
 
 int isSpace(char c)
 {
@@ -107,3 +127,5 @@ int isQuote(char c)
 {
     return c == '"' || c == '\'';
 }
+=======
+>>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf

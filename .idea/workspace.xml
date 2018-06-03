@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="anteojOS" targetName="anteojOS" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ec165daf-b9f0-4565-bfe6-10ca7e1f07b8" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="sampleCodeModule.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/sampleCodeModule.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shell.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/shell.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+              <folding>
+                <element signature="e#246#1656#0" />
+                <element signature="e#1657#1873#0" />
+                <element signature="e#1874#1941#0" />
+                <element signature="e#1942#1993#0" />
+                <element signature="e#1994#2059#0" />
+                <element signature="e#2060#4538#0" />
+                <element signature="e#3987#4294#0" />
+                <element signature="e#4539#4732#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shell.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/shell.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="25" column="25" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shellCommands.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/shellCommands.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
+              <folding>
+                <element signature="e#878#1244#0" />
+                <element signature="e#1245#1497#0" />
+                <element signature="e#1898#2313#0" />
+                <element signature="e#1992#2176#0" />
+                <element signature="e#2178#2349#0" />
+                <element signature="e#2351#2523#0" />
+                <element signature="e#2525#2685#0" />
+                <element signature="e#2687#2869#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stdlibJime.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/stdlibJime.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
+              <folding>
+                <element signature="e#25#573#0" />
+                <element signature="e#575#830#0" />
+                <element signature="e#832#1350#0" />
+                <element signature="e#1352#1468#0" />
+                <element signature="e#1470#1531#0" />
+                <element signature="e#1533#1829#0" />
+                <element signature="e#1831#1897#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stdioJime.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/stdioJime.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stdioJime.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/stdioJime.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>cType</find>
+      <find>write</find>
+      <find>drawString</find>
+      <find>j</find>
+      <find>executeCommand</find>
+      <find>argIndex</find>
+      <find>argsVector</find>
+      <find>char * argv[]</find>
+      <find>salie</find>
+      <find>putChar</find>
+      <find>string</find>
+      <find>#include</find>
+      <find>MAX_BUFFER_SIZE</find>
+      <find>isPrintableChar</find>
+      <find>isGraph</find>
+      <find>#include &quot;</find>
+      <find>NUM_COMMANDS</find>
+      <find>printf</find>
+      <find>==</find>
+      <find>\=\=\=\=\=\=\=\n</find>
+      <find>&gt;&gt;&gt;&gt;&gt;&gt;&gt; master</find>
+      <find>Userla</find>
+      <find>ticksToSeconds</find>
+      <find>getCommand</find>
+      <find>read</find>
+      <find>putCharIn</find>
+      <find>FuncionaPRint</find>
+      <find>putchar</find>
+      <find>i1</find>
+      <find>include/</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>getChar</replace>
+      <replace>//printf</replace>
+      <replace>int _</replace>
+      <replace>_</replace>
+      <replace>exitShell</replace>
+      <replace>last</replace>
+      <replace>prev</replace>
+      <replace>argVector argv</replace>
+      <replace>buffer</replace>
+      <replace>#include &quot;include/</replace>
+      <replace>putChar</replace>
+      <replace>i</replace>
+      <replace>j</replace>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/Userland/</dir>
+      <dir>$PROJECT_DIR$/</dir>
+      <dir>$PROJECT_DIR$/Kernel/</dir>
+      <dir>$PROJECT_DIR$/Userland/SampleCodeModule</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/stdio.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/stdio.h" />
+        <option value="$PROJECT_DIR$/Userland/syscall.h" />
+        <option value="$PROJECT_DIR$/Kernel/keyboardDriver.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/clock.h" />
+        <option value="$PROJECT_DIR$/Kernel/include/videoDriver.h" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/clock.c" />
+        <option value="$PROJECT_DIR$/Kernel/syscaller.c" />
+        <option value="$PROJECT_DIR$/Kernel/include/syscaller.h" />
+        <option value="$PROJECT_DIR$/Kernel/include/timeDriver.h" />
+        <option value="$PROJECT_DIR$/Kernel/Retro8x16.c" />
+        <option value="$PROJECT_DIR$/Kernel/kernel.c" />
+        <option value="$PROJECT_DIR$/Kernel/irqDispatcher.c" />
+        <option value="$PROJECT_DIR$/Kernel/font.c" />
+        <option value="$PROJECT_DIR$/Kernel/font2.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/scLib.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/scLib.h" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/AHORAFUNCIONA.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/cTypes.h" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/cTypes.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/stdlibJime.h" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/shellCommands.h" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/shell.h" />
+        <option value="$PROJECT_DIR$/Kernel/videoDriver.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/include/shellCommands.h" />
+        <option value="$PROJECT_DIR$/Kernel/timeDriver.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/include/stdlibJime.h" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/stdioJime.h" />
+        <option value="$PROJECT_DIR$/Userland/Makefile" />
+        <option value="$PROJECT_DIR$/Userland/Makefile.inc" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/Makefile" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/include/stdioJime.h" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/shell.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/stdlibJime.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/stdioJime.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/sampleCodeModule.c" />
+        <option value="$PROJECT_DIR$/Userland/SampleCodeModule/shellCommands.c" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="anteojOS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anteojOS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="anteojOS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anteojOS" type="462c0819:PsiDirectoryNode" />
+              <item name="Userland" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="anteojOS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anteojOS" type="462c0819:PsiDirectoryNode" />
+              <item name="Userland" type="462c0819:PsiDirectoryNode" />
+              <item name="SampleCodeModule" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="anteojOS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anteojOS" type="462c0819:PsiDirectoryNode" />
+              <item name="Userland" type="462c0819:PsiDirectoryNode" />
+              <item name="SampleCodeModule" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Userland/SampleCodeModule/asm" />
+      <recent name="$PROJECT_DIR$/Userland/SampleCodeModule/include" />
+      <recent name="$PROJECT_DIR$/Userland/SampleCodeModule" />
+      <recent name="$PROJECT_DIR$/Kernel" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.anteojOS">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all" />
+    <configuration name="anteojOS" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="anteojOS" TARGET_NAME="anteojOS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="anteojOS" RUN_TARGET_NAME="anteojOS" />
+    <list>
+      <item itemvalue="Application.Build All" />
+      <item itemvalue="Application.anteojOS" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec165daf-b9f0-4565-bfe6-10ca7e1f07b8" name="Default" comment="" />
+      <created>1527897349698</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1527897349698</updated>
+      <workItem from="1527897352096" duration="878000" />
+      <workItem from="1527898680953" duration="11425000" />
+      <workItem from="1527952218950" duration="9281000" />
+      <workItem from="1527968892103" duration="30596000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="52180000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4993742" visible="true" weight="0.18958333" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="CMake" order="10" weight="0.32916147" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32916147" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Structure" order="1" sideWeight="0.5006258" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Bootloader/Pure64/src/syscalls.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bootloader/BMFS/BareMetal File System.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="61" column="2" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/asm/syscall.asm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/include/videoDriver.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="104" column="17" lean-forward="true" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/clock.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/clock.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/piloNumbers.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/piloNumbers.c">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/biohazard2_XL.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17099">
+          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/exceptions.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/idtLoader.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/include/syscaller.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/asm/sysCallHandler.asm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/asm/interrupts.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="63" column="22" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/keyboardDriver.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/include/timeDriver.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" selection-start-line="10" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/kernel.ld">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/kernel.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="91" column="14" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Retro8x16.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="5" selection-start-line="5" selection-end-line="15" />
+          <folding>
+            <element signature="e#139#203#0" expanded="true" />
+            <element signature="e#235#295#0" expanded="true" />
+            <element signature="e#323#383#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/irqDispatcher.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/font.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/include/font.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/scLib.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/scLib.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" column="15" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/AHORAFUNCIONA.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/_loader.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/AHORAFUNCIONA.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/cTypes.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/cTypes.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/stdlibJime.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/syscaller.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/shellCommands.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/shell.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/videoDriver.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+          <folding>
+            <element signature="e#970#1207#0" />
+            <element signature="e#2275#2398#0" />
+            <element signature="e#2664#3120#0" />
+            <element signature="e#3122#3830#0" />
+            <element signature="e#3832#4342#0" />
+            <element signature="e#4344#4579#0" />
+            <element signature="e#4581#5364#0" />
+            <element signature="e#5366#5591#0" />
+            <element signature="e#5592#5647#0" />
+            <element signature="e#5649#5848#0" />
+            <element signature="e#5850#5918#0" />
+            <element signature="e#5920#5976#0" />
+            <element signature="e#5978#6031#0" />
+            <element signature="e#6033#6086#0" />
+            <element signature="e#6088#6671#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/timeDriver.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/shellCommands.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/stdlibJime.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/stdioJime.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/Makefile.inc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/Makefile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/Makefile.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/stdlibJime.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="e#25#573#0" />
+            <element signature="e#575#830#0" />
+            <element signature="e#832#1350#0" />
+            <element signature="e#1352#1468#0" />
+            <element signature="e#1470#1531#0" />
+            <element signature="e#1533#1829#0" />
+            <element signature="e#1831#1897#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/sampleCodeModule.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/shell.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding>
+            <element signature="e#246#1656#0" />
+            <element signature="e#1657#1873#0" />
+            <element signature="e#1874#1941#0" />
+            <element signature="e#1942#1993#0" />
+            <element signature="e#1994#2059#0" />
+            <element signature="e#2060#4538#0" />
+            <element signature="e#3987#4294#0" />
+            <element signature="e#4539#4732#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/shell.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/stdioJime.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/include/stdioJime.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Userland/SampleCodeModule/shellCommands.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
+          <folding>
+            <element signature="e#878#1244#0" />
+            <element signature="e#1245#1497#0" />
+            <element signature="e#1898#2313#0" />
+            <element signature="e#1992#2176#0" />
+            <element signature="e#2178#2349#0" />
+            <element signature="e#2351#2523#0" />
+            <element signature="e#2525#2685#0" />
+            <element signature="e#2687#2869#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -6,11 +6,20 @@
 #include "biohazard2_XL.h"
 #include "scLib.h"
 #include "shell.h"
+<<<<<<< HEAD
+=======
+#include "stdioJime.h"
+>>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
 #include "stdlibJime.h"
 
 int main()
 {
+<<<<<<< HEAD
 /*    Colour j = {123,255,121};
+=======
+    printf("%s", "hola");
+    /*Colour c = {123,255,121};
+>>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
     Colour a = {35, 100, 255};
     Colour image[100] = {
             a,a,a,a,j,j,a,a,a,a,
@@ -25,8 +34,23 @@ int main()
             a,a,a,a,j,j,a,a,a,a
     };
 
-    drawPixelImage(500, 500, image, 10, 10);
+    drawPixelImage(500, 500, image, 10, 10);*/
 
+<<<<<<< HEAD
+=======
+    //drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);
+    //while (1){
+        //putChar('a');
+    /*sleep(1);
+    drawImageFromHexaMap(600, 600, biohazard2_XL, 128, 128);*/
+/*    while (1){
+        1+1;
+    }*/
+    //}
+
+    //showClock();
+    //shell();
+>>>>>>> 9e8c5d02cb9548bea75372b6786ab2f7ed9debcf
     //drawImage(200,200,biohazard2_XL,128,128);
 
 
