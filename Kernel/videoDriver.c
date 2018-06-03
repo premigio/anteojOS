@@ -40,12 +40,10 @@ void drawAPixelWithColour(int x, int y, Colour col)
     video[1] = col.green;
     video[2] = col.red;
 }
-
 void drawAPixel(unsigned int x, unsigned int y)
 {
     drawAPixelWithColour(x, y, fontColour);
 }
-
 void drawCharWithColour ( char c, Colour fColour)
 {
     refreshCoordenates();
@@ -80,7 +78,6 @@ void drawCharWithColour ( char c, Colour fColour)
         currentX += charWidth;
     }
 }
-
 void drawChar( char c)
 {
     if (c == '\n'){
@@ -89,7 +86,6 @@ void drawChar( char c)
         drawCharWithColour(c, fontColour);
     }
 }
-
 void drawStringWithColour(const char * string, Colour fColour)
 {
     int i=0;
@@ -99,12 +95,10 @@ void drawStringWithColour(const char * string, Colour fColour)
         i++;
     }
 }
-
 void drawString(const char * string)
 {
     drawStringWithColour(string, fontColour);
 }
-
 void enter()
 {
     if (sizeEnter == 0)
@@ -128,7 +122,6 @@ void enter()
         scroll();
     }
 }
-
 void backSpace()
 {
     if (currentX == 0 && currentY!=0)
@@ -157,7 +150,6 @@ void backSpace()
     }
     clearCoordenate(currentX, currentY);					// "limpio" el lugar donde estan parados X e Y
 }
-
 void refreshCoordenates()
 {
     if (currentX >= vbe->xResolution)
@@ -181,7 +173,6 @@ void refreshCoordenates()
         scroll();
     }
 }
-
 void clearCoordenate(unsigned int x, unsigned int y)
 {
     for (int i = 0; i < charWidth; i++)
@@ -192,7 +183,6 @@ void clearCoordenate(unsigned int x, unsigned int y)
         }
     }
 }
-
 void scroll ()
 {
     Colour col;
@@ -214,7 +204,6 @@ void scroll ()
         clearCoordenate(i, j);
     }
 }
-
 void newWindow ()
 {
     for (int j=0; j<vbe->yResolution; j++)
@@ -226,10 +215,10 @@ void newWindow ()
     }
     resetCoordenades();
 }
-void resetCoordenades(){
+void resetCoordenades()
+{
     currentY = currentX = 0;
 }
-
 void paintWindow(Colour col)
 {
     for (int j=0; j<vbe->yResolution; j++)
@@ -240,28 +229,24 @@ void paintWindow(Colour col)
         }
     }
 }
-
 void setBackgroundColour(Colour col)
 {
     backgroundColour = col;
 }
-
 void setFontColour(Colour col)
 {
     fontColour = col;
 }
-
 int getXResolution()
 {
     return vbe->xResolution;
 }
-
 int getYResolution()
 {
     return vbe->yResolution;
 }
-
-void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height){
+void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height)
+{
     refreshCoordenates();
     Colour b;
     for (int i = 0; i < height; ++i) {

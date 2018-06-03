@@ -1,37 +1,34 @@
 #include "shellCommands.h"
 
-#define NO_SUCH_CMMD_INDEX -1
-
 int help (int argc, argVector argv);
 int echo (int argc, argVector argv);
 int time (int argc, argVector argv);
 int clear (int argc, argVector argv);
 int beep (int argc, argVector argv);
 int exitShell (int argc, argVector argv);
-int newFontColour (int argc, argVector argv);
+int set_font_colour (int argc, argVector argv);
+int set_backgroud_colour(int argc, argVector argv);
+
+#define CERO_ARGUMENTS_ERROR "Too many arguments passed, function takes 0 arguments"
 
 command commands[]={
-        {"help", "Shows the different commands available and their description.", help},
-        {"echo", "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
-        {"time", "Prints the current system time with default Timezone: . Timezone can be changed with 'timezone' command", time},
-        {"clear", "This command clears the screen.", clear},
-        {"beep", "This command makes a beeping sound.", beep},
-        {"exitShell", "This command exits the terminal.", exitShell},
-        {"newFontColour", "This commands sets a new font colour.", newFontColour}
+        {"help",  "Shows the different commands available and their description.", help},
+        {"echo",  "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
+        {"time",  "Prints the current system time with default Timezone. Timezone can be changed with 'timezone' command", time},
+        {"clear", "Clears the screen.", clear}, //agregar funcionalidad para flecha para arriba y control c
+        {"beep",  "Requests kernel to emit beep from motherboard.", beep},
+        {"exitShell", "Exits the terminal.", exitShell},
+        {"set_font_colour", "Changes the font colour.", set_font_colour}
 };
 
 int executeCommand(int argc, argVector argv)
 {
-    //write("In ExectueCOmmand recibimos:");
-    //write((char *) argv[0]);
     int cmd = commandExists(argv[0]);
-
-    if (cmd == NO_SUCH_CMMD_INDEX){
-        //write("NO such Command");
-        return NO_SUCH_CMMD_INDEX;
+    if (cmd == NULL_CMMD)
+    {
+        return NULL_CMMD;
     }
-    //write("Command FOund");
-    return (*commands[cmd].fn)(argc,argv); //jfjhgjhgjhghjg
+    return (*commands[cmd].fn)(argc,argv);
 }
 int commandExists(const char *name)
 {
@@ -42,15 +39,13 @@ int commandExists(const char *name)
             return i;
         }
     }
-    write("no such COmmand found");
-    return NO_SUCH_CMMD_INDEX;
+    return NULL_CMMD;
 }
-#define HELP_MAX_ARGUMENTS_ERROR "help: Too many arguments passed, help takes 0 arguments"
 int help (int argc, argVector argv)
 {
     if (argc > 1)
     {
-        printF("%s\n", HELP_MAX_ARGUMENTS_ERROR);
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
     else
@@ -65,7 +60,6 @@ int help (int argc, argVector argv)
 
 int echo (int argc, argVector argv)
 {
-    NEW_LINE;
     for (int i=1; i<argc; i++)
     {
         if (isQuote(argv[i][0]))
@@ -80,8 +74,10 @@ int echo (int argc, argVector argv)
             if(!isQuote(prev)){
                 printF("%c", prev);
             }
-        }else
-            {
+            NEW_LINE;
+        }
+        else
+        {
             printF("%s\n", argv[i]);
         }
     }
@@ -92,10 +88,10 @@ int time (int argc, argVector argv)
 {
     if (argc > 1)
     {
-        //printF("%s\n", "Error: illegal argument");
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    showClock(TIMEZONE_BSAS);
+    printF("Current time: %d:%d:%d", getHour(), getMinute(), getSecond());
     return 1;
 }
 
@@ -103,7 +99,7 @@ int clear (int argc, argVector argv)
 {
     if (argc > 1)
     {
-        //printF("%s\n", "Error: illegal argument");
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
     newShell();
@@ -114,7 +110,7 @@ int beep (int argc, argVector argv)
 {
     if (argc > 1)
     {
-        //printF("%s\n", "Error: illegal argument");
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
     kernelBeep();
@@ -125,20 +121,51 @@ int exitShell (int argc, argVector argv)
 {
     if (argc > 1)
     {
-        //printF("%s\n", "Error: illegal argument");
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    return -1;
+    return EXIT_CMMD;
 }
-
-int newFontColour(int argc, argVector argv)
+#define SET_FONT_MSSG "Choose a colour by typing a number, or press q to exit."
+#define SET_FONT_EX "Choose your colour:"
+int set_font_colour(int argc, argVector argv)
 {
     if (argc > 1)
     {
-        //printF("%s\n", "Error: illegal argument");
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    // lo hace pilo
+    NEW_LINE;
+    for (int i = 0; i < COLOURS_AMOUNT; ++i) {
+        changeFontColour(userColours[i]);
+        printF("%d) %s \n", i+1, SET_FONT_EX );
+    }
+    printF("%s\n", SET_FONT_MSSG);
+    char c;
+    int ask = 1;
+    while (ask){
+        if (newToRead()){
+            c = getChar();
+            if (c == 'q'){// nos vamos
+                ask = 0;
+            }else if (isDigit(c)){
+                changeFontColour(userColours[c-'0']);
+                ask = 0;
+            }
+        }
+    }
     return 1;
 }
+/*int set_backgroud_colour(int argc, argVector argv)
+{
+    if (argc > 1)
+    {
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
+        return 0;
+    }
+    for (int i = 0; i < COLOURS_AMOUNT; ++i) {
+
+    }
+    return 1;
+}*/
 

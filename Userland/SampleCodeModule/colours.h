@@ -2,6 +2,11 @@
 #define COLOURS_H_
 
 #include <stdint.h>
+
+#define COLOURS_AMOUNT 9
+#define WHITE 0
+#define BLACK 1
+
 typedef struct Colour					// un color es la combinacion de los colores primarios
 {
     uint8_t red;
@@ -9,7 +14,7 @@ typedef struct Colour					// un color es la combinacion de los colores primarios
     uint8_t blue;
 } Colour;
 
-static const Colour userColours[10] = {
+static const Colour userColours[COLOURS_AMOUNT] = {
         {1,1,1},
         {255,255,255},
         {120,50,70},
@@ -19,7 +24,6 @@ static const Colour userColours[10] = {
         {25,103,130},
         {60,255,161},
         {11,133,3},
-        {30,176,130},
 };
 
 #endif

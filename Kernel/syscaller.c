@@ -11,7 +11,7 @@ typedef uint64_t (*func_type)();
 func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed,
                                sleep, userDrawPixel, getResolutions, changeFontColour,
                                printImage, newCharInBuffer, exit, userRequestNewWindow,
-                               putChar, removeChar};
+                               putChar, removeChar, changeBackgroundColour};
 
 uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){//pa dsps si es que quiero color, guia 3
     //aca tenemos que poner las funciones de lectura/impresion char etc
@@ -73,7 +73,8 @@ uint64_t changeFontColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx
     setFontColour(col);
     return 0;
 }
-uint64_t printImage(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
+uint64_t printImage(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
+{
     drawImage((unsigned int) rdi, (unsigned int) rsi, (const unsigned short *)rdx, (unsigned int) rcx, (unsigned int) r8);
     return 0;
 }
@@ -100,5 +101,11 @@ uint64_t putChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_
 uint64_t removeChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
     backSpace();
+    return 0;
+}
+uint64_t changeBackgroundColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
+{
+    Colour colour = {rdi,rsi,rdx};
+    setBackgroundColour(colour);
     return 0;
 }

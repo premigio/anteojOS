@@ -69,7 +69,7 @@ int strlen(const char *string)
 }
 int isDigit(char c)
 {
-    return c>='0' && c<='9' ? 1 : 0 ;
+    return c>='0' && c<='9';
 }
 int strcmp(char * s1, char * s2)
 {

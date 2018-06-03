@@ -6,8 +6,6 @@ unsigned int currentY = 0;
 unsigned int xRes = 0;
 unsigned int yRes = 0;
 
-Colour backgroundColour = {0, 0, 0};
-Colour fontColour = {255, 255, 255};
 
 void setClockCoordinates(unsigned int *x, unsigned int *y){
     check();

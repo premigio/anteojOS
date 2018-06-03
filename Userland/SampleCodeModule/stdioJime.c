@@ -6,8 +6,6 @@ void printF(const char *fmt, ...) {
     int length = strlen(fmt);
     int formatBoolean = 0;
     char buffer[INT_MAXLENGTH];
-
-
     for (int i = 0; i < length; i++) {
         if (formatBoolean == 0) {
             if (fmt[i] == '%') {
@@ -45,7 +43,6 @@ void printF(const char *fmt, ...) {
                     }
                     break;
                 default:
-                    //putChar('%');
                     putChar(fmt[i]);
                     //putChar(buffer[j]);
                     break;

@@ -5,6 +5,7 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "clock.h"
+#include "colours.h"
 #include "shell.h"
 #include "scLib.h"
 #include "stdlibJime.h"
@@ -15,6 +16,10 @@
 #define MAX_ARG_LENGTH (MAX_BUFFER_SIZE - (MAX_ARGS) )/MAX_ARGS  // por los espacios
 
 #define NUM_COMMANDS 5 //<----------
+
+#define STR1(z) #z
+#define STR(z) STR1(z)
+#define JOIN(a,b,c) a STR(b) c
 
 typedef char argVector[MAX_ARGS][MAX_ARG_LENGTH];
 

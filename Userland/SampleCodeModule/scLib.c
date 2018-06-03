@@ -1,6 +1,6 @@
-#include <stdint.h>
-#include "colours.h"
 #include "syscall.h"
+#include "scLib.h"
+
 
 void write(char * string)
 {
@@ -10,18 +10,15 @@ char getChar()
 {
     return syscall(2,0,0,0,0,0);
 }
-
-unsigned int getHour()
+int getHour()
 {
     return syscall(3,0,0,0,0,0);
 }
-
-unsigned int getMinute()
+int getMinute()
 {
     return syscall(4,0,0,0,0,0);
 }
-
-unsigned int getSecond()
+int getSecond()
 {
     return syscall(5,0,0,0,0,0);
 }
@@ -45,9 +42,9 @@ void getResolutions(unsigned int * rdi, unsigned int * rsi)
 {
     syscall(10,(uint64_t)rdi,(uint64_t)rsi,0,0,0);
 }
-void setFontColour(uint8_t R, uint8_t G, uint8_t B)
+void setFontColour(Colour colour)
 {
-    syscall(11,(uint64_t)R, (uint64_t)G, (uint64_t)B,0,0);
+    syscall(11,colour.red,colour.green,colour.blue, 0,0);
 }
 void printImage(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
 {
@@ -65,10 +62,16 @@ void newWindow(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, un
 {
     syscall(15,0,0,0,0,0);
 }
-int putChar(char c){
+int putChar(char c)
+{
     return syscall(16,c,0,0,0,0);
 }
-int removeChar(){
+int removeChar()
+{
     return syscall(17,0,0,0,0,0);
+}
+void setBackgroundColour(Colour colour)
+{
+    syscall(18,colour.red,colour.green,colour.blue, 0,0);
 }
 

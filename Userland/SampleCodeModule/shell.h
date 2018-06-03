@@ -13,10 +13,10 @@
 
 #define RESET_BUFFER bufferPtr = 0
 
-#define NULL_CMMD 0
-#define EXIT_CMMD  -1
-#define ILLEGAL_INPUT -2
-#define BUFFER_OVERFLOW -3
+#define NULL_CMMD -1
+#define EXIT_CMMD  -2
+#define ILLEGAL_INPUT -3
+#define BUFFER_OVERFLOW -4
 
 #define FALSE 0
 #define TRUE  1
@@ -43,6 +43,9 @@ int  parseAndInterpret(const char *buffer);
 int  isGraph(char c);
 void printShellLine();
 void newShell();
+void changeFontColour(Colour col);
+void changeBackgroundColour(Colour col);
+
 
 
 #endif

@@ -1,7 +1,13 @@
 #include "shell.h"
 
+static Colour fontColour = {255,255,255};
+static Colour backColour = {1,1,1};
+
 void shell()
 {
+    changeFontColour(fontColour);
+    changeBackgroundColour(backColour);
+
     char buffer[MAX_BUFFER_SIZE];
     int bufferPtr;
 
@@ -35,17 +41,16 @@ void shell()
                 }
             }
         }
+        NEW_LINE;
         resp = parseAndInterpret(buffer);
         if (resp == EXIT_CMMD){ // modularizar
             run = FALSE;
         } else if(resp == NULL_CMMD){
-            NEW_LINE;
-            write(NO_SUCH_CMMD_MSG);
+            printF("%s\n",NO_SUCH_CMMD_MSG);
         } else if (resp == ILLEGAL_INPUT){
-            NEW_LINE;
-            write(ILLEGAL_INPUT_MSG);
+            printF("%s\n",ILLEGAL_INPUT_MSG);
         }
-        NEW_LINE;
+        //NEW_LINE;
     }
     doBeforeExit();
 }
@@ -157,8 +162,15 @@ void setPresentatonImageCoordinates(int *x, int*y,int width, int height)
     *x = xRes/2 - width/2;
     *y = yRes/2 - height/2;
 }
-
-int isPrintableChar(char c){
-    return c >= 32 && c<=126;
+void changeFontColour(Colour col)
+{
+    fontColour = col;
+    setFontColour(fontColour);
 }
+void changeBackgroundColour(Colour col)
+{
+    backColour = col;
+    setBackgroundColour(backColour);
+}
+
 
