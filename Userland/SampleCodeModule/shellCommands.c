@@ -8,12 +8,13 @@ int beep (int argc, argVector argv);
 int exitShell (int argc, argVector argv);
 int set_font_colour (int argc, argVector argv);
 int set_backgroud_colour(int argc, argVector argv);
+int set_backgroud_colour(int argc, argVector argv);
 
 #define CERO_ARGUMENTS_ERROR "Too many arguments passed, function takes 0 arguments"
 #define SET_FONT_MSSG "Choose a colour by typing a number."
 #define SET_FONT_EX "This is a colour example."
 
-#define NUM_COMMANDS 7 //<----------
+#define NUM_COMMANDS 8 //<----------
 command commands[NUM_COMMANDS]={
         {"help",  "Shows the different commands available and their description.", help},
         {"echo",  "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
@@ -21,7 +22,8 @@ command commands[NUM_COMMANDS]={
         {"clear", "Clears the screen.", clear}, //agregar funcionalidad para flecha para arriba y control c
         {"beep",  "Requests kernel to emit beep from motherboard.", beep},
         {"exitShell", "Exits the terminal.", exitShell},
-        {"set_font_colour", "Changes the font colour.", set_font_colour}
+        {"set_font_colour", "Changes the font colour.", set_font_colour},
+        {"set_background_colour", "Changes the background colour.", set_background_colour}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -151,16 +153,31 @@ int set_font_colour(int argc, argVector argv)
     }
     return 1;
 }
-/*int set_backgroud_colour(int argc, argVector argv)
+int set_backgroud_colour(int argc, argVector argv)
 {
     if (argc > 1)
     {
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
+    printF("%s\n", SET_FONT_MSSG);
     for (int i = 0; i < COLOURS_AMOUNT; ++i) {
-
+        changeFontColour(userColours[i]);
+        //printF("%d) %s \n", i+1, SET_FONT_EX );
+        write("Colour reflect your personality!");
+        NEW_LINE;
+    }
+    char c;
+    int ask = 1;
+    while (ask){
+        if (newToRead()){
+            c = getChar();
+            if (isDigit(c)){
+                changeBackgroundColour(userColours[c-'0']);
+                ask = 0;
+            }
+        }
     }
     return 1;
-}*/
+}
 
