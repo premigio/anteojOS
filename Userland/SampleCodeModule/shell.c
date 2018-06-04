@@ -3,7 +3,7 @@
 static int screenSaverStatus = TRUE;
 static unsigned int saverTime = DEFAULT_SAVER_TIME;
 static unsigned int inactivityCounter = 0;
-int secs = getSecs;
+int secs = 0;
 void shell()
 {
     char buffer[MAX_BUFFER_SIZE];

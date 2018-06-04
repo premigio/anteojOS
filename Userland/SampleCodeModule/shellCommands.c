@@ -12,7 +12,7 @@ command commands[NUM_COMMANDS]={
         {"background_colour", "Changes the background colour.", background_colour},
         {"digital_clock","Displays a digital clock on screen", digital_clock},
         {"timezone", "Allows the user to change the current timezone. Usage: timezone [int]",timezone},
-        {"screen_saver", "Allows user to change screen savers parameters", screen_saver}
+        {"screen_saver", "Allows user to change screen savers parameters. Input on/off to turn on/off, or a positive integer to change waiting time.", screen_saver}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -201,10 +201,10 @@ int screen_saver(int argc, argVector argv)
 {
     if (argc != 2)
     {
-        printF("%s\n", ARGUMENTS_AMOUNT_ERROR(1));
+        printF("%s\n", ARGUMENTS_AMOUNT_ERROR("1"));
         printF("Change waiting time in seconds by passing an integer greater than %d.\n", MIN_SAVER_TIME);
-        printF("Screen saver is currently %s.\n", (getSaverStatus? "on":"off"));
-        printF("Turn it %s by passing '%s'.\n", (!getSaverStatus? "on":"off"),  (!getSaverStatus? "on":"off"));
+        printF("Screen saver is currently %s.\n", (getSaverStatus()? "on":"off"));
+        printF("Turn it %s by passing '%s'.\n", (!getSaverStatus()? "on":"off"),  (!getSaverStatus()? "on":"off"));
         return 0;
     }
     if(strcmp(argv[1],"on"))
@@ -228,7 +228,7 @@ int screen_saver(int argc, argVector argv)
             printF("Waiting time must be an integer greater than %d.\n", MIN_SAVER_TIME);
         }
     }
-    printF("Screen saver is currently %s.\n", (getSaverStatus? "on":"off"));
+    printF("Screen saver is currently %s.\n", (getSaverStatus()? "on":"off"));
     return 1;
 }
 

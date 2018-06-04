@@ -21,7 +21,7 @@
 #define TIMEZONE_SUCCES_MSG       "Timezone has been set to:"
 #define ARGUMENTS_AMOUNT_ERROR(x) "Error: Function takes "x" argument"
 
-#define NUM_COMMANDS 10 //<----------
+#define NUM_COMMANDS 11 //<----------
 
 
 typedef char argVector[MAX_ARGS][MAX_ARG_LENGTH];
@@ -47,6 +47,7 @@ int font_colour (int argc, argVector argv);
 int background_colour(int argc, argVector argv);
 int digital_clock(int argc, argVector argv);
 int timezone(int argc, argVector argv);
+int screen_saver(int argc, argVector argv);
 
 
 #endif
