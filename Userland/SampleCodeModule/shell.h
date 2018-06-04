@@ -10,6 +10,7 @@
 #include "biohazard2_XL.h"
 #include "shellCommands.h"
 #include "stdlibJime.h"
+#include "stdioJime.h"
 
 #define RESET_BUFFER bufferPtr = 0
 
@@ -30,8 +31,6 @@
 #define SPACE        2
 #define IN_STRING    4
 
-#define DEFAULT_TIME_ZONE -3
-
 #define NEW_LINE putChar('\n')
 
 void shell();
@@ -43,8 +42,6 @@ int  parseAndInterpret(const char *buffer);
 int  isGraph(char c);
 void printShellLine();
 void newShell();
-void changeFontColour(Colour col);
-void changeBackgroundColour(Colour col);
 
 
 

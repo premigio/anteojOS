@@ -1,7 +1,15 @@
 #ifndef SYSCALLER_H
 #define SYSCALLER_H
 
-  #define NFUNCTIONS 30 // <-------------- jojojojojojojoo
+#include <stdint.h>
+#include <videoDriver.h>
+#include <keyboardDriver.h>
+#include <timeDriver.h>
+#include <beepDriver.h>
+#include <videoDriver.h>
+#include "sleep.h"
+
+  #define NFUNCTIONS 30 // <--------------
 
   uint64_t write(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
   uint64_t read(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);

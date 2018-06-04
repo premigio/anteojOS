@@ -1,14 +1,12 @@
 #include "clock.h"
 
-#define TIME_FORMAT 24
-
 void showClock(int timeZone)
 {
     short show = 1;
     short h, m, s, oh, om, os = -1;
     char c = '4';
-    Colour bColour = userColours[0];
-    Colour fColour = userColours[1];
+    Colour bColour = getCurrentFontColour();
+    Colour fColour = getCurrentBackgroundColour();
     newWindow();
     while (show)
     {

@@ -10,6 +10,7 @@
 #include "scLib.h"
 #include "stdlibJime.h"
 #include "stdioJime.h"
+#include "timezone.h"
 
 #define MAX_BUFFER_SIZE 10000
 #define MAX_ARGS 10
@@ -30,5 +31,6 @@ typedef struct
 
 int commandExists(const char *);
 int executeCommand(int argc, argVector argv);
+int changeColour(void(*f)(Colour) );
 
 #endif

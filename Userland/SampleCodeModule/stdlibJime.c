@@ -9,11 +9,7 @@ unsigned unsignedToAlpha(unsigned long number, char * buffer, unsigned base)
     do
     {
         unsigned remainder = number % base;
-
         *p++ = (char) ((remainder < 10) ? remainder + '0' : remainder + 'A' - 10);
-
-        *p++ = (remainder < 10) ? remainder + '0' : remainder + 'A' - 10;
-
         digits++;
     }
     while (number /= base);
@@ -30,8 +26,10 @@ unsigned unsignedToAlpha(unsigned long number, char * buffer, unsigned base)
         p1++;
         p2--;
     }
+    *p1 = 0;
     return digits;
 }
+
 unsigned intToAlpha(long number, char * buffer, unsigned base)
 {
     int aux = 0;
@@ -44,6 +42,7 @@ unsigned intToAlpha(long number, char * buffer, unsigned base)
     }
     return aux + unsignedToAlpha(number, buffer, base);
 }
+
 void doubleToAlpha(double value, char * buffer, unsigned base)
 {
     long castedValue = (long) value;
@@ -61,17 +60,21 @@ void doubleToAlpha(double value, char * buffer, unsigned base)
         buffer[dim++] = (remainder < 10) ? remainder + '0' : remainder + 'A' - 10;
     }
 }
-int strlen(const char *string)
+
+int strlen(const char * s)
 {
-    int i = 0;
-    while (string[i++]) {}
-    return i - 1;
+    int length = 0;
+    while (*(s++) != 0)
+        length++;
+    return length;
 }
+
 int isDigit(char c)
 {
-    return c>='0' && c<='9';
+    return c>='0' && c<='9' ? 1 : 0 ;
 }
-int strcmp(char * s1, char * s2)
+
+int strcmp(char *s1, char *s2)
 {
     while (*s1 && *s2)
     {
@@ -92,17 +95,14 @@ int strcmp(char * s1, char * s2)
     }
     return 1;
 }
-int isSpace(char c)
-{
+
+int isSpace(char c) {
     return c == ' '||(c >= 9 && c <= 13 );
 }
-int isGraph(char c)
-{
+
+int isGraph(char c){
     return c >= 32 && c<=126;
 }
-int isQuote(char c)
-{
+int isQuote(char c){
     return c == '"' || c == '\'';
 }
-
-

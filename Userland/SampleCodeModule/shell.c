@@ -1,8 +1,5 @@
 #include "shell.h"
 
-static Colour fontColour = {255,255,255};
-static Colour backColour = {1,1,1};
-
 void shell()
 {
     char buffer[MAX_BUFFER_SIZE];
@@ -40,7 +37,7 @@ void shell()
         if (resp == EXIT_CMMD){ // modularizar
             run = FALSE;
         } else if(resp == NULL_CMMD){
-            printF("%s\n",NO_SUCH_CMMD_MSG);
+            printF("%s\n", NO_SUCH_CMMD_MSG);
         } else if (resp == ILLEGAL_INPUT){
             printF("%s\n",ILLEGAL_INPUT_MSG);
         }
@@ -51,8 +48,8 @@ void shell()
 void turnOnOff()
 {
     int x, y;
-    changeFontColour(fontColour);
-    changeBackgroundColour(backColour);
+    changeFontColour(getCurrentFontColour());
+    changeBackgroundColour(getCurrentBackgroundColour());
     setPresentatonImageCoordinates(&x,&y,IMAGEWIDTH, IMAGEHEIGHT);
     drawImageFromHexaMap(x, y, biohazard2_XL, IMAGEWIDTH, IMAGEHEIGHT);
     sleep();
@@ -65,7 +62,7 @@ void newShell()
 }
 void printShellLine()
 {
-    write(OS_SHELL_LINE);
+    printF("%s",OS_SHELL_LINE);
 }
 void doBeforeExit()
 {
@@ -157,16 +154,6 @@ void setPresentatonImageCoordinates(int *x, int*y,int width, int height)
     getResolutions(&xRes,&yRes);
     *x = xRes/2 - width/2;
     *y = yRes/2 - height/2;
-}
-void changeFontColour(Colour col)
-{
-    fontColour = col;
-    setFontColour(fontColour);
-}
-void changeBackgroundColour(Colour col)
-{
-    backColour = col;
-    setBackgroundColour(backColour);
 }
 
 

@@ -2,12 +2,13 @@
 #define COLOURS_H_
 
 #include <stdint.h>
+#include "scLib.h"
 
 #define COLOURS_AMOUNT 9
 #define DEFAULT_F_COLOUR 1
 #define DEFAULT_B_COLOUR 0
 
-typedef struct Colour					// un color es la combinacion de los colores primarios
+typedef struct					// un color es la combinacion de los colores primarios
 {
     uint8_t red;
     uint8_t green;
@@ -25,5 +26,10 @@ static const Colour userColours[COLOURS_AMOUNT] = {
         {60,255,161},
         {11,133,3},
 };
+
+void changeFontColour(Colour col);
+void changeBackgroundColour(Colour col);
+Colour getCurrentFontColour();
+Colour getCurrentBackgroundColour();
 
 #endif

@@ -6,13 +6,13 @@ int time (int argc, argVector argv);
 int clear (int argc, argVector argv);
 int beep (int argc, argVector argv);
 int exitShell (int argc, argVector argv);
-int set_font_colour (int argc, argVector argv);
-int set_backgroud_colour(int argc, argVector argv);
-int set_backgroud_colour(int argc, argVector argv);
+int font_colour (int argc, argVector argv);
+int background_colour(int argc, argVector argv);
+
 
 #define CERO_ARGUMENTS_ERROR "Too many arguments passed, function takes 0 arguments"
-#define SET_FONT_MSSG "Choose a colour by typing a number."
-#define SET_FONT_EX "This is a colour example."
+#define SET_FONT_MSSG "Choose a colour by typing a number, or press 'q' exit."
+#define SET_FONT_EX "Colour reflect your personality!"
 
 #define NUM_COMMANDS 8 //<----------
 command commands[NUM_COMMANDS]={
@@ -21,9 +21,9 @@ command commands[NUM_COMMANDS]={
         {"time",  "Prints the current system time with default Timezone. Timezone can be changed with 'timezone' command", time},
         {"clear", "Clears the screen.", clear}, //agregar funcionalidad para flecha para arriba y control c
         {"beep",  "Requests kernel to emit beep from motherboard.", beep},
-        {"exitShell", "Exits the terminal.", exitShell},
-        {"set_font_colour", "Changes the font colour.", set_font_colour},
-        {"set_background_colour", "Changes the background colour.", set_background_colour}
+        {"exit", "Exits the terminal.", exitShell},
+        {"font_colour", "Changes the font colour.", font_colour},
+        {"background_colour", "Changes the background colour.", background_colour}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -94,7 +94,7 @@ int time (int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    printF("Current time: %d:%d:%d", getHour(), getMinute(), getSecond());
+    printF("Current time: %d:%d:%d\n", getHour()-getTimeZone(), getMinute(), getSecond());
     return 1;
 }
 int clear (int argc, argVector argv)
@@ -126,58 +126,54 @@ int exitShell (int argc, argVector argv)
     }
     return EXIT_CMMD;
 }
-int set_font_colour(int argc, argVector argv)
+int font_colour(int argc, argVector argv)
 {
     if (argc > 1)
     {
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    printF("%s\n", SET_FONT_MSSG);
-    for (int i = 0; i < COLOURS_AMOUNT; ++i) {
-        changeFontColour(userColours[i]);
-        //printF("%d) %s \n", i+1, SET_FONT_EX );
-        write("Colour reflect your personality!");
-        NEW_LINE;
+    changeColour(changeFontColour);
+    return 1;
+}
+int background_colour(int argc, argVector argv)
+{
+    if (argc > 1)
+    {
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
+        return 0;
     }
-    char c;
-    int ask = 1;
-    while (ask){
-        if (newToRead()){
-            c = getChar();
-            if (isDigit(c)){
-                changeFontColour(userColours[c-'0']);
-                ask = 0;
-            }
-        }
+    int changed = changeColour(changeBackgroundColour);
+    if (changed)
+    {
+        clear(argc,argv);
     }
     return 1;
 }
-int set_backgroud_colour(int argc, argVector argv)
-{
-    if (argc > 1)
-    {
-        printF("%s\n", CERO_ARGUMENTS_ERROR);
-        return 0;
-    }
+int changeColour(void(*f)(Colour) ){
+    Colour original = getCurrentFontColour();
     printF("%s\n", SET_FONT_MSSG);
     for (int i = 0; i < COLOURS_AMOUNT; ++i) {
         changeFontColour(userColours[i]);
-        //printF("%d) %s \n", i+1, SET_FONT_EX );
-        write("Colour reflect your personality!");
+        printF("%d) %s \n", i, SET_FONT_EX );
         NEW_LINE;
     }
+    changeFontColour(original);
     char c;
-    int ask = 1;
+    int ask = TRUE;
+    int changed = FALSE;
     while (ask){
         if (newToRead()){
             c = getChar();
             if (isDigit(c)){
-                changeBackgroundColour(userColours[c-'0']);
-                ask = 0;
+                (*f)(userColours[c-'0']);
+                ask = FALSE;
+                changed = TRUE;
+            }else if(c == 'q'){
+                ask = FALSE;
             }
         }
     }
-    return 1;
+    return changed;
 }
 

@@ -5,11 +5,18 @@
 #include "stdlibJime.h"
 #include "scLib.h"
 
-
 #define INT_MAX 2147483647
 #define INT_MAXLENGTH 10
+#define MAX_BUFFER 1024
 
-void printF(const char *,...);
+void printF(const char * fmt, ... );
 
+char * readLine(char * line, unsigned int size);
+
+int scanF(char * buffer, unsigned int bufferSize, const char * fmt,...);
+
+char * toInt(char * string, int * k, int * resp);
+
+char *intToAlphaWithBase(unsigned int n, int base);
 
 #endif

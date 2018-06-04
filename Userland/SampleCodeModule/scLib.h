@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "colours.h"
+#include "syscall.h"
 
 void write(char * string);
 char getChar();

@@ -1,8 +1,5 @@
 #include <timeDriver.h>
-#include <videoDriver.h>
 
-static const short TICKSPERSEC = 18;
-static const double TICKSPERMILSEC = 0.018;
 static unsigned long ticks = 0;
 
 void timerHandler() {
@@ -19,10 +16,4 @@ int ticksElapsed() {
 
 int secondsElapsed() {
     return ticksToSeconds(ticks);
-}
-
-void kernelSleep(unsigned int sec){
-    for (int i = 0; i <100000000; ++i) {
-
-    }
 }

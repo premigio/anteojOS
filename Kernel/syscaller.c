@@ -1,10 +1,5 @@
-#include <stdint.h>
-#include <videoDriver.h>
-#include <keyboardDriver.h>
-#include <timeDriver.h>
-#include <beepDriver.h>
-#include <videoDriver.h>
 #include "syscaller.h"
+
 
 typedef uint64_t (*func_type)();
 
