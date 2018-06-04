@@ -74,7 +74,7 @@ void printF(const char * fmt, ... )
     va_end(arguments);
 }
 
-char * readLine(char * line, unsigned int size)
+char * reaDLine(char * line, unsigned int size)
 {
     int i=0;
     char character;
@@ -104,7 +104,7 @@ int scanF(char * buffer, unsigned int bufferSize, const char * fmt,...)
     va_list args;
     va_start(args, fmt);
     int i = 0;
-    char * line = readLine(buffer, bufferSize);
+    char * line = reaDLine(buffer, bufferSize);
     char * c;
     while((*fmt) != '\0')
     {

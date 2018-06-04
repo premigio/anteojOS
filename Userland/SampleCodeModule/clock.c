@@ -5,8 +5,8 @@ void showClock()
     short show = 1;
     short h, m, s, oh, om, os = -1;
     char c = '4';
-    Colour bColour = getCurrentFontColour();
-    Colour fColour = getCurrentBackgroundColour();
+    Colour bColour = getCurrentBackgroundColour();
+    Colour fColour = getCurrentFontColour();
     newWindow();
     while (show)
     {
@@ -29,20 +29,18 @@ void showClock()
         }
         else if(c>= '1' && c<='5')
         {
-            fColour = userColours[c - '0'];
-            drawClock(h,m,s,fColour,  bColour);
+            fColour = userColours[c -'0'];
+            drawClock(h,m,s,fColour, bColour);
             kernelBeep();
         }
-        else if((c>= '6' && c<='9' )|| c == '0')
+        else if((c>= '6' && c<='9' ))
         {
             bColour = userColours[c - '0'];
-            drawClock(h,m,s,fColour,  bColour);
+            drawClock(h,m,s,fColour, bColour);
             kernelBeep();
         }
     }
 }
-
-
 void drawClock(int h, int m, int s,Colour fColour, Colour bColour)
 {
     unsigned int  x, y;
@@ -72,5 +70,6 @@ void drawClock(int h, int m, int s,Colour fColour, Colour bColour)
     renderFont(font,getNumber,s%10,fColour,bColour);
     drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
+    //write("adfjksad");
 
 }

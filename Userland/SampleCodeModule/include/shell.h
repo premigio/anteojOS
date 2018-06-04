@@ -1,10 +1,9 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#include "colour.h"
 #include <stdint.h>
 #include "videoModule.h"
-#include "colour.h"
-#include "stdio.h"
 #include "scLib.h"
 #include "clock.h"
 #include "biohazard2_XL.h"
@@ -22,8 +21,8 @@
 #define FALSE 0
 #define TRUE  1
 
-#define OS_SHELL_LINE "anteojOS:$ "
-#define NO_SUCH_CMMD_MSG "No such command found, check your input."
+#define OS_SHELL_LINE     "anteojOS:$ "
+#define NO_SUCH_CMMD_MSG  "No such command found, check your input."
 #define ILLEGAL_INPUT_MSG "Your input contains illegal values, only printable characters admitted. Check your input."
 
 #define INITIAL      0

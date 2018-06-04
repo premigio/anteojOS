@@ -5,13 +5,11 @@
 #include "stdlibJime.h"
 #include "scLib.h"
 
-#define INT_MAX 2147483647
-#define INT_MAXLENGTH 10
 #define MAX_BUFFER 1024
 
 void printF(const char * fmt, ... );
 
-char * readLine(char * line, unsigned int size);
+char * reaDLine(char * line, unsigned int size);
 
 int scanF(char * buffer, unsigned int bufferSize, const char * fmt,...);
 

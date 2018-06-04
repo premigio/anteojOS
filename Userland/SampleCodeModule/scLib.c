@@ -1,6 +1,5 @@
 #include "scLib.h"
 
-
 void write(char * string)
 {
     syscall(1,(uint64_t) string, 0,0,0,0);
@@ -41,9 +40,9 @@ void getResolutions(unsigned int * rdi, unsigned int * rsi)
 {
     syscall(10,(uint64_t)rdi,(uint64_t)rsi,0,0,0);
 }
-void setFontColour(Colour colour)
+void setFontColour(uint8_t r, uint8_t g, uint8_t b)
 {
-    syscall(11,colour.red,colour.green,colour.blue, 0,0);
+    syscall(11,r,g,b, 0,0);
 }
 void printImage(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
 {
@@ -69,8 +68,8 @@ int removeChar()
 {
     return syscall(17,0,0,0,0,0);
 }
-void setBackgroundColour(Colour colour)
+void setBackgroundColour(uint8_t r, uint8_t g, uint8_t b)
 {
-    syscall(18,colour.red,colour.green,colour.blue, 0,0);
+    syscall(18,r,g,b, 0,0);
 }
 

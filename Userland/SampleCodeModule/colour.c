@@ -6,12 +6,12 @@ static Colour backColour = {1,1,1};
 void changeFontColour(Colour col)
 {
     fontColour = col;
-    setFontColour(fontColour);
+    setFontColour(fontColour.red, fontColour.green, fontColour.blue);
 }
 void changeBackgroundColour(Colour col)
 {
     backColour = col;
-    setBackgroundColour(backColour);
+    setBackgroundColour(backColour.red,backColour.green, backColour.blue );
 }
 Colour getCurrentFontColour()
 {

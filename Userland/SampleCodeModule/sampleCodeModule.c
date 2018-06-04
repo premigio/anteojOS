@@ -1,4 +1,5 @@
 /* sampleCodeModule.c */
+#include "colour.h"
 #include <stdint.h>
 #include "scLib.h"
 #include "shell.h"

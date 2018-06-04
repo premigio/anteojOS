@@ -1,25 +1,6 @@
 #include "shellCommands.h"
 
-int help (int argc, argVector argv);
-int echo (int argc, argVector argv);
-int time (int argc, argVector argv);
-int clear (int argc, argVector argv);
-int beep (int argc, argVector argv);
-int exitShell (int argc, argVector argv);
-int font_colour (int argc, argVector argv);
-int background_colour(int argc, argVector argv);
-int digital_clock(int argc, argVector argv);
-int timezone(int argc, argVector argv);
 
-
-#define CERO_ARGUMENTS_ERROR "Too many arguments passed, function takes 0 arguments"
-#define SET_FONT_MSSG "Choose a colour by typing a number, or press 'q' exit."
-#define SET_FONT_EX "Colour reflect your personality!"
-#define TIMEZONE_MSG2 "Current timezone is: "
-#define TIMEZONE_MSG2 "Input the desired timezone: "
-#define TIMEZONE_ERROR_MSG "Only numbers and '-' are allowed in timezone format. Please re-enter your timezone:"
-
-#define NUM_COMMANDS 10 //<----------
 command commands[NUM_COMMANDS]={
         {"help",  "Shows the different commands available and their description.", help},
         {"echo",  "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
@@ -194,9 +175,9 @@ int digital_clock(int argc, argVector argv)
     showClock();
     clear(argc,argv);
     return 1;
-}/*
+}
 int timezone(int argc, argVector argv){
-    if (argc > 1)
+/*    if (argc > 1)
     {
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
@@ -208,8 +189,7 @@ int timezone(int argc, argVector argv){
     {
         printF("%s\n",TIMEZONE_ERROR_MSG);
     }
-    changeTimeZone(newTimezone);
+    changeTimeZone(newTimezone);*/
     return 1;
 }
 
-*/
