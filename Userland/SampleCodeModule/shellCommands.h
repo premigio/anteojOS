@@ -5,7 +5,7 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "clock.h"
-#include "colours.h"
+#include "colour.h"
 #include "shell.h"
 #include "scLib.h"
 #include "stdlibJime.h"

@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include "videoModule.h"
-#include "colours.h"
+#include "colour.h"
 #include "stdio.h"
 #include "scLib.h"
 #include "clock.h"

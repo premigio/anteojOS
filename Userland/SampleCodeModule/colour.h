@@ -1,5 +1,5 @@
-#ifndef COLOURS_H_
-#define COLOURS_H_
+#ifndef COLOUR_H_
+#define COLOUR_H_
 
 #include <stdint.h>
 #include "scLib.h"

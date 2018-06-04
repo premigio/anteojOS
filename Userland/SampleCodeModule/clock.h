@@ -2,7 +2,7 @@
 #define CLOCK_H_
 
 #include "videoModule.h"
-#include "colours.h"
+#include "colour.h"
 #include <stdint.h>
 #include "piloNumbers.h"
 #include "scLib.h"

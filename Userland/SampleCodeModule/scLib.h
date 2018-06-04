@@ -2,7 +2,7 @@
 #define SCLIB_H
 
 #include <stdint.h>
-#include "colours.h"
+#include "colour.h"
 #include "syscall.h"
 
 void write(char * string);

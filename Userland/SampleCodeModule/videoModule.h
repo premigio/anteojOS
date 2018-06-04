@@ -1,7 +1,7 @@
 #ifndef _VIDEOMODULE_h
 #define _VIDEOMODULE_h
 
-#include "colours.h"
+#include "colour.h"
 #include "clock.h"
 #include <stdint.h>
 #include "piloNumbers.h"
