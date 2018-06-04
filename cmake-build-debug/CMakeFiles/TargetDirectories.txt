@@ -1,3 +1,3 @@
-/Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug/CMakeFiles/anteojOS.dir
+/Users/pilo/Desktop/anteojOS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/pilo/Desktop/anteojOS/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/pilo/Desktop/anteojOS/cmake-build-debug/CMakeFiles/anteojOS.dir

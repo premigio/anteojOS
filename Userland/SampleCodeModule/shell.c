@@ -1,5 +1,9 @@
 #include "shell.h"
 
+static int screenSaverStatus = TRUE;
+static unsigned int saverTime = DEFAULT_SAVER_TIME;
+static unsigned int inactivityCounter = 0;
+int secs = getSecs;
 void shell()
 {
     char buffer[MAX_BUFFER_SIZE];
@@ -13,10 +17,16 @@ void shell()
         RESET_BUFFER;
         printShellLine();
         while(c != '\n'){
-
+            refreshInactivityCounter();
+            if (inactivityCounter >= saverTime && screenSaverStatus){
+                showClock(SCREEN_SAVER_MODE);
+                inactivityCounter = 0;
+                newShell();
+                printShellLine();
+            }
             if (newToRead()){
+                inactivityCounter = 0;
                 c = getChar();
-
                 if (isGraph(c)){
                     buffer[bufferPtr++] = c; // bufferPtr siemrpapunta a dpnde agregar
                     putChar(c);
@@ -48,6 +58,7 @@ void shell()
 void turnOnOff()
 {
     int x, y;
+    kernelBeep();
     newWindow();
     changeFontColour(getCurrentFontColour());
     changeBackgroundColour(getCurrentBackgroundColour());
@@ -156,6 +167,31 @@ void setPresentatonImageCoordinates(int *x, int*y,int width, int height)
     getResolutions(&xRes,&yRes);
     *x = xRes/2 - width/2;
     *y = yRes/2 - height/2;
+}
+int getSaverStatus()
+{
+    return screenSaverStatus;
+}
+unsigned int getSaverTime()
+{
+    return saverTime;
+}
+void setSaverStatus(int flag)
+{
+    screenSaverStatus = flag;
+}
+void refreshInactivityCounter()
+{
+    int s = getSecond();
+    if(getSecond()!= secs)
+    {
+        inactivityCounter++;
+        secs = s;
+    }
+}
+void setSaverTime(int num)
+{
+    saverTime = num;
 }
 
 

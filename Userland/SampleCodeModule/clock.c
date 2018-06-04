@@ -1,6 +1,6 @@
 #include "clock.h"
 
-void showClock()
+void showClock(int mode)
 {
     short show = 1;
     short h, m, s, oh, om, os = -1;
@@ -16,22 +16,30 @@ void showClock()
         h = getTimezoneHour();
         if (oh!=h || om!=m || os!=s)
         {
+            if(mode)
+            {
+                fColour.green = (fColour.green-SCREEN_SAVER_CHANGE1)%255;
+                fColour.blue = (fColour.blue+SCREEN_SAVER_CHANGE2)%255;
+            }
+
             drawClock(h,m,s,fColour, bColour);
 
             oh = h;
             om = m;
             os = s;
         }
-        c = getChar();
-        if (c == 'q')
-        {
-            show = 0;
-        }
-        else if(c>= '0' && c<='9')
-        {
-            fColour = userColours[c -'0'];
-            drawClock(h,m,s,fColour, bColour);
-            kernelBeep();
+        if(newToRead()){
+            c = getChar();
+            if (c == 'q' || mode) // si es screen saver, mode = 1 entonces mata
+            {
+                show = 0;
+            }
+            else if(c>= '0' && c<='9')
+            {
+                fColour = userColours[c -'0'];
+                drawClock(h,m,s,fColour, bColour);
+                kernelBeep();
+            }
         }
     }
 }

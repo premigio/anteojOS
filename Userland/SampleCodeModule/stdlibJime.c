@@ -96,13 +96,16 @@ int strcmp(char *s1, char *s2)
     return 1;
 }
 
-int isSpace(char c) {
+int isSpace(char c)
+{
     return c == ' '||(c >= 9 && c <= 13 );
 }
 
-int isGraph(char c){
+int isGraph(char c)
+{
     return c >= 32 && c<=126;
 }
-int isQuote(char c){
+int isQuote(char c)
+{
     return c == '"' || c == '\'';
 }

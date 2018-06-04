@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pilo/Desktop/backup_anteojos/prueba
+CMAKE_SOURCE_DIR = /Users/pilo/Desktop/anteojOS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/pilo/Desktop/anteojOS/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/anteojOS.dir/depend.make
@@ -66,6 +66,6 @@ CMakeFiles/anteojOS.dir/clean:
 .PHONY : CMakeFiles/anteojOS.dir/clean
 
 CMakeFiles/anteojOS.dir/depend:
-	cd /Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pilo/Desktop/backup_anteojos/prueba /Users/pilo/Desktop/backup_anteojos/prueba /Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug /Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug /Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug/CMakeFiles/anteojOS.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/pilo/Desktop/anteojOS/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pilo/Desktop/anteojOS /Users/pilo/Desktop/anteojOS /Users/pilo/Desktop/anteojOS/cmake-build-debug /Users/pilo/Desktop/anteojOS/cmake-build-debug /Users/pilo/Desktop/anteojOS/cmake-build-debug/CMakeFiles/anteojOS.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/anteojOS.dir/depend
 

@@ -13,6 +13,9 @@
 
 #define RESET_BUFFER bufferPtr = 0; for(int l = 0;l<MAX_BUFFER_SIZE;l++){buffer[l]=0;}
 
+#define MIN_SAVER_TIME     10
+#define DEFAULT_SAVER_TIME 10
+
 #define NULL_CMMD -1
 #define EXIT_CMMD  -2
 #define ILLEGAL_INPUT -3
@@ -41,7 +44,11 @@ int  parseAndInterpret(const char *buffer);
 int  isGraph(char c);
 void printShellLine();
 void newShell();
-
+int getSaverStatus();
+void setSaverStatus(int);
+unsigned int getSaverTime();
+void setSaverTime(int num);
+void refreshInactivityCounter();
 
 
 #endif

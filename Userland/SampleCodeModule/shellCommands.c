@@ -11,7 +11,8 @@ command commands[NUM_COMMANDS]={
         {"font_colour", "Changes the font colour.", font_colour},
         {"background_colour", "Changes the background colour.", background_colour},
         {"digital_clock","Displays a digital clock on screen", digital_clock},
-        {"timezone", "Allows the user to change the current timezone. Usage: timezone [int]",timezone}
+        {"timezone", "Allows the user to change the current timezone. Usage: timezone [int]",timezone},
+        {"screen_saver", "Allows user to change screen savers parameters", screen_saver}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -171,11 +172,12 @@ int digital_clock(int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    showClock();
+    showClock(NORMAL_MODE);
     clear(argc,argv);
     return 1;
 }
-int timezone(int argc, argVector argv){
+int timezone(int argc, argVector argv)
+{
     if (argc != 2)
     {
         printF("%s\n", ARGUMENTS_AMOUNT_ERROR("1"));
@@ -193,6 +195,40 @@ int timezone(int argc, argVector argv){
     {
         printF("%s\n", TIMEZONE_ERROR_MSG);
     }
+    return 1;
+}
+int screen_saver(int argc, argVector argv)
+{
+    if (argc != 2)
+    {
+        printF("%s\n", ARGUMENTS_AMOUNT_ERROR(1));
+        printF("Change waiting time in seconds by passing an integer greater than %d.\n", MIN_SAVER_TIME);
+        printF("Screen saver is currently %s.\n", (getSaverStatus? "on":"off"));
+        printF("Turn it %s by passing '%s'.\n", (!getSaverStatus? "on":"off"),  (!getSaverStatus? "on":"off"));
+        return 0;
+    }
+    if(strcmp(argv[1],"on"))
+    {
+        setSaverStatus(TRUE);
+    }
+    else if(strcmp(argv[1],"off"))
+    {
+        setSaverStatus(FALSE);
+    }
+    else{
+        int flag = 0;
+        int num = 0;
+        toInt(argv[1],&num,&flag);
+        if(flag && num > MIN_SAVER_TIME)
+        {
+            setSaverTime(num);
+        }
+        else
+        {
+            printF("Waiting time must be an integer greater than %d.\n", MIN_SAVER_TIME);
+        }
+    }
+    printF("Screen saver is currently %s.\n", (getSaverStatus? "on":"off"));
     return 1;
 }
 

@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/pilo/Desktop/backup_anteojos/prueba
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/pilo/Desktop/anteojOS
 -- The C compiler identification is AppleClang 8.0.0.8000042
 -- The CXX compiler identification is AppleClang 8.0.0.8000042
 -- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
@@ -17,7 +17,7 @@
 CMake Error at CMakeLists.txt:10 (add_executable):
   Cannot find source file:
 
-    Image/packedKernel.bin
+    Kernel/clockDriver.o
 
   Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
   .hxx .in .txx
@@ -26,5 +26,4 @@ CMake Error at CMakeLists.txt:10 (add_executable):
 CMake Error: CMake can not determine linker language for target: anteojOS
 CMake Error: Cannot determine link language for target "anteojOS".
 -- Generating done
--- Build files have been written to: /Users/pilo/Desktop/backup_anteojos/prueba/cmake-build-debug
-Unable to determine product file path for target anteojOS. Running and debugging will be unavailable.
+-- Build files have been written to: /Users/pilo/Desktop/anteojOS/cmake-build-debug
