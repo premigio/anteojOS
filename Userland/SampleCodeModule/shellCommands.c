@@ -8,6 +8,7 @@ int beep (int argc, argVector argv);
 int exitShell (int argc, argVector argv);
 int font_colour (int argc, argVector argv);
 int background_colour(int argc, argVector argv);
+int digital_clock(int argc, argVector argv);
 
 
 #define CERO_ARGUMENTS_ERROR "Too many arguments passed, function takes 0 arguments"
@@ -23,7 +24,8 @@ command commands[NUM_COMMANDS]={
         {"beep",  "Requests kernel to emit beep from motherboard.", beep},
         {"exit", "Exits the terminal.", exitShell},
         {"font_colour", "Changes the font colour.", font_colour},
-        {"background_colour", "Changes the background colour.", background_colour}
+        {"background_colour", "Changes the background colour.", background_colour},
+        {digital_clock,"Displays a digital clock on screen", digital_clock}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -150,7 +152,8 @@ int background_colour(int argc, argVector argv)
     }
     return 1;
 }
-int changeColour(void(*f)(Colour) ){
+int changeColour(void(*f)(Colour) )
+{
     Colour original = getCurrentFontColour();
     printF("%s\n", SET_FONT_MSSG);
     for (int i = 0; i < COLOURS_AMOUNT; ++i) {
@@ -175,5 +178,14 @@ int changeColour(void(*f)(Colour) ){
         }
     }
     return changed;
+}
+int digital_clock(int argc, argVector argv){
+    if (argc > 1)
+    {
+    printF("%s\n", CERO_ARGUMENTS_ERROR);
+    return 0;
+    }
+    showClock();
+    return 1;
 }
 

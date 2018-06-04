@@ -1,6 +1,6 @@
 #include "clock.h"
 
-void showClock(int timeZone)
+void showClock()
 {
     short show = 1;
     short h, m, s, oh, om, os = -1;
@@ -13,7 +13,7 @@ void showClock(int timeZone)
         h = getHour();
         m = getMinute();
         s = getSecond();
-        h = (h+timeZone)%TIME_FORMAT;
+        h = (h+getTimeZone())%TIME_FORMAT;
         if (oh!=h || om!=m || os!=s)
         {
             drawClock(h,m,s,fColour, bColour);
