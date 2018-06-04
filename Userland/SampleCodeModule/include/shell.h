@@ -6,10 +6,11 @@
 #include "video.h"
 #include "scLib.h"
 #include "clock.h"
-#include "biohazard2_XL.h"
+//#include "biohazard2_XL.h"
 #include "shellCommands.h"
 #include "stdlib.h"
 #include "stdio.h"
+#include "eyeGlassesSmall.h"
 
 #define RESET_BUFFER bufferPtr = 0; for(int l = 0;l<MAX_BUFFER_SIZE;l++){buffer[l]=0;}
 

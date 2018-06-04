@@ -21,7 +21,7 @@
 #define TIMEZONE_SUCCES_MSG       "Timezone has been set to:"
 #define ARGUMENTS_AMOUNT_ERROR(x) "Error: Function takes "x" argument"
 
-#define NUM_COMMANDS 11           // cantidad de comandos disponibles
+#define NUM_COMMANDS 12           // cantidad de comandos disponibles
 
 typedef char argVector[MAX_ARGS][MAX_ARG_LENGTH];
 
@@ -77,5 +77,13 @@ int timezone(int argc, argVector argv);
 /* executes the screen saver command */
 int screen_saver(int argc, argVector argv);
 
+/* executes the exception tests */
+int exceptionTester(int argc, argVector argv);
+
+/* calls a zero Division Exception */
+extern void zeroDivisionException();
+
+/* calls an Invalid Opcode Exception*/
+extern void invalidOpcodeException();
 
 #endif

@@ -74,6 +74,20 @@ void shell()
     doBeforeExit();
 }
 
+// void turnOnOff()
+// {
+//     int x, y;
+//     kernelBeep();
+//     newWindow();
+//     changeFontColour(getCurrentFontColour());
+//     changeBackgroundColour(getCurrentBackgroundColour());
+//     setPresentatonImageCoordinates(&x,&y,IMAGEWIDTH, IMAGEHEIGHT);
+//     drawImageFromHexaMap(x, y, biohazard2_XL, IMAGEWIDTH, IMAGEHEIGHT);
+//     sleep();
+//     sleep();
+//     sleep();
+//     newWindow();
+// }
 void turnOnOff()
 {
     int x, y;
@@ -81,8 +95,8 @@ void turnOnOff()
     newWindow();
     changeFontColour(getCurrentFontColour());
     changeBackgroundColour(getCurrentBackgroundColour());
-    setPresentatonImageCoordinates(&x,&y,IMAGEWIDTH, IMAGEHEIGHT);
-    drawImageFromHexaMap(x, y, biohazard2_XL, IMAGEWIDTH, IMAGEHEIGHT);
+    setPresentatonImageCoordinates(&x,&y,GLASSESWIDTH, GLASSESWIDTH);
+    drawImageFromHexaMap(x, y, eyeGlassesSmall, GLASSESWIDTH, GLASSESHEIGHT);
     sleep();
     sleep();
     sleep();
@@ -175,27 +189,7 @@ int parseAndInterpret(const char *string) // se lee desde indice 0 hasta un \n
         argsVector[argIndex][letterIndex] = 0;
         c++;
     }
-    /*write("Function name: ");
-    write(argsVector[0]);
-    putChar('\n');
-    write("There are: ");
-    putChar((char) (argIndex+ '0'));
-    write(" arguments.");
-    putChar('\n');
-    write("They are: ");
-    for (int k = 1; k <= argIndex; ++k) {
-        write(argsVector[k]);
-        write(" ; ");
-    }*/
-    //putChar('\n');
-    //putChar('\n');
-    //write("Entrado a execute Command");
-    //putChar('\n');
-    int resp = executeCommand(argIndex+1, argsVector);
-    //write("saliendo de execute Command");
-    //putChar('\n');
-    return resp;
-
+    return executeCommand(argIndex+1, argsVector);
 }
 
 void setPresentatonImageCoordinates(int *x, int*y,int width, int height)

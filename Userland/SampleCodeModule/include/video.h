@@ -7,21 +7,34 @@
 #include "piloNumbers.h"
 #include "scLib.h"
 
+/* sets the current clock coordinates to the given ones */
 void setClockCoordinates(unsigned int *x, unsigned int *y);
 
+/* refreshes the width and height resolutions */
 void check();
 
-void drawImage(unsigned int ox, unsigned int oy, const unsigned short* hexaMap, unsigned int width, unsigned int height);
+/*
+** draws a given image (on a hexa map), from given coordinates and a specified width and height
+** using a system call
+*/
+void drawImage(unsigned int , unsigned int , const unsigned short* , unsigned int , unsigned int );
 
-void drawPixelImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height);
-//bitmap is es ya el caracter,
-void renderBitmap(Colour ** start, const unsigned short* bitMap, unsigned int width, unsigned int height);
+/* draws a given image (on a pixel map), from given coordinates and a specified width and height */
+void drawPixelImage(unsigned int , unsigned int , Colour *, unsigned int , unsigned int );
 
-void drawAPixelWithColour(int x, int y, Colour col);
+/*  */
+void renderBitmap(Colour ** , const unsigned short* , unsigned int , unsigned int );
 
-void drawFont(int, int, const char* (*getFont)(int,int), int font, Colour, Colour);
+/* draws a pixel on given coordinates with a given colour */
+void drawAPixelWithColour(int, int , Colour );
 
-void drawImageFromHexaMap(unsigned  int ox, unsigned int oy, const unsigned short* hexaMap, unsigned int width, unsigned int height);
+/* draws a given font from a given coordinate with a given font colour and background colour */
+void drawFont(int, int, const char* (*getFont)(int,int), int, Colour, Colour);
 
-void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour);
+/* draws a given image (on a hexa map), from given coordinates and a specified width and height */
+void drawImageFromHexaMap(unsigned  int , unsigned int , const unsigned short* , unsigned int , unsigned int );
+
+/*  */
+void renderFont(Colour * ,const char* (*getFont)(int,int), int ,Colour ,Colour );
+
 #endif

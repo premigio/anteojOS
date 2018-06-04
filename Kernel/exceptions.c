@@ -4,12 +4,14 @@
 
 #define REGS 16
 
-static char* registers[REGS] = {" rax: "," rbx: "," rcx: ", " rdx: "," rbp: "," rdi: "," rsi: ",
-" r8: ", " r9: ", " r10: "," r11: ", " r12: "," r13: "," r14: "," r15: "," rip: "};
+static char* registers[REGS] = {" r15: "," r14: "," r13: ", " r12: "," r11: "," r10: "," r9: ",
+" r8: ", " rsi: ", " rdi: "," rbp: ", " rdx: "," rcx: "," rbx: "," rax: "," rip: "};
+
+int flagReg =1;
+int flagExc = 1;
 
 void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
 {
-	char c;
 	if (exception == ZERO_EXCEPTION_ID)
 	{
 		zeroDivision();
@@ -18,36 +20,38 @@ void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
 	{
 		invalidOpcode();
 	}
-	printRegisters(rsp);
-	do // hago esto para que quede visible los registros, de ultima lo borro
+	if(flagReg)
 	{
-		keyboardInterpreter();
-		c = returnNextChar();
+		flagReg = 0;
+		printRegisters(rsp);
 	}
-	while(c != '\n' || c == 0);
 }
 
 static void zeroDivision()
 {
-	drawString("\n Cannot divide by 0\n");
+	if (flagExc) {
+		newWindow();
+		drawString("\n Cannot divide by 0\n");
+		flagExc = 0;
+	}
 }
 
 static void invalidOpcode()
 {
-	drawString("\n No such function\n");
+	if (flagExc)
+	{
+		newWindow();
+		drawString("\n No such function\n");
+		flagExc = 0;
+	}
 }
 
 void printRegisters(uint64_t * rsp)
 {
-	drawString(registers[REGS-1]);
-	drawHexa(*(rsp-8));
-	for (int i = 0; i < REGS-1; i++)
+	for (int i = 0; i < REGS; i++)
 	{
-		if (i % 8 == 0)
-		{
-			drawChar('\n');
-		}
-		drawString(registers[i]);
-		drawHexa(rsp[i]);
+		drawChar('\n');
+		drawString(registers[REGS-1-i]);
+		drawHexa(rsp[REGS-1-i]);
 	}
 }
