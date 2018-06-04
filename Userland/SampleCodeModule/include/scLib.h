@@ -4,23 +4,58 @@
 #include <stdint.h>
 #include "syscall.h"
 
-void write(char * string);
+/* system call to draw a string */
+void write(char * );
+
+/* system call to read the next character */
 char getChar();
+
+/* system call to get the hour */
 int getHour();
+
+/* system call to get the minutes */
 int  getMinute();
+
+/* system call to get the seconds */
 int  getSecond();
+
+/* system call to make a beep sound */
 void kernelBeep();
+
+/* system call to get the seconds elapsed */
 void timeElapsed();
+
+/* system call to suspend the system for a determined time */
 void sleep();
-void userDrawPixel(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
-void getResolutions(unsigned int * rdi, unsigned int * rsi);
-void setFontColour(uint8_t r, uint8_t g, uint8_t b);
-void printImage(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8);
-int  newToRead();
+
+/* system call to draw a pixel with a given colour */
+void userDrawPixel(uint64_t , uint64_t, uint64_t , uint64_t , uint64_t );
+
+/* system call to get the width and height screen resolutions */
+void getResolutions(unsigned int * , unsigned int * );
+
+/* system call to set a new font colour */
+void setFontColour(uint8_t , uint8_t , uint8_t );
+
+/* system call to draw an image from a specified coordinate and from a given hexa map */
+void printImage(unsigned int , unsigned int , const unsigned short *, unsigned int , unsigned int );
+
+/* system call to return if there is a new character to read from buffer */
+int newToRead();
+
+/* system call to exit and make a beep sound */
 int notifyExitRequest();
+
+/* system call to clear the screen and show a new window */
 void newWindow();
-int putChar(char c);
+
+/* system call to write a char */
+int putChar(char );
+
+/* system call to do a backSpace */
 int removeChar();
-void setBackgroundColour(uint8_t r, uint8_t g, uint8_t b);
+
+/* system call to change the background colour */
+void setBackgroundColour(uint8_t , uint8_t , uint8_t );
 
 #endif

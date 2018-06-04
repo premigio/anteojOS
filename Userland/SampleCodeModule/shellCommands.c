@@ -1,6 +1,5 @@
 #include "shellCommands.h"
 
-
 command commands[NUM_COMMANDS]={
         {"help",  "Shows the different commands available and their description.", help},
         {"echo",  "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
@@ -24,6 +23,7 @@ int executeCommand(int argc, argVector argv)
     }
     return (*commands[cmd].fn)(argc,argv);
 }
+
 int commandExists(const char *name)
 {
     for (int i=0; i<NUM_COMMANDS; i++)
@@ -35,6 +35,7 @@ int commandExists(const char *name)
     }
     return NULL_CMMD;
 }
+
 int help (int argc, argVector argv)
 {
     if (argc > 1)
@@ -51,6 +52,7 @@ int help (int argc, argVector argv)
     }
     return 1;
 }
+
 int echo (int argc, argVector argv)
 {
     for (int i=1; i<argc; i++)
@@ -64,18 +66,27 @@ int echo (int argc, argVector argv)
                 printF("%c", prev);
                 prev = argv[i][j++];
             }
-            if(!isQuote(prev)){
+            if(!isQuote(prev))
+            {
                 printF("%c", prev);
             }
             NEW_LINE;
         }
         else
         {
-            printF("%s\n", argv[i]);
+            if (i == argc - 1)
+            {
+                printF("%s\n", argv[i]);
+            }
+            else
+            {
+                printF("%s ", argv[i]);
+            }
         }
     }
     return 1;
 }
+
 int time (int argc, argVector argv)
 {
     if (argc > 1)
@@ -86,6 +97,7 @@ int time (int argc, argVector argv)
     printF("Current time: %d:%d:%d\n", getTimezoneHour(), getMinute(), getSecond());
     return 1;
 }
+
 int clear (int argc, argVector argv)
 {
     if (argc > 1)
@@ -96,6 +108,7 @@ int clear (int argc, argVector argv)
     newShell();
     return 1;
 }
+
 int beep (int argc, argVector argv)
 {
     if (argc > 1)
@@ -106,6 +119,7 @@ int beep (int argc, argVector argv)
     kernelBeep();
     return 1;
 }
+
 int exitShell (int argc, argVector argv)
 {
     if (argc > 1)
@@ -115,6 +129,7 @@ int exitShell (int argc, argVector argv)
     }
     return EXIT_CMMD;
 }
+
 int font_colour(int argc, argVector argv)
 {
     if (argc > 1)
@@ -125,6 +140,7 @@ int font_colour(int argc, argVector argv)
     changeColour(changeFontColour);
     return 1;
 }
+
 int background_colour(int argc, argVector argv)
 {
     if (argc > 1)
@@ -139,11 +155,13 @@ int background_colour(int argc, argVector argv)
     }
     return 1;
 }
+
 int changeColour(void(*f)(Colour) )
 {
     Colour original = getCurrentFontColour();
     printF("%s\n", SET_FONT_MSSG);
-    for (int i = 0; i < COLOURS_AMOUNT; ++i) {
+    for (int i = 0; i < COLOURS_AMOUNT; ++i)
+    {
         changeFontColour(userColours[i]);
         printF("%d) %s \n", i, SET_FONT_EX );
     }
@@ -151,20 +169,26 @@ int changeColour(void(*f)(Colour) )
     char c;
     int ask = TRUE;
     int changed = FALSE;
-    while (ask){
-        if (newToRead()){
+    while (ask)
+    {
+        if (newToRead())
+        {
             c = getChar();
-            if (isDigit(c)){
+            if (isDigit(c))
+            {
                 (*f)(userColours[c-'0']);
                 ask = FALSE;
                 changed = TRUE;
-            }else if(c == 'q'){
+            }
+            else if(c == 'q')
+            {
                 ask = FALSE;
             }
         }
     }
     return changed;
 }
+
 int digital_clock(int argc, argVector argv)
 {
     if (argc > 1)
@@ -176,6 +200,7 @@ int digital_clock(int argc, argVector argv)
     clear(argc,argv);
     return 1;
 }
+
 int timezone(int argc, argVector argv)
 {
     if (argc != 2)
@@ -186,7 +211,8 @@ int timezone(int argc, argVector argv)
     int flag = 0;
     int num = 0;
     toInt(argv[1],&num,&flag);
-    if(flag){
+    if(flag)
+    {
         changeTimeZone(num);
         printF("%s %d\n", TIMEZONE_SUCCES_MSG, num);
         time(0,argv);
@@ -197,6 +223,7 @@ int timezone(int argc, argVector argv)
     }
     return 1;
 }
+
 int screen_saver(int argc, argVector argv)
 {
     if (argc != 2)
@@ -215,7 +242,8 @@ int screen_saver(int argc, argVector argv)
     {
         setSaverStatus(FALSE);
     }
-    else{
+    else
+    {
         int flag = 0;
         int num = 0;
         toInt(argv[1],&num,&flag);
@@ -231,4 +259,3 @@ int screen_saver(int argc, argVector argv)
     printF("Screen saver is currently %s.\n", (getSaverStatus()? "on":"off"));
     return 1;
 }
-

@@ -6,9 +6,13 @@
 #define DEFAULT_TIME_ZONE -3
 #define TIME_FORMAT 24
 
+/* changes the current time zone to the given int */
 void changeTimeZone(int);
-int getTimeZone();
-int getTimezoneHour();
 
+/* returns the current time zone */
+int getTimeZone();
+
+/* returns the current hour in the setted time zone */
+int getTimezoneHour();
 
 #endif

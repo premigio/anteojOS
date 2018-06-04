@@ -43,6 +43,7 @@ void showClock(int mode)
         }
     }
 }
+
 void drawClock(int h, int m, int s,Colour fColour, Colour bColour)
 {
     unsigned int  x, y;
@@ -72,6 +73,5 @@ void drawClock(int h, int m, int s,Colour fColour, Colour bColour)
     renderFont(font,getNumber,s%10,fColour,bColour);
     drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
     x = x + NUMWIDTH;
-    //write("adfjksad");
 
 }

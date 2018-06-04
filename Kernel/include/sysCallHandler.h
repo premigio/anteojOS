@@ -1,7 +1,9 @@
 #ifndef sysCallHandler_h
 #define sysCallHandler_h
 
-  #include <stdint.h>
+#include <stdint.h>
 
-  void sysCallHandler(uint64_t i);
+/* saves the registers and makes the system call */
+void sysCallHandler(uint64_t i);
+
 #endif

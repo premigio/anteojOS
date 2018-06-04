@@ -1,9 +1,4 @@
 #include <videoDriver.h>
-#include <font.h>
-
-#define charWidth 8
-#define charHeight 16
-#define SPACE_BETWEEN_LINES 4
 
 void drawAPixelWithColour(int x, int y, Colour col);
 void drawAPixel(unsigned int x, unsigned int y);
@@ -40,25 +35,27 @@ void drawAPixelWithColour(int x, int y, Colour col)
     video[1] = col.green;
     video[2] = col.red;
 }
+
 void drawAPixel(unsigned int x, unsigned int y)
 {
     drawAPixelWithColour(x, y, fontColour);
 }
+
 void drawCharWithColour ( char c, Colour fColour)
 {
     refreshCoordenates();
-    if (c < 31)						// entonces no es un caracter del font.c
+    if (c < 31)						   // entonces no es un caracter dentro del font.c
     {
         if ( c == '\n')
         {
-            enter();				// me muevo a una nueva linea
+            enter();
         }
-        if (c == '\b' )			// entonces quiere borrar el ultimo caracter
+        if (c == '\b' )
         {
             backSpace();
         }
     }
-    else							// tengo un caracter del font.c
+    else
     {
         char * character = charMap((int)c);
         for (int j=0; j<charHeight; j++)
@@ -78,14 +75,19 @@ void drawCharWithColour ( char c, Colour fColour)
         currentX += charWidth;
     }
 }
+
 void drawChar( char c)
 {
-    if (c == '\n'){
+    if (c == '\n')
+    {
         enter();
-    }else{
+    }
+    else
+    {
         drawCharWithColour(c, fontColour);
     }
 }
+
 void drawStringWithColour(const char * string, Colour fColour)
 {
     int i=0;
@@ -95,10 +97,12 @@ void drawStringWithColour(const char * string, Colour fColour)
         i++;
     }
 }
+
 void drawString(const char * string)
 {
     drawStringWithColour(string, fontColour);
 }
+
 void enter()
 {
     if (sizeEnter == 0)
@@ -122,6 +126,7 @@ void enter()
         scroll();
     }
 }
+
 void backSpace()
 {
     if (currentX == 0 && currentY!=0)
@@ -148,8 +153,9 @@ void backSpace()
             }
         }
     }
-    clearCoordenate(currentX, currentY);					// "limpio" el lugar donde estan parados X e Y
+    clearCoordenate(currentX, currentY);
 }
+
 void refreshCoordenates()
 {
     if (currentX >= vbe->xResolution)
@@ -173,6 +179,7 @@ void refreshCoordenates()
         scroll();
     }
 }
+
 void clearCoordenate(unsigned int x, unsigned int y)
 {
     for (int i = 0; i < charWidth; i++)
@@ -183,27 +190,29 @@ void clearCoordenate(unsigned int x, unsigned int y)
         }
     }
 }
+
 void scroll ()
 {
     Colour col;
     char * pixelAddress;
     for (int i=0; i<vbe->xResolution; i++)
     {
-        for (int j=charHeight; j<vbe->yResolution; j++)				// arranca desde charHeight porque copiamos la pantalla desde esa nueva linea
+        for (int j=charHeight; j<vbe->yResolution; j++)
         {
             pixelAddress = (char *) ((uint64_t)(vbe->physBasePtr + vbe->pitch * j + i * (int)(vbe->bitsPerPixel/8)));
             col.blue = pixelAddress[0];
             col.green = pixelAddress[1];
             col.red = pixelAddress[2];
-            drawAPixelWithColour(i, j-charHeight, col);		// repintamos los pixeles de toda la pantalla
+            drawAPixelWithColour(i, j-charHeight, col);
         }
     }
-    int j = vbe->yResolution - charHeight;					// la ultima linea la dejamos libre
+    int j = vbe->yResolution - charHeight;
     for (int i=0; i < vbe->xResolution; i++)
     {
         clearCoordenate(i, j);
     }
 }
+
 void newWindow ()
 {
     for (int j=0; j<vbe->yResolution; j++)
@@ -213,12 +222,14 @@ void newWindow ()
             drawAPixelWithColour(i, j, backgroundColour);
         }
     }
-    resetCoordenades();
+    resetCoordinates();
 }
-void resetCoordenades()
+
+void resetCoordinates()
 {
     currentY = currentX = 0;
 }
+
 void paintWindow(Colour col)
 {
     for (int j=0; j<vbe->yResolution; j++)
@@ -229,36 +240,44 @@ void paintWindow(Colour col)
         }
     }
 }
+
 void setBackgroundColour(Colour col)
 {
     backgroundColour = col;
 }
+
 void setFontColour(Colour col)
 {
     fontColour = col;
 }
+
 int getXResolution()
 {
     return vbe->xResolution;
 }
+
 int getYResolution()
 {
     return vbe->yResolution;
 }
+
 void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height)
 {
     refreshCoordenates();
     Colour b;
-    for (int i = 0; i < height; ++i) {
-        for (int j = 0; j < width; ++j) {
+    for (int i = 0; i < height; ++i)
+    {
+        for (int j = 0; j < width; ++j)
+        {
             unsigned short hexValue = hexaMap[i*width + j];
-            b.red = (uint8_t) ((hexValue >> 16) & 0xFF);  // Extract the RR byte
-            b.green = (uint8_t) ((hexValue >> 8) & 0xFF);   // Extract the GG byte
+            b.red = (uint8_t) ((hexValue >> 16) & 0xFF);
+            b.green = (uint8_t) ((hexValue >> 8) & 0xFF);
             b.blue = (uint8_t) ((hexValue) & 0xFF);
             drawAPixelWithColour(ox+j,oy+i,b);
         }
     }
 }
+
 void drawHexa(uint64_t reg)
 {
 	char buffer[64];
@@ -266,6 +285,7 @@ void drawHexa(uint64_t reg)
   drawString("0x");
 	drawString(buffer);
 }
+
 void toHexa(char * buffer, uint64_t value)
 {
   char *p = buffer;

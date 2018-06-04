@@ -2,9 +2,6 @@ GLOBAL sysCallHandler
 EXTERN syscaller
 
 sysCallHandler:
-
-  ;pusheo todo salvo rax ya que este tendra un cambio en el retorno de syscaller
-;  push rax
   push rbx
   push rcx
   push rdx
@@ -32,5 +29,5 @@ sysCallHandler:
   pop rdx
   pop rcx
   pop rbx
-;  pop rax
-  iretq ;fin de interrupcion. no corria por el q que dice que la int es de 64 bits
+
+  iretq

@@ -3,13 +3,13 @@
 
 #include "colour.h"
 #include <stdint.h>
-#include "videoModule.h"
+#include "video.h"
 #include "scLib.h"
 #include "clock.h"
 #include "biohazard2_XL.h"
 #include "shellCommands.h"
-#include "stdlibJime.h"
-#include "stdioJime.h"
+#include "stdlib.h"
+#include "stdio.h"
 
 #define RESET_BUFFER bufferPtr = 0; for(int l = 0;l<MAX_BUFFER_SIZE;l++){buffer[l]=0;}
 
@@ -35,20 +35,40 @@
 
 #define NEW_LINE putChar('\n')
 
+/* runs the shell */
 void shell();
-void turnOnOff();
-void setPresentatonImageCoordinates(int *x, int*y,int width, int height);
-void setNewShell();
-void doBeforeExit();
-int  parseAndInterpret(const char *buffer);
-int  isGraph(char c);
-void printShellLine();
-void newShell();
-int getSaverStatus();
-void setSaverStatus(int);
-unsigned int getSaverTime();
-void setSaverTime(int num);
-void refreshInactivityCounter();
 
+/* sets and raws the screen for the shell */
+void turnOnOff();
+
+/* sets the coordinates for the presentation logo */
+void setPresentatonImageCoordinates(int *, int *,int , int );
+
+/* sets the logo presentation and exits */
+void doBeforeExit();
+
+/* interprets the command requested with a given buffer */
+int  parseAndInterpret(const char *);
+
+/* prints the formatted shell line */
+void printShellLine();
+
+/* clears the screen with a new window*/
+void newShell();
+
+/* returns the screen saver status */
+int getSaverStatus();
+
+/* sets the screen saver status */
+void setSaverStatus(int);
+
+/* returns the saver time */
+unsigned int getSaverTime();
+
+/* sets a new saver time */
+void setSaverTime(int num);
+
+/* increases the inactivity counter if there is inactivity */
+void refreshInactivityCounter();
 
 #endif

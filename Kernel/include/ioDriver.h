@@ -4,5 +4,4 @@
 extern void beepon(void);
 extern void beepoff(void);
 
-
 #endif

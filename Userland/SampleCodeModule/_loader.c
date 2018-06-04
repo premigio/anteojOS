@@ -1,4 +1,3 @@
-/* _loader.c */
 #include <stdint.h>
 
 extern char bss;
@@ -8,7 +7,8 @@ int main();
 
 void * memset(void * destiny, int32_t c, uint64_t length);
 
-int _start() {
+int _start()
+{
 	//Clean BSS
 	memset(&bss, 0, &endOfBinary - &bss);
 
@@ -17,7 +17,8 @@ int _start() {
 }
 
 
-void * memset(void * destiation, int32_t c, uint64_t length) {
+void * memset(void * destiation, int32_t c, uint64_t length)
+{
 	uint8_t chr = (uint8_t)c;
 	char * dst = (char*)destiation;
 

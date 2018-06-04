@@ -10,6 +10,7 @@ int getTimeZone()
 {
     return currentTimezone;
 }
-int getTimezoneHour(){
+int getTimezoneHour()
+{
     return (getHour()+currentTimezone)%TIME_FORMAT;
 }

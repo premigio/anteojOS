@@ -1,40 +1,37 @@
 #include <keyboardDriver.h>
-#include <videoDriver.h>
 
-#define BUFFERSIZE 1024
-#define TRUE  1;
-#define FALSE 0;
-
+/* The following 2 arrays were taken from an osdev tutorial */
 char keyboardList[128] = {0,27,'1','2','3','4','5','6','7','8','9','0','-','=','\b','\t','q','w','e','r','t','y','u','i',
                           'o','p','[',']','\n',0,'a','s','d','f','g','h','j','k','l',';','\'','`',0,'\\', 'z','x','c','v','b',
                           'n','m',',','.','/',0, '*', 0, ' ', 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'-',0,0,0,
-                          '+',0,0,0,0,0,0,0,0,0,0,0};     //hecho con la pagina de osdev
+                          '+',0,0,0,0,0,0,0,0,0,0,0};
 
-char keyboardShiftList[128]={0,27,'!','@','#','$','%','^','&','*','(',')','_','+','\b','\t','q','w','e','r','t','y','u','i','o','p','{','}','\n',0,'a','s','d','f','g','h','j','k','l',':','\"','~',0,'|', 'z','x','c','v','b','n','m','<','>','?',0, '*', 0, ' ', 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'-',0,0,0,'+',0,0,0,0,0,0,0,0,0,0,0};
+char keyboardShiftList[128]= {0,27,'!','@','#','$','%','^','&','*','(',')','_','+','\b','\t','q','w','e','r','t','y','u','i',
+                              'o','p','{','}','\n',0,'a','s','d','f','g','h','j','k','l',':','\"','~',0,'|', 'z','x','c','v','b',
+                              'n','m','<','>','?',0, '*', 0, ' ', 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'-',0,0,0,
+                              '+',0,0,0,0,0,0,0,0,0,0,0};
 
-int capslock = 0;
+int capsLock = 0;
 int shift = 0;
-int f1 = 0; //lo seteo como tecla que cambia el color del reloj. De aca deberia salir el beep
 
-char buffer[BUFFERSIZE] = {0}; // hay que crear el buffer
-int bfw = 0; // posicion de escritura, para los putchar
-int bfr = 0; // posicion de lectura, para los getchar
-
+char buffer[BUFFERSIZE] = {0};
+int bufferWrite = 0;
+int bufferRead = 0;
 int size = 0;
 
 void keyboardInterpreter()
 {
     unsigned char key = (unsigned char) getKey();
-    if (key & 0x80)                         //suelto
+    if (key & 0x80)
     {
         if(key == 0xAA || key == 0xB6)
             shift = 0;
     }
-    else                                    //apretado
+    else
     {
         if (key == 58)
         {
-            capslock = !capslock;
+            capsLock = !capsLock;
         }
         if(key == 0x2A || key == 0x36)
         {
@@ -43,7 +40,7 @@ void keyboardInterpreter()
         char c = keyboardList[key];
         if (c>='a' && c <= 'z')
         {
-            if ( (capslock && !shift) || (!capslock && shift) )
+            if ( (capsLock && !shift) || (!capsLock && shift) )
             {
                 c = c - ('a'-'A');
             }
@@ -58,28 +55,32 @@ void keyboardInterpreter()
 
 void charToBuffer(unsigned char c)
 {
-    if (c != 0){
-        buffer[bfw] = c;
-        bfw++;
-        bfw = bfw % BUFFERSIZE;                 // bfw = BUFFERWRITE
+    if (c != 0)
+    {
+        buffer[bufferWrite] = c;
+        bufferWrite++;
+        bufferWrite = bufferWrite % BUFFERSIZE;
         size++;
     }
 }
 
 char returnNextChar()
 {
-    char res = 0;
-    if(size == 0){
-        return res;
+    char resp = 0;
+    if(size == 0)
+    {
+        return resp;
     }
-    res = buffer[bfr++];
-    bfr = bfr % BUFFERSIZE;                   // bfr = BUFFERREAD
+    resp = buffer[bufferRead++];
+    bufferRead = bufferRead % BUFFERSIZE;
     size--;
-    return res;
+    return resp;
 }
 
-int newToRead(){
-    if (size == 0 || bfr == bfw){
+int newToRead()
+{
+    if (size == 0 || bufferRead == bufferWrite)
+    {
         return 0;
     }
     return 1;

@@ -2,7 +2,7 @@
 #define CLOCK_H_
 
 #include "colour.h"
-#include "videoModule.h"
+#include "video.h"
 #include <stdint.h>
 #include "piloNumbers.h"
 #include "scLib.h"
@@ -14,7 +14,10 @@
 #define SCREEN_SAVER_CHANGE2 SCREEN_SAVER_CHANGE1+ 7
 #define NORMAL_MODE 0
 
-void drawClock(int h, int m, int s,Colour, Colour bColour );
-void showClock(int mode);
+/* draws a clock with a given time, a colour for the digits, and a colour for the background */
+void drawClock(int , int , int ,Colour, Colour);
+
+/* draws a clock with a given time zone */
+void showClock(int);
 
 #endif

@@ -2,8 +2,13 @@
 #define VIDEODRIVER_H_
 
 #include <stdint.h>
+#include <font.h>
 
-typedef struct Colour					// un color es la combinacion de los colores primarios
+#define charWidth 8
+#define charHeight 16
+#define SPACE_BETWEEN_LINES 4
+
+typedef struct Colour
 {
  	uint8_t red;
  	uint8_t green;
@@ -65,8 +70,8 @@ void drawAPixelWithColour(int, int, Colour);
 /* draws a character with the default font colour */
 void drawChar(char);
 
-/* draws a character with a specified colour */
-void drawCharWithColour( char, Colour);
+/* draws a character with a given colour */
+void drawCharWithColour(char, Colour);
 
 /* draws a string with the default font colour */
 void drawString(const char *);
@@ -83,23 +88,31 @@ void paintWindow(Colour);
 /* paints the current window with the default background colour */
 void newWindow ();
 
+/* makes an enter or a new line */
 void enter();
 
 /* sets the background colour */
 void setBackgroundColour(Colour);
 
+/* returns the width resolution */
 int getXResolution();
 
+/* returns the height resolution */
 int getYResolution();
 
-void drawHexa(uint64_t reg);
+/* draws a given hexa value */
+void drawHexa(uint64_t);
 
-void toHexa(char * buffer, uint64_t value);
+/* converts the given buffer into hexa values */
+void toHexa(char *, uint64_t );
 
-void drawImage(unsigned int ox, unsigned int oy, const unsigned short *hexaMap, unsigned int width, unsigned int height);
+/* draws an image from given coordinates and a given hexadecimal map, with a determined width and height of image */
+void drawImage(unsigned int, unsigned int, const unsigned short *hexaMap, unsigned int width, unsigned int height);
 
-void resetCoordenades();
+/* resets the current coordinates */
+void resetCoordinates();
 
+/* makes a backSpace on screen */
 void backSpace();
 
 #endif

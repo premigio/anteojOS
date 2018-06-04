@@ -2,18 +2,22 @@
 
 static unsigned long ticks = 0;
 
-void timerHandler() {
+void timerHandler()
+{
     ticks++;
 }
 
-int ticksToSeconds(unsigned int ticks) {
+int ticksToSeconds(unsigned int ticks)
+{
     return ticksElapsed() / TICKSPERSEC; // 18 ticks por segundo => 0.018 ticks por milisegundo
 }
 
-int ticksElapsed() {
+int ticksElapsed()
+{
     return ticks;
 }
 
-int secondsElapsed() {
+int secondsElapsed()
+{
     return ticksToSeconds(ticks);
 }

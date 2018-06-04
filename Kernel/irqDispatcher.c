@@ -6,8 +6,10 @@
 static void int_20();
 static void int_21();
 
-void irqDispatcher(uint64_t irq) {
-	switch (irq) {
+void irqDispatcher(uint64_t irq)
+{
+	switch (irq)
+	{
 		case 0:
 			int_20();
 			break;
@@ -18,10 +20,12 @@ void irqDispatcher(uint64_t irq) {
 	return;
 }
 
-void int_20() {
+void int_20()
+{
 	timerHandler();
 }
 
-void int_21() {
+void int_21()
+{
 	keyboardInterpreter();
 }

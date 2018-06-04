@@ -1,5 +1,4 @@
-#include "syscaller.h"
-
+#include <syscaller.h>
 
 typedef uint64_t (*func_type)();
 
@@ -8,10 +7,10 @@ func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeE
                                printImage, newCharInBuffer, exit, userRequestNewWindow,
                                putChar, removeChar, changeBackgroundColour};
 
-uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){//pa dsps si es que quiero color, guia 3
-    //aca tenemos que poner las funciones de lectura/impresion char etc
+uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
+{
     uint64_t (*function)(uint64_t , uint64_t , uint64_t , uint64_t , uint64_t );
-    function = fList[rax-1]; //<------- pedro soluciona esto
+    function = fList[rax-1];
     return function(rdi,rsi,rdx,rcx,r8);
 }
 
@@ -79,7 +78,6 @@ uint64_t newCharInBuffer(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx,
 }
 uint64_t exit(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
-    //hace algo antes de morir
     motherBeep();
     return 0;
 }
