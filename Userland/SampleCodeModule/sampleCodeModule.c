@@ -1,14 +1,11 @@
 /* sampleCodeModule.c */
-#include "colour.h"
-#include <stdint.h>
-#include "scLib.h"
+
 #include "shell.h"
-
-
 int main()
 {
     //parseAndInterpret("echo hola\n");
     shell();
+
     //Colour c = {255,255,255};
     //changeFontColour(c);
     //int c = strlen("hola");
@@ -39,3 +36,4 @@ int main()
 
     return 0;
 }
+

@@ -11,7 +11,7 @@ command commands[NUM_COMMANDS]={
         {"font_colour", "Changes the font colour.", font_colour},
         {"background_colour", "Changes the background colour.", background_colour},
         {"digital_clock","Displays a digital clock on screen", digital_clock},
-        {"timezone", "Allows the user to change the current timezone",timezone}
+        {"timezone", "Allows the user to change the current timezone. Usage: timezone [int]",timezone}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -176,11 +176,23 @@ int digital_clock(int argc, argVector argv)
     return 1;
 }
 int timezone(int argc, argVector argv){
-    if (argc != 3)
+    if (argc != 2)
     {
-        printF("%s\n", ARGUMENTS_AMOUNT_ERROR(3));
+        printF("%s\n", ARGUMENTS_AMOUNT_ERROR("1"));
         return 0;
     }
-
+    int flag = 0;
+    int num = 0;
+    toInt(argv[1],&num,&flag);
+    if(flag){
+        changeTimeZone(num);
+        printF("%s %d\n", TIMEZONE_SUCCES_MSG, num);
+        time(0,argv);
+    }
+    else
+    {
+        printF("%s\n", TIMEZONE_ERROR_MSG);
+    }
+    return 1;
 }
 

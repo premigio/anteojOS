@@ -11,7 +11,7 @@
 #include "stdlibJime.h"
 #include "stdioJime.h"
 
-#define RESET_BUFFER bufferPtr = 0
+#define RESET_BUFFER bufferPtr = 0; for(int l = 0;l<MAX_BUFFER_SIZE;l++){buffer[l]=0;}
 
 #define NULL_CMMD -1
 #define EXIT_CMMD  -2

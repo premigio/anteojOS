@@ -27,15 +27,9 @@ void showClock()
         {
             show = 0;
         }
-        else if(c>= '1' && c<='5')
+        else if(c>= '0' && c<='9')
         {
             fColour = userColours[c -'0'];
-            drawClock(h,m,s,fColour, bColour);
-            kernelBeep();
-        }
-        else if((c>= '6' && c<='9' ))
-        {
-            bColour = userColours[c - '0'];
             drawClock(h,m,s,fColour, bColour);
             kernelBeep();
         }

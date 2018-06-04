@@ -14,15 +14,14 @@
 #define MAX_ARGS 10
 #define MAX_ARG_LENGTH (MAX_BUFFER_SIZE - (MAX_ARGS) )/MAX_ARGS  // por los espacios
 
-#define CERO_ARGUMENTS_ERROR      "Error: Too many arguments passed, function takes 0 arguments"
+#define CERO_ARGUMENTS_ERROR      "Error: Too many arguments passed, function takes 0 arguments."
 #define SET_FONT_MSSG             "Choose a colour by typing a number, or press 'q' exit."
 #define SET_FONT_EX               "Colours reflect your personality!"
-#define TIMEZONE_MSG1             "Current timezone is: "
-#define TIMEZONE_MSG2             "Input the desired timezone: "
-#define TIMEZONE_ERROR_MSG        "Error: Only numbers and '-' are allowed in timezone format. Please re-enter your timezone:"
-#define ARGUMENTS_AMOUNT_ERROR(x) "Error: Funcition only takes "x" arguments"
+#define TIMEZONE_ERROR_MSG        "Error: Only numbers and '-' are allowed in timezone format. Please re-enter your timezone."
+#define TIMEZONE_SUCCES_MSG       "Timezone has been set to:"
+#define ARGUMENTS_AMOUNT_ERROR(x) "Error: Function takes "x" argument"
 
-#define NUM_COMMANDS 9 //<----------
+#define NUM_COMMANDS 10 //<----------
 
 
 typedef char argVector[MAX_ARGS][MAX_ARG_LENGTH];
@@ -47,7 +46,7 @@ int exitShell (int argc, argVector argv);
 int font_colour (int argc, argVector argv);
 int background_colour(int argc, argVector argv);
 int digital_clock(int argc, argVector argv);
-//int timezone(int argc, argVector argv);
+int timezone(int argc, argVector argv);
 
 
 #endif
