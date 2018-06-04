@@ -14,7 +14,6 @@ char keyboardShiftList[128]={0,27,'!','@','#','$','%','^','&','*','(',')','_','+
 
 int capslock = 0;
 int shift = 0;
-int f1 = 0; //lo seteo como tecla que cambia el color del reloj. De aca deberia salir el beep
 
 char buffer[BUFFERSIZE] = {0}; // hay que crear el buffer
 int bfw = 0; // posicion de escritura, para los putchar

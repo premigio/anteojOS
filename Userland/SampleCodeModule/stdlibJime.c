@@ -26,6 +26,7 @@ unsigned unsignedToAlpha(unsigned long number, char * buffer, unsigned base)
         p1++;
         p2--;
     }
+    *p1 = 0;
     return digits;
 }
 
@@ -60,14 +61,12 @@ void doubleToAlpha(double value, char * buffer, unsigned base)
     }
 }
 
-int strlen(const char *string)
+int strlen(const char * s)
 {
-    int i=0;
-    while (string[i] != '\n')
-    {
-        i++;
-    }
-    return i;
+	int length = 0;
+	while (*(s++) != 0)
+		length++;
+	return length;
 }
 
 int isDigit(char c)

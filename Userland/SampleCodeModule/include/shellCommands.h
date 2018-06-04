@@ -6,7 +6,6 @@
 #include "scLib.h"
 
 #define NUM_COMMANDS 4
-
 typedef struct
 {
     char * name;
@@ -16,3 +15,6 @@ typedef struct
 
 int commandExists(char *);
 int executeCommand(int argc, char * argv[]);
+
+extern void zeroDivisionException();
+extern void invalidOpcodeException();

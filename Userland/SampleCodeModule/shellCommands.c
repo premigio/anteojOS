@@ -10,6 +10,7 @@ int clear (int argc, char * argv[]);
 int beep (int argc, char * argv[]);
 int exitShell (int argc, char * argv[]);
 int newFontColour (int argc, char * argv[]);
+int exceptionTester(int argc, char * argv[]);
 
 
 command commands[]={
@@ -18,8 +19,9 @@ command commands[]={
         {"time", "This command displays a clock", time},
         {"clear", "This command clears the screen", clear},
         {"beep", "This command makes a beeping sound", beep},
-        {"exitShell", "This command exits the terminal", exitShell},
-        {"newFontColour", "This commands sets a new font colour", newFontColour}
+        {"exceptionTester", "This command calls an exception,0 for 0div, 1 for InvOp", exceptionTester}
+        // {"exitShell", "This command exits the terminal", exitShell},
+        // {"newFontColour", "This command sets a new font colour", newFontColour},
 };
 
 int executeCommand(int argc, char * argv[]){
@@ -109,6 +111,22 @@ int newFontColour(int argc, char * argv[])
     }
     // lo hace pilo
     return 1;
+}
+
+int exceptionTester(int argc, char * argv[])
+{
+  if (argc > 1)
+  {
+      printf("%s\n", "Error: illegal argument");
+      return 0;
+  }switch(argc){
+    case 0:
+      zeroDivisionException();
+      break;
+    case 1:
+      invalidOpcodeException();
+      break;
+  }
 }
 
 int commandExists(char * name)

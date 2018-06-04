@@ -2,9 +2,12 @@
 #include <stdarg.h>
 #include "stdlibJime.h"
 
-void putCharIn(char c)
+char * toInt(char * string, int * i, int * resp);
+static char *intToAlphaWithBase(unsigned int num, int base);
+
+void putchar(char c)
 {
-    char aux[2];
+    char aux [2];
     aux[0] = c;
     aux[1] = '\0';
     write(aux);
@@ -15,21 +18,21 @@ void printf(const char * fmt, ... )
     va_list arguments;
     va_start(arguments, fmt);
     int length = strlen(fmt);
-    int formatBoolean = 0;
-    char buffer[INT_MAXLENGTH];
-
+    int fmtBoolean = 0;
+    int j;
+    char * aa;
 
     for (int i=0; i<length; i++)
     {
-        if (formatBoolean == 0)
+        if (fmtBoolean == 0)
         {
             if (fmt[i] == '%')
             {
-                formatBoolean=1;
+                fmtBoolean=1;
             }
             else
             {
-                putCharIn(fmt[i]);
+                putchar(fmt[i]);
             }
         }
 
@@ -38,141 +41,189 @@ void printf(const char * fmt, ... )
             switch(fmt[i])
             {
                 case 'd':
-                    intToAlpha(va_arg(arguments, int), buffer, 10);
-                    for (int i1 = 0; buffer[i1] != '\n'; i1++)
-                    {
-                        putCharIn(buffer[i1]);
-                    }
+                      j = va_arg(arguments,int);         //Fetch Decimal/Integer argument
+                      if(j<0)
+                      {
+                          j = -j;
+                          putchar('-');
+                      }
+                      aa= intToAlphaWithBase(j,10);
+                      write(aa);
+                      break;
                     break;
                 case 's':
                     write((char *)va_arg(arguments, char *));
                     break;
                 case 'c':
-                    putCharIn((char)va_arg(arguments, int));
+                    putchar((char)va_arg(arguments, int));
                     break;
                 case 'o':
-                    intToAlpha(va_arg(arguments, int), buffer, 8);
-                    for (int i1 = 0; buffer[i1] != '\n'; i1++)
+                    j = va_arg(arguments,int);         //Fetch Decimal/Integer argument
+                    if(j<0)
                     {
-                        putCharIn(buffer[i1]);
+                        j = -j;
+                        putchar('-');
                     }
+                    aa= intToAlphaWithBase(j,8);
+                    write(aa);
                     break;
                 case 'x':
-                    intToAlpha(va_arg(arguments, int), buffer, 16);
-                    for (int i1 = 0; buffer[i1] != '\n'; i1++)
+                    j = va_arg(arguments,int);         //Fetch Decimal/Integer argument
+                    if(j<0)
                     {
-                        putCharIn(buffer[i1]);
+                        j = -j;
+                        putchar('-');
                     }
+                    aa= intToAlphaWithBase(j,16);
+                    write(aa);
                     break;
                 default:
-                    putCharIn('%');
-                    putCharIn(fmt[i]);
+                    putchar('%');
+                    putchar(fmt[i]);
                     break;
             }
-            formatBoolean=0;
+            fmtBoolean=0;
         }
     }
     va_end(arguments);
 }
 
-
-char * readLine()
+char * readLine(char * line, unsigned int size)
 {
-    int i, character;
-    char line[LINE_SIZE];
-    while (( character=getChar() )  != '\n')
+    int i=0;
+    char character;
+    while (i < size && ( character=getChar() )  != '\n')
     {
         if (character == '\b')
         {
-            if (i != 0)
+            if (i < size && i != 0)
             {
                 i--;
             }
         }
-        else
+        else if (character != 0)
         {
-            if (i < LINE_SIZE)
+            if (i < size && i < MAX_BUFFER)
             {
                 line[i++] = character;
             }
-            putCharIn(character);
         }
     }
-    putCharIn(character);
     line[i]='\n';
     return line;
 }
 
-int scanf(const char * fmt, ... )
+int scanf(char * buffer, unsigned int bufferSize, const char * fmt,...)
 {
-    va_list arguments;
-    va_start(arguments, fmt);
+	va_list args;
+	va_start(args, fmt);
+	int i = 0;
+	char * line = readLine(buffer, bufferSize);
+  char * c;
+	while((*fmt) != '\0')
+	{
+		if((*fmt) != '%')
+		{
+      if((*fmt) != (*line))
+			{
+				va_end(args);
+				return i;
+			}
+      else
+      {
+          fmt++;
+          line++;
+      }
+		}
+		else
+		{
+			switch(*(++fmt))
+			{
+				case '%':
+            if(*line != '%')
+						{
+							va_end(args);
+							return 0;
+						}
+            	line++;
+            break;
+				case 'd':
+            line = toInt(line, va_arg(args,int *), &i);
+						if (i == 0)
+						{
+							va_end(args);
+							return i;
+						}
+						break;
+				case 'c':
+            c = va_arg(args, char *);
+            *c = *line++;
+            i++;
+            break;
+				case 's':
+            c = va_arg(args, char *);
+            while(*line != '\0')
+            {
+                *c++ = *line++;
 
-    int length = 0;
-    char * line = readLine();
-    int * number;
-    char * string;
-    int i = 0;
-    int j = 0;
+            }
+            i++;
+            break;
+			}
+			fmt++;
+		}
+	}
+	va_end(args);
+	return i;
+}
 
-    while(fmt[i] != '\n')
+char * toInt(char * string, int * k, int * resp)
+{
+  *k = 0;
+	int sgn = 1, c;
+	*resp = 1;
+	if (!(*string == '-' || isDigit(*string)))
+	{
+		*resp = 0;
+		return string;
+	}
+    if(*string == '-')
     {
-        if(fmt[i]!='%')
-        {
-            if((fmt[i]) != (line[j]))
-            {
-                return length;
-            }
-            else
-            {
-                i++;
-                j++;
-            }
-        }
+		if (isDigit(*(string + 1)))
+		{
+			string++;
+			sgn = -1;
+			*k = (*string - '0') * sgn;
+			string++;
+		}
+		else
+		{
+			return string;
 
-        else
-        {
-            i++;
-            switch( fmt[i] )
-            {
-                case 'd':
-                    number = va_arg(arguments, int *);
-                    *number = 0;
-                    while( isDigit(line[j]) )
-                    {
-                        *number = (*number)*10 + (line[j] - '0');
-                        j++;
-                    }
-                    length++;
-                    break;
-                case 's':
-                    string = va_arg(arguments, char*);
-                    char c;
-                    while( (c = line[j]) != '\n' )
-                    {
-                        *string = c;
-                        string++;
-                        j++;
-                    }
-                    length++;
-                    break;
-                case 'c':
-                    string = va_arg(arguments, char*);
-                    *string = line[j];
-                    j++;
-                    length++;
-                    break;
-                default:
-                    if (line[j] != '%')
-                    {
-                        return length;
-                    }
-                    j++;
-                    break;
-            }
-            i++;
-        }
+		}
+	}
+    while (isDigit(c = *string))
+    {
+        *k = (*k) * 10 + (c-'0') * sgn;
+        string++;
     }
+    return string;
+}
 
-    return length;
+static char *intToAlphaWithBase(unsigned int n, int base)
+{
+    static char Representation[]= "0123456789ABCDEF";
+    static char buffer[50];
+    char *ptr;
+
+    ptr = &buffer[49];
+    *ptr = '\0';
+
+    do
+    {
+        *--ptr = Representation[n%base];
+        n /= base;
+    }while(n != 0);
+
+    return(ptr);
 }
