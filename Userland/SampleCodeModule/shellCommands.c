@@ -194,7 +194,7 @@ int digital_clock(int argc, argVector argv)
     showClock();
     clear(argc,argv);
     return 1;
-}
+}/*
 int timezone(int argc, argVector argv){
     if (argc > 1)
     {
@@ -212,4 +212,4 @@ int timezone(int argc, argVector argv){
     return 1;
 }
 
-
+*/
