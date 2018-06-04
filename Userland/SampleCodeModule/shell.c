@@ -48,10 +48,12 @@ void shell()
 void turnOnOff()
 {
     int x, y;
+    newWindow();
     changeFontColour(getCurrentFontColour());
     changeBackgroundColour(getCurrentBackgroundColour());
     setPresentatonImageCoordinates(&x,&y,IMAGEWIDTH, IMAGEHEIGHT);
     drawImageFromHexaMap(x, y, biohazard2_XL, IMAGEWIDTH, IMAGEHEIGHT);
+    sleep();
     sleep();
     sleep();
     newWindow();

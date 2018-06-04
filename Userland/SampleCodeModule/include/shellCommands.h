@@ -16,12 +16,12 @@
 
 #define CERO_ARGUMENTS_ERROR  "Too many arguments passed, function takes 0 arguments"
 #define SET_FONT_MSSG         "Choose a colour by typing a number, or press 'q' exit."
-#define SET_FONT_EX           "Colour reflect your personality!"
+#define SET_FONT_EX           "Colours reflect your personality!"
 #define TIMEZONE_MSG1         "Current timezone is: "
 #define TIMEZONE_MSG2         "Input the desired timezone: "
 #define TIMEZONE_ERROR_MSG    "Only numbers and '-' are allowed in timezone format. Please re-enter your timezone:"
 
-#define NUM_COMMANDS 10 //<----------
+#define NUM_COMMANDS 9 //<----------
 
 
 typedef char argVector[MAX_ARGS][MAX_ARG_LENGTH];
@@ -46,7 +46,7 @@ int exitShell (int argc, argVector argv);
 int font_colour (int argc, argVector argv);
 int background_colour(int argc, argVector argv);
 int digital_clock(int argc, argVector argv);
-int timezone(int argc, argVector argv);
+//int timezone(int argc, argVector argv);
 
 
 #endif

@@ -2,7 +2,7 @@
 
 void motherBeep(){
     beepon();
-    kernelSleep(TICKSPERSEC);
+    kernelSleep();
     beepoff();
 }
 

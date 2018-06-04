@@ -17,4 +17,5 @@ char * toInt(char * string, int * k, int * resp);
 
 char *intToAlphaWithBase(unsigned int n, int base);
 
+
 #endif

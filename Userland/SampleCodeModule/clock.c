@@ -13,7 +13,7 @@ void showClock()
         h = getHour();
         m = getMinute();
         s = getSecond();
-        h = (h+getTimeZone())%TIME_FORMAT;
+        h = getTimezoneHour();
         if (oh!=h || om!=m || os!=s)
         {
             drawClock(h,m,s,fColour, bColour);

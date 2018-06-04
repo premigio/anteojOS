@@ -3,6 +3,6 @@
 
 #include "timeDriver.h"
 
-void kernelSleep(unsigned long sleep);
+void kernelSleep();
 
 #endif

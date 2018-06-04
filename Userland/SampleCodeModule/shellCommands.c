@@ -11,7 +11,7 @@ command commands[NUM_COMMANDS]={
         {"font_colour", "Changes the font colour.", font_colour},
         {"background_colour", "Changes the background colour.", background_colour},
         {"digital_clock","Displays a digital clock on screen", digital_clock},
-        {"timezone", "Allows the user to change the current timezone",timezone}
+        //{"timezone", "Allows the user to change the current timezone",timezone}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -82,7 +82,7 @@ int time (int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    printF("Current time: %d:%d:%d\n", getHour()-getTimeZone(), getMinute(), getSecond());
+    printF("Current time: %d:%d:%d\n", getTimezoneHour(), getMinute(), getSecond());
     return 1;
 }
 int clear (int argc, argVector argv)
@@ -145,7 +145,6 @@ int changeColour(void(*f)(Colour) )
     for (int i = 0; i < COLOURS_AMOUNT; ++i) {
         changeFontColour(userColours[i]);
         printF("%d) %s \n", i, SET_FONT_EX );
-        NEW_LINE;
     }
     changeFontColour(original);
     char c;
@@ -174,22 +173,6 @@ int digital_clock(int argc, argVector argv)
     }
     showClock();
     clear(argc,argv);
-    return 1;
-}
-int timezone(int argc, argVector argv){
-/*    if (argc > 1)
-    {
-        printF("%s\n", CERO_ARGUMENTS_ERROR);
-        return 0;
-    }
-    int newTimezone;
-    printF("%s %d.\n",TIMEZONE_MSG1, getTimeZone());
-    printF("%s\n",TIMEZONE_MSG2);
-    while(!getInt(&newTimezone))
-    {
-        printF("%s\n",TIMEZONE_ERROR_MSG);
-    }
-    changeTimeZone(newTimezone);*/
     return 1;
 }
 
