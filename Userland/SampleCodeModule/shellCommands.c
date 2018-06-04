@@ -9,13 +9,17 @@ int exitShell (int argc, argVector argv);
 int font_colour (int argc, argVector argv);
 int background_colour(int argc, argVector argv);
 int digital_clock(int argc, argVector argv);
+int timezone(int argc, argVector argv);
 
 
 #define CERO_ARGUMENTS_ERROR "Too many arguments passed, function takes 0 arguments"
 #define SET_FONT_MSSG "Choose a colour by typing a number, or press 'q' exit."
 #define SET_FONT_EX "Colour reflect your personality!"
+#define TIMEZONE_MSG2 "Current timezone is: "
+#define TIMEZONE_MSG2 "Input the desired timezone: "
+#define TIMEZONE_ERROR_MSG "Only numbers and '-' are allowed in timezone format. Please re-enter your timezone:"
 
-#define NUM_COMMANDS 8 //<----------
+#define NUM_COMMANDS 10 //<----------
 command commands[NUM_COMMANDS]={
         {"help",  "Shows the different commands available and their description.", help},
         {"echo",  "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
@@ -25,7 +29,8 @@ command commands[NUM_COMMANDS]={
         {"exit", "Exits the terminal.", exitShell},
         {"font_colour", "Changes the font colour.", font_colour},
         {"background_colour", "Changes the background colour.", background_colour},
-        {digital_clock,"Displays a digital clock on screen", digital_clock}
+        {"digital_clock","Displays a digital clock on screen", digital_clock},
+        {"timezone", "Allows the user to change the current timezone",timezone}
 };
 
 int executeCommand(int argc, argVector argv)
@@ -179,13 +184,32 @@ int changeColour(void(*f)(Colour) )
     }
     return changed;
 }
-int digital_clock(int argc, argVector argv){
+int digital_clock(int argc, argVector argv)
+{
     if (argc > 1)
     {
-    printF("%s\n", CERO_ARGUMENTS_ERROR);
-    return 0;
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
+        return 0;
     }
     showClock();
+    clear(argc,argv);
     return 1;
 }
+int timezone(int argc, argVector argv){
+    if (argc > 1)
+    {
+        printF("%s\n", CERO_ARGUMENTS_ERROR);
+        return 0;
+    }
+    int newTimezone;
+    printF("%s %d.\n",TIMEZONE_MSG1, getTimeZone());
+    printF("%s\n",TIMEZONE_MSG2);
+    while(!getInt(&newTimezone))
+    {
+        printF("%s\n",TIMEZONE_ERROR_MSG);
+    }
+    changeTimeZone(newTimezone);
+    return 1;
+}
+
 
