@@ -69,25 +69,10 @@ void shell()
         {
             printF("%s\n",ILLEGAL_INPUT_MSG);
         }
-        //NEW_LINE;
     }
     doBeforeExit();
 }
 
-// void turnOnOff()
-// {
-//     int x, y;
-//     kernelBeep();
-//     newWindow();
-//     changeFontColour(getCurrentFontColour());
-//     changeBackgroundColour(getCurrentBackgroundColour());
-//     setPresentatonImageCoordinates(&x,&y,IMAGEWIDTH, IMAGEHEIGHT);
-//     drawImageFromHexaMap(x, y, biohazard2_XL, IMAGEWIDTH, IMAGEHEIGHT);
-//     sleep();
-//     sleep();
-//     sleep();
-//     newWindow();
-// }
 void turnOnOff()
 {
     int x, y;

@@ -6,7 +6,6 @@
 #include "video.h"
 #include "scLib.h"
 #include "clock.h"
-//#include "biohazard2_XL.h"
 #include "shellCommands.h"
 #include "stdlib.h"
 #include "stdio.h"
