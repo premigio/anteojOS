@@ -85,6 +85,8 @@ void turnOnOff()
     sleep();
     sleep();
     sleep();
+    sleep();
+    sleep();
     newWindow();
 }
 

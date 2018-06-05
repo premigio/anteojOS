@@ -44,34 +44,15 @@ void showClock(int mode)
     }
 }
 
-void drawClock(int h, int m, int s,Colour fColour, Colour bColour)
+void drawClock(int h, int m, int s, Colour fColour, Colour bColour)
 {
     unsigned int  x, y;
     setClockCoordinates(&x,&y);
     Colour font[NUMWIDTH*NUMHEIGHT];
-    renderFont(font,getNumber,h/10,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-    renderFont(font,getNumber,h%10,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-    renderFont(font,getNumber,COLON,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-    renderFont(font,getNumber,m/10,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-    renderFont(font,getNumber,m%10,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-    renderFont(font,getNumber,COLON,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-    renderFont(font,getNumber,s/10,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-    renderFont(font,getNumber,s%10,fColour,bColour);
-    drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
-    x = x + NUMWIDTH;
-
+    int chars[] = {h/10,h%10,COLON,m/10,m%10,COLON,s/10,s%10};
+    for (int i = 0; i < CLOCKSIZE; ++i) {
+        renderFont(font,getNumber,chars[i],fColour,bColour);
+        drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
+        x = x + NUMWIDTH;
+    }
 }
