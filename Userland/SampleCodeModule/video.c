@@ -6,6 +6,7 @@ unsigned int currentY = 0;
 unsigned int xRes = 0;
 unsigned int yRes = 0;
 
+Colour backgroundColour = {1, 1, 1};
 
 void setClockCoordinates(unsigned int *x, unsigned int *y)
 {
@@ -101,7 +102,6 @@ void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour 
     }
 }
 
-
 void renderBitmap(Colour ** start, const unsigned short* bitMap, unsigned int width, unsigned int height)
 {
     for (int i = 0; i < height; ++i)
@@ -114,4 +114,19 @@ void renderBitmap(Colour ** start, const unsigned short* bitMap, unsigned int wi
             (*start)[i*width + j].blue =  (hexValue) & 0xFF;
         }
     }
+}
+
+void newWindow ()
+{
+    check();
+    for (int j=0; j<yRes; j++)
+    {
+        for (int i=0; i<xRes; i++)
+        {
+            drawAPixelWithColour(i, j, backgroundColour);
+        }
+    }
+    currentX=0;
+    currentY=0;
+    setCoordinates(currentX, currentY);
 }

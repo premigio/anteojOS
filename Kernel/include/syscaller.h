@@ -83,23 +83,23 @@ uint64_t newCharInBuffer(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx,
 uint64_t exit(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
 /* eax = 15
-** return the seconds elapsed
-*/
-uint64_t userRequestNewWindow(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
-
-/* eax = 16
-** draws a newWindow
+** draws a character
 */
 uint64_t putChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-/* eax = 17
+/* eax = 16
 ** makes a backSpace
 */
 uint64_t removeChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-/* eax = 18
+/* eax = 17
 ** sets a new background colour (r=rdi g=rsi b=rdx)
 */
 uint64_t changeBackgroundColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
+
+/* eax = 18
+** sets current video driver coordinates to the given ones (x=rdi, y=rsi)
+*/
+uint64_t setCoordinates(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
 #endif

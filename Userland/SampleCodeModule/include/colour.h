@@ -15,7 +15,7 @@ typedef struct
 
 static const Colour userColours[COLOURS_AMOUNT] = {
         {1,1,1},
-        {255,255,255},
+        {242, 213, 96},
         {120,50,70},
         {120,150,120},
         {255,3,170},

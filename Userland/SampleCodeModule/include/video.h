@@ -37,4 +37,7 @@ void drawImageFromHexaMap(unsigned  int , unsigned int , const unsigned short* ,
 /*  */
 void renderFont(Colour * ,const char* (*getFont)(int,int), int ,Colour ,Colour );
 
+/* clears the current window and sets a new one */
+void newWindow();
+
 #endif

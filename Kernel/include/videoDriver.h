@@ -115,4 +115,7 @@ void resetCoordinates();
 /* makes a backSpace on screen */
 void backSpace();
 
+/* sets current coordinates to the given ones */
+void setCoord(unsigned int, unsigned int);
+
 #endif

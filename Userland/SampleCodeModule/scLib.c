@@ -56,20 +56,19 @@ int notifyExitRequest(unsigned int rdi, unsigned int rsi, const unsigned short *
 {
     return syscall(14,0,0,0,0,0);
 }
-void newWindow(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
-{
-    syscall(15,0,0,0,0,0);
-}
 int putChar(char c)
 {
-    return syscall(16,c,0,0,0,0);
+    return syscall(15,c,0,0,0,0);
 }
 int removeChar()
 {
-    return syscall(17,0,0,0,0,0);
+    return syscall(16,0,0,0,0,0);
 }
 void setBackgroundColour(uint8_t r, uint8_t g, uint8_t b)
 {
-    syscall(18,r,g,b, 0,0);
+    syscall(17,r,g,b, 0,0);
 }
-
+void setCoordinates(unsigned int x, unsigned int y)
+{
+    syscall(18, (uint64_t)x, (uint64_t)y, 0, 0, 0);
+}

@@ -4,8 +4,8 @@ typedef uint64_t (*func_type)();
 
 func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed,
                                sleep, userDrawPixel, getResolutions, changeFontColour,
-                               printImage, newCharInBuffer, exit, userRequestNewWindow,
-                               putChar, removeChar, changeBackgroundColour};
+                               printImage, newCharInBuffer, exit, putChar,
+                               removeChar, changeBackgroundColour, setCoordinates };
 
 uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
@@ -81,11 +81,6 @@ uint64_t exit(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r
     motherBeep();
     return 0;
 }
-uint64_t userRequestNewWindow(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
-{
-    newWindow();
-    return 0;
-}
 uint64_t putChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
     drawChar((char) rdi);
@@ -100,5 +95,9 @@ uint64_t changeBackgroundColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64
 {
     Colour colour = {rdi,rsi,rdx};
     setBackgroundColour(colour);
+    return 0;
+}
+uint64_t setCoordinates(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8){
+    setCoord(rdi, rsi);
     return 0;
 }

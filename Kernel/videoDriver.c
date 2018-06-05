@@ -26,7 +26,7 @@ unsigned int enterXCoordenates[300];
 unsigned int enterYCoordenates[300];
 unsigned int sizeEnter = 0;
 Colour backgroundColour = {0, 0, 0};
-Colour fontColour = {255, 255, 255};
+Colour fontColour = {242, 213, 96};
 
 void drawAPixelWithColour(int x, int y, Colour col)
 {
@@ -312,4 +312,10 @@ void toHexa(char * buffer, uint64_t value)
   }
   return;
 
+}
+
+void setCoord(unsigned int x, unsigned int y)
+{
+    currentX=x;
+    currentY=y;
 }

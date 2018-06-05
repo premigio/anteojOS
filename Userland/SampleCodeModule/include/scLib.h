@@ -58,4 +58,7 @@ int removeChar();
 /* system call to change the background colour */
 void setBackgroundColour(uint8_t , uint8_t , uint8_t );
 
+/* system call to change coordinates */
+void setCoordinates(unsigned int, unsigned int);
+
 #endif

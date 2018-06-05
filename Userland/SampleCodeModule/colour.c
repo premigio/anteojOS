@@ -1,6 +1,6 @@
 #include "colour.h"
 
-static Colour fontColour = {255,255,255};
+static Colour fontColour = {242, 213, 96};
 static Colour backColour = {1,1,1};
 
 void changeFontColour(Colour col)
