@@ -92,8 +92,8 @@ int main()
 	loadIDT();
 	void (*address)();
 	address = sampleCodeModuleAddress;
-	rip = address + 2*8;
-	stack = getStack();
+	rip = address;
+	stack = getStack()+ 2*8;
 	address();
 
 	return 0;
