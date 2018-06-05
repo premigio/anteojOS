@@ -40,4 +40,7 @@ void renderFont(Colour * ,const char* (*getFont)(int,int), int ,Colour ,Colour )
 /* clears the current window and sets a new one */
 void newWindow();
 
+/* sets a new background colour */
+void setColour(Colour);
+
 #endif

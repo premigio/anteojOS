@@ -130,3 +130,8 @@ void newWindow ()
     currentY=0;
     setCoordinates(currentX, currentY);
 }
+
+void setColour(Colour c)
+{
+  backgroundColour=c;
+}

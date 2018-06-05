@@ -189,6 +189,7 @@ int changeColour(void(*f)(Colour), int flag )
                   (*f)(col);
                   ask = FALSE;
                   changed = TRUE;
+                  setColour(col);
                 }
             }
             else if(c == 'q')

@@ -24,7 +24,7 @@ void kernelBeep()
 {
     syscall(6,0,0,0,0,0);
 }
-void getTotalTicks()
+void timeElapsed()
 {
     syscall(7,0,0,0,0,0);
 }
