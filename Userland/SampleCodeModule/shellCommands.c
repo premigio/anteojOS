@@ -138,7 +138,7 @@ int font_colour(int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    changeColour(changeFontColour);
+    changeColour(changeFontColour,1);
     return 1;
 }
 
@@ -149,7 +149,7 @@ int background_colour(int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    int changed = changeColour(changeBackgroundColour);
+    int changed = changeColour(changeBackgroundColour,0);
     if (changed)
     {
         clear(argc,argv);
@@ -157,7 +157,7 @@ int background_colour(int argc, argVector argv)
     return 1;
 }
 
-int changeColour(void(*f)(Colour) )
+int changeColour(void(*f)(Colour), int flag )
 {
     Colour original = getCurrentFontColour();
     printF("%s\n", SET_FONT_MSSG);
@@ -170,16 +170,26 @@ int changeColour(void(*f)(Colour) )
     char c;
     int ask = TRUE;
     int changed = FALSE;
+    Colour c1 = getCurrentFontColour();
+    Colour c2 = getCurrentBackgroundColour();
     while (ask)
     {
         if (newToRead())
         {
             c = getChar();
-            if (isDigit(c))
+            if ((c >= '1' && c <= '8') || c == '0')
             {
-                (*f)(userColours[c-'0']);
-                ask = FALSE;
-                changed = TRUE;
+                Colour col = userColours[c-'0'];
+                if ((equalColour(col, c1) && !flag) || (equalColour(col, c2) && flag))
+                {
+                  printF("Choose another colour, one that makes everything better! \n");
+                }
+                else
+                {
+                  (*f)(col);
+                  ask = FALSE;
+                  changed = TRUE;
+                }
             }
             else if(c == 'q')
             {

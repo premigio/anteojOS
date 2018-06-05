@@ -21,3 +21,10 @@ Colour getCurrentBackgroundColour()
 {
     return backColour;
 }
+
+int equalColour(Colour c1, Colour c2)
+{
+  if (c1.red == c2.red && c1.blue == c2.blue && c1.green == c2.green)
+    return 1;
+  return 0;
+}

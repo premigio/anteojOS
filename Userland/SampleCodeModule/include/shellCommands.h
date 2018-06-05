@@ -42,7 +42,7 @@ int commandExists(const char *);
 int executeCommand(int argc, argVector argv);
 
 /* changes a determined colour, background or font */
-int changeColour(void(*f)(Colour) );
+int changeColour(void(*f)(Colour), int flag);
 
 /* executes the help command */
 int help (int argc, argVector argv);

@@ -1,6 +1,6 @@
 #include "timezone.h"
 
-static int currentTimezone = DEFAULT_TIME_ZONE;
+int currentTimezone = DEFAULT_TIME_ZONE;
 
 void changeTimeZone(int timezone)
 {
@@ -12,5 +12,10 @@ int getTimeZone()
 }
 int getTimezoneHour()
 {
-    return (getHour()+currentTimezone)%TIME_FORMAT;
+    return mod(getHour()+getTimeZone(), TIME_FORMAT);
+}
+int mod(int a, int b)
+{
+    int r = a % b;
+    return r < 0 ? r + b : r;
 }

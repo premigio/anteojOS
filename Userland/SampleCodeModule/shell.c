@@ -121,6 +121,7 @@ void doBeforeExit()
 
 int parseAndInterpret(const char *string) // se lee desde indice 0 hasta un \n
 {
+    int spaceFlag = 0;
     int state = INITIAL;
     int argIndex = 0;
     int letterIndex = 0;
@@ -143,18 +144,23 @@ int parseAndInterpret(const char *string) // se lee desde indice 0 hasta un \n
                 if (isSpace(*c))
                 {
                     state = INITIAL;
+                    spaceFlag = 1;
                 }
                 else
                 {
                     letterIndex = 0;
                     argsVector[argIndex][letterIndex++] = *c;
                     state = IN_ARGUMENT;
+                    spaceFlag = 0;
                 }
                 break;
             case SPACE:
                 if(!isSpace(*c))      // si es espacio nos quedamos aca
                 {
-                    if (isQuote(*c))    //string, agrego " porque tal vez eco toma otros parametros
+                    if (spaceFlag) {
+                      argIndex++;
+                    }
+                    if (isQuote(*c))    //string, agrego " porque tal vez echo toma otros parametros
                     {
                         state = IN_STRING;
                     }
@@ -170,7 +176,7 @@ int parseAndInterpret(const char *string) // se lee desde indice 0 hasta un \n
                 if (isSpace(*c))        // tabs o espacioss etc
                 {
                     argsVector[argIndex][letterIndex++] = 0;
-                    argIndex++;
+                    spaceFlag++;
                     state = SPACE;
                 }
                 else
@@ -189,6 +195,8 @@ int parseAndInterpret(const char *string) // se lee desde indice 0 hasta un \n
         argsVector[argIndex][letterIndex] = 0;
         c++;
     }
+    if(letterIndex == 1)
+      argIndex--;
     return executeCommand(argIndex+1, argsVector);
 }
 

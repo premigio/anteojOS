@@ -37,4 +37,7 @@ Colour getCurrentFontColour();
 /* returns the current background colour */
 Colour getCurrentBackgroundColour();
 
+/* return wether two colours are equal */
+int equalColour(Colour c1, Colour c2);
+
 #endif
