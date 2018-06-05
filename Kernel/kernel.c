@@ -14,6 +14,9 @@ extern uint8_t bss;
 extern uint8_t endOfKernelBinary;
 extern uint8_t endOfKernel;
 extern void beep();
+extern uint64_t rip;
+extern uint64_t stack;
+extern uint64_t getStack();
 
 static const uint64_t PageSize = 0x1000;
 
@@ -89,6 +92,8 @@ int main()
 	loadIDT();
 	void (*address)();
 	address = sampleCodeModuleAddress;
+	rip = address + 2*8;
+	stack = getStack();
 	address();
 
 	return 0;

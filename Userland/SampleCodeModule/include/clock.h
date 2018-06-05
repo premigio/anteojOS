@@ -7,6 +7,7 @@
 #include "piloNumbers.h"
 #include "scLib.h"
 #include "timezone.h"
+#include "stdio.h"
 
 #define CLOCKSIZE 8
 #define SCREEN_SAVER_MODE 1

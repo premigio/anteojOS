@@ -2,13 +2,13 @@
 #include "exceptions.h"
 #include "keyboardDriver.h"
 
+extern void _hlt();
+
 #define REGS 16
 
 static char* registers[REGS] = {" r15: "," r14: "," r13: ", " r12: "," r11: "," r10: "," r9: ",
 " r8: ", " rsi: ", " rdi: "," rbp: ", " rdx: "," rcx: "," rbx: "," rax: "," rip: "};
 
-int flagReg =1;
-int flagExc = 1;
 
 void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
 {
@@ -20,30 +20,23 @@ void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
 	{
 		invalidOpcode();
 	}
-	if(flagReg)
-	{
-		flagReg = 0;
 		printRegisters(rsp);
-	}
+		for (int i = 0; i < 50; i++) {
+			kernelSleep();
+		}
+
 }
 
 static void zeroDivision()
 {
-	if (flagExc) {
 		newWindow();
 		drawString("\n Cannot divide by 0\n");
-		flagExc = 0;
-	}
 }
 
 static void invalidOpcode()
 {
-	if (flagExc)
-	{
 		newWindow();
 		drawString("\n No such function\n");
-		flagExc = 0;
-	}
 }
 
 void printRegisters(uint64_t * rsp)
@@ -52,6 +45,6 @@ void printRegisters(uint64_t * rsp)
 	{
 		drawChar('\n');
 		drawString(registers[REGS-1-i]);
-		drawHexa(rsp[REGS-1-i]);
+		drawHexa(rsp[REGS-i]);
 	}
 }

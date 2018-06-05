@@ -3,7 +3,7 @@
 void showClock(int mode)
 {
     short show = 1;
-    short h, m, s, oh, om, os = -1;
+    short h, m, s, os = -1;
     char c = '4';
     Colour bColour = getCurrentBackgroundColour();
     Colour fColour = getCurrentFontColour();

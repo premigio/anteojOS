@@ -16,8 +16,14 @@ GLOBAL _irq05Handler
 GLOBAL _exception0Handler
 GLOBAL _exception6Handler
 
+GLOBAL rip
+GLOBAL stack
+GLOBAL getStack
+
 EXTERN irqDispatcher
 EXTERN exceptionDispatcher
+
+
 
 SECTION .text
 
@@ -81,6 +87,9 @@ SECTION .text
 	call exceptionDispatcher
 
 	popState
+
+	mov qword [rsp], rip
+	mov qword [rsp + 3*8], stack
 
 	iretq
 %endmacro
@@ -156,7 +165,13 @@ haltcpu:
 	hlt
 	ret
 
+getStack:
+ mov rax, rsp
+ ret
+
 
 
 SECTION .bss
-	aux resq 1
+	aux: resq 1
+	rip: resq 1
+	stack: resq 1
