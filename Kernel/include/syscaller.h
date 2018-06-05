@@ -67,37 +67,31 @@ uint64_t getResolutions(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, 
 uint64_t changeFontColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
 /* eax = 12
-** draws an image from coordinates rdi(x) and rsi(y), using a given hexa map on rdx,
-** and with a determined width on rcx and height on r8
-*/
-uint64_t printImage(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
-
-/* eax = 13
 ** returns a boolean whether there is a new character to read or not
 */
 uint64_t newCharInBuffer(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-/* eax = 14
+/* eax = 13
 ** makes a beep sound and exits
 */
 uint64_t exit(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-/* eax = 15
+/* eax = 14
 ** draws a character
 */
 uint64_t putChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-/* eax = 16
+/* eax = 15
 ** makes a backSpace
 */
 uint64_t removeChar(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-/* eax = 17
+/* eax = 16
 ** sets a new background colour (r=rdi g=rsi b=rdx)
 */
 uint64_t changeBackgroundColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);
 
-/* eax = 18
+/* eax = 17
 ** sets current video driver coordinates to the given ones (x=rdi, y=rsi)
 */
 uint64_t setCoordinates(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8);

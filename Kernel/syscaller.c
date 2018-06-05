@@ -4,8 +4,8 @@ typedef uint64_t (*func_type)();
 
 func_type fList[NFUNCTIONS] = {write, read, getHour, getMin, getSec, beep, timeElapsed,
                                sleep, userDrawPixel, getResolutions, changeFontColour,
-                               printImage, newCharInBuffer, exit, putChar,
-                               removeChar, changeBackgroundColour, setCoordinates };
+                               newCharInBuffer, exit, putChar, removeChar,
+                               changeBackgroundColour, setCoordinates };
 
 uint64_t syscaller(uint64_t rax, uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
 {
@@ -65,11 +65,6 @@ uint64_t changeFontColour(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx
 {
     Colour col = {(uint8_t)rdi,(uint8_t)rsi,(uint8_t)rdx};
     setFontColour(col);
-    return 0;
-}
-uint64_t printImage(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)
-{
-    drawImage((unsigned int) rdi, (unsigned int) rsi, (const unsigned short *)rdx, (unsigned int) rcx, (unsigned int) r8);
     return 0;
 }
 uint64_t newCharInBuffer(uint64_t rdi, uint64_t rsi, uint64_t rdx, uint64_t rcx, uint64_t r8)

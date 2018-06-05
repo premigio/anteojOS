@@ -44,31 +44,27 @@ void setFontColour(uint8_t r, uint8_t g, uint8_t b)
 {
     syscall(11,r,g,b, 0,0);
 }
-void printImage(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
-{
-    syscall(12,(uint64_t)rdi,(uint64_t)rsi,(uint64_t)rdx,(uint64_t)rcx,(uint64_t)r8);
-}
 int newToRead(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
 {
-    return syscall(13,0,0,0,0,0);
+    return syscall(12,0,0,0,0,0);
 }
 int notifyExitRequest(unsigned int rdi, unsigned int rsi, const unsigned short *rdx, unsigned int rcx, unsigned int r8)
 {
-    return syscall(14,0,0,0,0,0);
+    return syscall(13,0,0,0,0,0);
 }
 int putChar(char c)
 {
-    return syscall(15,c,0,0,0,0);
+    return syscall(14,c,0,0,0,0);
 }
 int removeChar()
 {
-    return syscall(16,0,0,0,0,0);
+    return syscall(15,0,0,0,0,0);
 }
 void setBackgroundColour(uint8_t r, uint8_t g, uint8_t b)
 {
-    syscall(17,r,g,b, 0,0);
+    syscall(16,r,g,b, 0,0);
 }
 void setCoordinates(unsigned int x, unsigned int y)
 {
-    syscall(18, (uint64_t)x, (uint64_t)y, 0, 0, 0);
+    syscall(17, (uint64_t)x, (uint64_t)y, 0, 0, 0);
 }

@@ -37,9 +37,6 @@ void getResolutions(unsigned int * , unsigned int * );
 /* system call to set a new font colour */
 void setFontColour(uint8_t , uint8_t , uint8_t );
 
-/* system call to draw an image from a specified coordinate and from a given hexa map */
-void printImage(unsigned int , unsigned int , const unsigned short *, unsigned int , unsigned int );
-
 /* system call to return if there is a new character to read from buffer */
 int newToRead();
 
