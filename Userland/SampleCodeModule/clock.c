@@ -10,24 +10,17 @@ void showClock(int mode)
     newWindow();
     while (show)
     {
-        h = getHour();
         m = getMinute();
         s = getSecond();
         h = getTimezoneHour();
-        if (oh!=h || om!=m || os!=s)
+        if (os!=s && mode)
         {
-            if(mode)
-            {
-                fColour.green = (fColour.green-SCREEN_SAVER_CHANGE1)%255;
-                fColour.blue = (fColour.blue+SCREEN_SAVER_CHANGE2)%255;
-            }
 
-            drawClock(h,m,s,fColour, bColour);
-
-            oh = h;
-            om = m;
+            fColour.green = (fColour.green-SCREEN_SAVER_CHANGE1)%255;
+            fColour.blue = (fColour.blue+SCREEN_SAVER_CHANGE2)%255;
             os = s;
         }
+        drawClock(h,m,s,fColour, bColour);
         if(newToRead()){
             c = getChar();
             if (c == 'q' || mode) // si es screen saver, mode = 1 entonces mata
@@ -39,6 +32,11 @@ void showClock(int mode)
                 fColour = userColours[c -'0'];
                 drawClock(h,m,s,fColour, bColour);
                 kernelBeep();
+            }else
+            {
+                newWindow();
+                printF("Press 'q' to exit or a number to change the clock's colour");
+                drawClock(h,m,s,fColour, bColour);
             }
         }
     }

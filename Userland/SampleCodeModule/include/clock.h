@@ -10,8 +10,8 @@
 
 #define CLOCKSIZE 8
 #define SCREEN_SAVER_MODE 1
-#define SCREEN_SAVER_CHANGE1 10
-#define SCREEN_SAVER_CHANGE2 SCREEN_SAVER_CHANGE1+ 7
+#define SCREEN_SAVER_CHANGE1 6
+#define SCREEN_SAVER_CHANGE2 SCREEN_SAVER_CHANGE1+ 4
 #define NORMAL_MODE 0
 
 /* draws a clock with a given time, a colour for the digits, and a colour for the background */
