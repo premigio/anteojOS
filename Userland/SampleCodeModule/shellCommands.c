@@ -81,7 +81,7 @@ int echo (int argc, argVector argv)
             }
             else
             {
-                printF("%s ", argv[i]);
+                printF("%s\n", argv[i]);
             }
         }
     }

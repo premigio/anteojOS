@@ -19,7 +19,7 @@ int getXResolution();
 int getYResolution();
 
 
-modeInfoVBE vbe = (modeInfoVBE)0x5C00;
+modeInfoVBE vbe = (modeInfoVBE)0x5C00;        /*------> taken from /Bootloader/Pure64/src/sysvar.asm */
 unsigned int currentX = 0;
 unsigned int currentY = 0;
 unsigned int enterXCoordenates[300];

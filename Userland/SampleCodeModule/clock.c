@@ -21,7 +21,8 @@ void showClock(int mode)
             os = s;
         }
         drawClock(h,m,s,fColour, bColour);
-        if(newToRead()){
+        if(newToRead())
+        {
             c = getChar();
             if (c == 'q' || mode) // si es screen saver, mode = 1 entonces mata
             {
@@ -32,7 +33,8 @@ void showClock(int mode)
                 fColour = userColours[c -'0'];
                 drawClock(h,m,s,fColour, bColour);
                 kernelBeep();
-            }else
+            }
+            else
             {
                 newWindow();
                 printF("Press 'q' to exit or a number to change the clock's colour");
