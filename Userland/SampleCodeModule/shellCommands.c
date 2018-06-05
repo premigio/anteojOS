@@ -154,6 +154,7 @@ int background_colour(int argc, argVector argv)
     {
         clear(argc,argv);
     }
+    setColour(getCurrentBackgroundColour());
     return 1;
 }
 

@@ -118,6 +118,7 @@ void renderBitmap(Colour ** start, const unsigned short* bitMap, unsigned int wi
 
 void newWindow ()
 {
+    setColour(getCurrentBackgroundColour());
     check();
     for (int j=0; j<yRes; j++)
     {
@@ -133,5 +134,5 @@ void newWindow ()
 
 void setColour(Colour c)
 {
-  backgroundColour=c;
+    backgroundColour=c;
 }
