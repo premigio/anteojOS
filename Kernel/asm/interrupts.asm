@@ -22,7 +22,6 @@ GLOBAL getStack
 
 EXTERN irqDispatcher
 EXTERN exceptionDispatcher
-EXTERN main
 
 
 SECTION .text
@@ -92,7 +91,6 @@ SECTION .text
 	mov qword [rsp], rdi
 	mov rdi, [stack]
 	mov qword [rsp+ 3*8], rdi
-	;mov qword [rsp],main
 	iretq
 %endmacro
 
