@@ -28,7 +28,7 @@ void showClock(int mode)
             {
                 show = 0;
             }
-            else if(c>= '0' && c<='9')
+            else if(c>= '1' && c<='9')
             {
                 fColour = userColours[c -'0'];
                 drawClock(h,m,s,fColour, bColour);

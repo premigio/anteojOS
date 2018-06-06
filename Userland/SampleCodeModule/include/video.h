@@ -28,13 +28,10 @@ void drawFont(int, int, const char* (*getFont)(int,int), int, Colour, Colour);
 /* draws a given image (on a hexa map), from given coordinates and a specified width and height */
 void drawImageFromHexaMap(unsigned  int , unsigned int , const unsigned short* , unsigned int , unsigned int );
 
-/*  */
-void renderFont(Colour * ,const char* (*getFont)(int,int), int ,Colour ,Colour );
+/* Renders a string font */
+void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour);
 
 /* clears the current window and sets a new one */
 void newWindow();
-
-/* sets a new background colour */
-void setColour(Colour);
 
 #endif

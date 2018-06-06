@@ -13,7 +13,7 @@ void shell()
     int resp = NULL_CMMD;
     char c;
     turnOnOff();
-    while(run)            // agregar funcionalidad para apretar flecha para arriba
+    while(run)
     {
         c = 0;
         RESET_BUFFER;
@@ -46,7 +46,9 @@ void shell()
                 {
                     if (bufferPtr > 0)    //sino solamente imprimo una linea nueva pero no mando el comando
                     {
-                        buffer[bufferPtr] = c; // para que jime sepa hasta donde leer
+                        buffer[bufferPtr] = c; // para saber hasta donde leer
+                        NEW_LINE;
+                        resp = parseAndInterpret(buffer);
                     }
                     else
                     {
@@ -55,9 +57,7 @@ void shell()
                 }
             }
         }
-        NEW_LINE;
-        resp = parseAndInterpret(buffer);
-        if (resp == EXIT_CMMD)                 // modularizar
+        if (resp == EXIT_CMMD)
         {
             run = FALSE;
         }
@@ -113,11 +113,12 @@ int parseAndInterpret(const char *string) // se lee desde indice 0 hasta un \n
     int argIndex = 0;
     int letterIndex = 0;
     argVector argsVector; // vector de punteros a string
+    argsVector[0][0] = 0;
     char * c = (char *) string;
 
-    while (*c != '\n') //los strings los tenes que pasar enteros ""
+    while (*c != '\n') //los strings se pasan enteros enteros ""
     {
-        if (!isGraph(*c))   // no puede ser un nombre
+        if (!isGraph(*c) && *c != 0)// no puede ser un nombre, tiene que ser distinto de 0 porque reseteamos el primer indice del buffer
         {
             return NULL_CMMD;
         }
@@ -182,8 +183,9 @@ int parseAndInterpret(const char *string) // se lee desde indice 0 hasta un \n
         argsVector[argIndex][letterIndex] = 0;
         c++;
     }
-    if(letterIndex == 1)
-      argIndex--;
+    if(argsVector[0][0] == 0){
+        return OK;
+    }
     return executeCommand(argIndex+1, argsVector);
 }
 
@@ -224,3 +226,4 @@ void setSaverTime(int num)
 {
     saverTime = num;
 }
+

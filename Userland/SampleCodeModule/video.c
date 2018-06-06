@@ -6,8 +6,6 @@ unsigned int currentY = 0;
 unsigned int xRes = 0;
 unsigned int yRes = 0;
 
-Colour backgroundColour = {1, 1, 1};
-
 void setClockCoordinates(unsigned int *x, unsigned int *y)
 {
     check();
@@ -22,17 +20,6 @@ void check()
     if (xRes == 0 || yRes == 0)
     {
         getResolutions(&xRes,&yRes);
-    }
-}
-
-void drawPixelImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height)
-{
-    for (int i = 0; i < height; ++i)
-    {
-        for (int j = 0; j < width; ++j)
-        {
-            drawAPixelWithColour(ox + j, oy + i, pixelMap[i * width + j]);
-        }
     }
 }
 
@@ -77,57 +64,43 @@ void drawImageFromHexaMap(unsigned  int ox, unsigned int oy, const unsigned shor
     }
 }
 
+void drawPixelImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height)
+{
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            drawAPixelWithColour(ox + j, oy + i, pixelMap[i * width + j]);
+        }
+    }
+}
+
 void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour)
 {
-    for (int i = 0; i < NUMHEIGHT; i++)
-    {
+
+    for (int i = 0; i < NUMHEIGHT; i++) {
         const char * bitString = (*getFont)(font,i);
 
-        for (int j = 0; j < NUMWIDTH; j++)
-        {
-            if (bitString[j] == '1')
-            {
+        for (int j = 0; j < NUMWIDTH; j++) {
+            if (bitString[j] == '1'){
                 start[i*NUMWIDTH +j] = fColour;
-            }
-            else
-            {
+                //drawAPixelWithColour(j,i,fColour);
+            }else{
                 start[i*NUMWIDTH +j] = bColour;
+                //drawAPixelWithColour(j,i,bColour);
             }
         }
     }
 }
-
-void renderBitmap(Colour ** start, const unsigned short* bitMap, unsigned int width, unsigned int height)
-{
-    for (int i = 0; i < height; ++i)
-    {
-        for (int j = 0; j < width; ++j)
-        {
-            unsigned short hexValue = bitMap[i*width + j];
-            (*start)[i*width + j].red =   (hexValue >> 16) & 0xFF;
-            (*start)[i*width + j].green = (hexValue >> 8) & 0xFF;
-            (*start)[i*width + j].blue =  (hexValue) & 0xFF;
-        }
-    }
-}
-
 void newWindow ()
 {
-    setColour(getCurrentBackgroundColour());
     check();
     for (int j=0; j<yRes; j++)
     {
         for (int i=0; i<xRes; i++)
         {
-            drawAPixelWithColour(i, j, backgroundColour);
+            drawAPixelWithColour(i, j, getCurrentBackgroundColour());
         }
     }
     currentX=0;
     currentY=0;
     setCoordinates(currentX, currentY);
-}
-
-void setColour(Colour c)
-{
-    backgroundColour=c;
 }

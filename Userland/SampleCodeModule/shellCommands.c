@@ -4,7 +4,7 @@ command commands[NUM_COMMANDS]={
         {"help",  "Shows the different commands available and their description.", help},
         {"echo",  "Prints on stdout the specified string/s. Strings without quotes are considered separated", echo},
         {"time",  "Prints the current system time with default Timezone. Timezone can be changed with 'timezone' command", time},
-        {"clear", "Clears the screen.", clear}, //agregar funcionalidad para flecha para arriba y control c
+        {"clear", "Clears the screen.", clear},
         {"beep",  "Requests kernel to emit beep from motherboard.", beep},
         {"exit", "Exits the terminal.", exitShell},
         {"font_colour", "Changes the font colour.", font_colour},
@@ -56,6 +56,10 @@ int help (int argc, argVector argv)
 
 int echo (int argc, argVector argv)
 {
+    if (argc == 1)
+    {
+        return 0;
+    }
     for (int i=1; i<argc; i++)
     {
         if (isQuote(argv[i][0]))
@@ -75,14 +79,7 @@ int echo (int argc, argVector argv)
         }
         else
         {
-            if (i == argc - 1)
-            {
-                printF("%s\n", argv[i]);
-            }
-            else
-            {
-                printF("%s\n", argv[i]);
-            }
+            printF("%s\n", argv[i]);
         }
     }
     return 1;
@@ -138,7 +135,7 @@ int font_colour(int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    changeColour(changeFontColour,1);
+    changeColour(changeFontColour, FONT);
     return 1;
 }
 
@@ -149,20 +146,19 @@ int background_colour(int argc, argVector argv)
         printF("%s\n", CERO_ARGUMENTS_ERROR);
         return 0;
     }
-    int changed = changeColour(changeBackgroundColour,0);
+    int changed = changeColour(changeBackgroundColour, BACK);
     if (changed)
     {
         clear(argc,argv);
     }
-    setColour(getCurrentBackgroundColour());
     return 1;
 }
 
-int changeColour(void(*f)(Colour), int flag )
+int changeColour(void(*f)(Colour), int flag)
 {
     Colour original = getCurrentFontColour();
     printF("%s\n", SET_FONT_MSSG);
-    for (int i = 0; i < COLOURS_AMOUNT; ++i)
+    for (int i = 1; i <= COLOURS_AMOUNT; ++i)
     {
         changeFontColour(userColours[i]);
         printF("%d) %s \n", i, SET_FONT_EX );
@@ -178,10 +174,10 @@ int changeColour(void(*f)(Colour), int flag )
         if (newToRead())
         {
             c = getChar();
-            if ((c >= '1' && c <= '8') || c == '0')
+            if (c >= '1' && c <= '9')
             {
                 Colour col = userColours[c-'0'];
-                if ((equalColour(col, c1) && !flag) || (equalColour(col, c2) && flag))
+                if ((equalColour(col, c1) && flag == BACK)|| (equalColour(col, c2) && flag == FONT))
                 {
                   printF("Choose another colour, one that makes everything better! \n");
                 }
@@ -190,7 +186,6 @@ int changeColour(void(*f)(Colour), int flag )
                   (*f)(col);
                   ask = FALSE;
                   changed = TRUE;
-                  setColour(col);
                 }
             }
             else if(c == 'q')
@@ -250,10 +245,12 @@ int screen_saver(int argc, argVector argv)
     if(strcmp(argv[1],"on"))
     {
         setSaverStatus(TRUE);
+        printF("Screen saver is now %s, and will wait %d seconds\n", (getSaverStatus()? "on":"off"), getSaverTime());
     }
     else if(strcmp(argv[1],"off"))
     {
         setSaverStatus(FALSE);
+        printF("Screen saver is now %s.\n", (getSaverStatus()? "on":"off"));
     }
     else
     {
@@ -263,13 +260,14 @@ int screen_saver(int argc, argVector argv)
         if(flag && num > MIN_SAVER_TIME)
         {
             setSaverTime(num);
+            printF("Screen saver will now wait %d seconds\n", getSaverTime());
         }
         else
         {
             printF("Waiting time must be an integer greater than %d.\n", MIN_SAVER_TIME);
+            return 0;
         }
     }
-    printF("Screen saver is currently %s.\n", (getSaverStatus()? "on":"off"));
     return 1;
 }
 

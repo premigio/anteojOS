@@ -21,6 +21,8 @@
 #define TIMEZONE_SUCCES_MSG       "Timezone has been set to:"
 #define ARGUMENTS_AMOUNT_ERROR(x) "Error: Function takes "x" argument"
 
+#define FONT 2
+#define BACK 1
 #define NUM_COMMANDS 12           // cantidad de comandos disponibles
 
 typedef char argVector[MAX_ARGS][MAX_ARG_LENGTH];

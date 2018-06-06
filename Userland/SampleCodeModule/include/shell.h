@@ -11,11 +11,12 @@
 #include "stdio.h"
 #include "eyeGlassesSmall.h"
 
-#define RESET_BUFFER bufferPtr = 0; for(int l = 0;l<MAX_BUFFER_SIZE;l++){buffer[l]=0;}
+#define RESET_BUFFER bufferPtr = 0; buffer[0]=0;resp = OK;
 
 #define MIN_SAVER_TIME     10
 #define DEFAULT_SAVER_TIME 10
 
+#define OK 1
 #define NULL_CMMD -1
 #define EXIT_CMMD  -2
 #define ILLEGAL_INPUT -3
