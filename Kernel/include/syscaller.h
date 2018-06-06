@@ -9,7 +9,7 @@
 #include <videoDriver.h>
 #include "sleep.h"
 
-#define NFUNCTIONS 30                             // number of functions
+#define NFUNCTIONS 18                             // number of functions
 
 /* eax = 1
 ** draws a string with a given string in rdi

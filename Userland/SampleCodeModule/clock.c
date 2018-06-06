@@ -48,11 +48,11 @@ void drawClock(int h, int m, int s, Colour fColour, Colour bColour)
 {
     unsigned int  x, y;
     setClockCoordinates(&x,&y);
-    unsigned short font[NUMWIDTH*NUMHEIGHT];
+    Colour font[NUMWIDTH*NUMHEIGHT];
     int chars[] = {h/10,h%10,COLON,m/10,m%10,COLON,s/10,s%10};
     for (int i = 0; i < CLOCKSIZE; ++i) {
         renderFont(font,getNumber,chars[i],fColour,bColour);
-        drawImageFromHexaMap(x,y, font, NUMWIDTH,NUMHEIGHT);
+        drawPixelImage(x, y, font, NUMWIDTH, NUMHEIGHT);
         x = x + NUMWIDTH;
     }
 }

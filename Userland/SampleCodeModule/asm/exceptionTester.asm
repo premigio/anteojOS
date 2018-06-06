@@ -42,7 +42,6 @@ section .text
 invalidOpcodeException:
 	push rbp
 	mov rbp, rsp
-	mov rax, 0xFFF
 	pushState
   ud2 ; ud genera invalidOpcode exceptions. uso el de tipo 2 que no tiene operandos
   ;RSM

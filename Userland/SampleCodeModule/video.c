@@ -25,6 +25,17 @@ void check()
     }
 }
 
+void drawPixelImage(unsigned int ox, unsigned int oy, Colour *pixelMap, unsigned int width, unsigned int height)
+{
+    for (int i = 0; i < height; ++i)
+    {
+        for (int j = 0; j < width; ++j)
+        {
+            drawAPixelWithColour(ox + j, oy + i, pixelMap[i * width + j]);
+        }
+    }
+}
+
 void drawAPixelWithColour(int x, int y, Colour col)
 {
     userDrawPixel(x,y,col.red,col.green,col.blue);
@@ -66,7 +77,7 @@ void drawImageFromHexaMap(unsigned  int ox, unsigned int oy, const unsigned shor
     }
 }
 
-void renderFont(unsigned short * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour)
+void renderFont(Colour * start,const char* (*getFont)(int,int), int font,Colour fColour,Colour bColour)
 {
     for (int i = 0; i < NUMHEIGHT; i++)
     {
@@ -76,11 +87,11 @@ void renderFont(unsigned short * start,const char* (*getFont)(int,int), int font
         {
             if (bitString[j] == '1')
             {
-                start[i*NUMWIDTH +j] = ((fColour.red &0x0ff)<<16)|((fColour.green &0x0ff)<<8)|(fColour.blue &0x0ff);
+                start[i*NUMWIDTH +j] = fColour;
             }
             else
             {
-                start[i*NUMWIDTH +j] = ((bColour.red &0x0ff)<<16)|((bColour.green &0x0ff)<<8)|(bColour.blue &0x0ff);;
+                start[i*NUMWIDTH +j] = bColour;
             }
         }
     }

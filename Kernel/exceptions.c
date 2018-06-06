@@ -2,12 +2,14 @@
 #include "exceptions.h"
 #include "keyboardDriver.h"
 
+extern uint64_t rip;
+extern uint64_t stack;
 extern void _hlt();
 
-#define REGS 16
+#define REGS 15
 
-static char* registers[REGS] = {" r15: "," r14: "," r13: ", " r12: "," r11: "," r10: "," r9: ",
-" r8: ", " rsi: ", " rdi: "," rbp: ", " rdx: "," rcx: "," rbx: "," rax: "," rip: "};
+static char* registers[REGS] = {" rax: "," rbx: "," rcx: ", " rdx: "," rbp: "," rdi: "," rsi: ",
+" r8: ", " r9: ", " r10: "," r11: ", " r12: "," r13: "," r14: "," r15: "};
 
 
 void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
@@ -21,7 +23,7 @@ void exceptionDispatcher(uint64_t exception, uint64_t * rsp)
 		invalidOpcode();
 	}
 		printRegisters(rsp);
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 30; i++) {
 			kernelSleep();
 		}
 
@@ -39,12 +41,16 @@ static void invalidOpcode()
 		drawString("\n No such function\n");
 }
 
-void printRegisters(uint64_t * rsp)
+void printRegisters(uint64_t * stack)
 {
-	for (int i = 0; i < REGS; i++)
+	int j = 0;
+	for (int i = 14; i>= 0; i--, j++)
 	{
 		drawChar('\n');
-		drawString(registers[REGS-1-i]);
-		drawHexa(rsp[REGS-i]);
+		drawString(registers[i]);
+		drawHexa(stack[j]);
 	}
+	drawChar('\n');
+	drawString(" rip: ");
+	drawHexa(stack[j]);
 }

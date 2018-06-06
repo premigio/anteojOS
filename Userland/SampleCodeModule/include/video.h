@@ -29,7 +29,7 @@ void drawFont(int, int, const char* (*getFont)(int,int), int, Colour, Colour);
 void drawImageFromHexaMap(unsigned  int , unsigned int , const unsigned short* , unsigned int , unsigned int );
 
 /*  */
-void renderFont(unsigned short  * ,const char* (*getFont)(int,int), int ,Colour ,Colour );
+void renderFont(Colour * ,const char* (*getFont)(int,int), int ,Colour ,Colour );
 
 /* clears the current window and sets a new one */
 void newWindow();
